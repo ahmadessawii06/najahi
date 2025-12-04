@@ -1,15 +1,922 @@
+<!-- save-as: edu-dashboard.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>منصة الشرح - مشروع جواد</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap"
+      rel="stylesheet"
     />
-    <title>Document</title>
+    <style>
+      :root {
+        --bg: #f7f9fc;
+        --card: #ffffff;
+        --accent: #2563eb;
+        --muted: #6b7280;
+        --glass: rgba(255, 255, 255, 0.6);
+        --shadow: 0 6px 18px rgba(16, 24, 40, 0.06);
+        --radius: 14px;
+      }
+      * {
+        box-sizing: border-box;
+        font-family: "Cairo", sans-serif;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: var(--bg);
+        color: #0f172a;
+      }
+      header {
+        background: linear-gradient(90deg, #0ea5e9, #2563eb);
+        color: white;
+        padding: 18px 20px;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 18px;
+        box-shadow: inset 0 -4px 12px rgba(255, 255, 255, 0.06);
+      }
+      .title {
+        font-weight: 600;
+        font-size: 18px;
+      }
+      .search-wrap {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .search-wrap input {
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        width: 260px;
+        box-shadow: 0 4px 10px rgba(2, 6, 23, 0.08);
+      }
+      main {
+        padding: 22px;
+        max-width: 1100px;
+        margin: 18px auto;
+        min-height: calc(100vh - 140px);
+      }
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+      /* Grades grid */
+      .grades {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      .grade-card {
+        background: var(--card);
+        padding: 18px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-end;
+        text-align: right;
+        transition: transform 0.16s ease, box-shadow 0.16s ease;
+      }
+      .grade-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 30px rgba(2, 6, 23, 0.06);
+      }
+      .grade-num {
+        font-weight: 700;
+        font-size: 20px;
+        color: var(--accent);
+      }
+      .grade-desc {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      /* Subjects list */
+      .subjects {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
+      .subject-card {
+        background: linear-gradient(
+          180deg,
+          rgba(37, 99, 235, 0.06),
+          transparent
+        );
+        padding: 14px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+      .subject-title {
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .subject-meta {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      /* Material / lesson view */
+      .material {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 18px;
+      }
+      .card {
+        background: var(--card);
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+      }
+      .section-title {
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .video-placeholder {
+        height: 220px;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #e6f0ff, #fff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .pdf-list,
+      .lesson-list,
+      .qa-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .file-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-radius: 10px;
+        background: rgba(2, 6, 23, 0.03);
+      }
+      .btn {
+        background: var(--accent);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      /* Quiz */
+      .quiz-option {
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(2, 6, 23, 0.06);
+        cursor: pointer;
+      }
+      .quiz-option.selected {
+        border-color: var(--accent);
+        background: rgba(37, 99, 235, 0.06);
+      }
+      .right {
+        color: green;
+      }
+      .wrong {
+        color: red;
+      }
+      /* Progress */
+      .progress-wrap {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .progress-bar {
+        height: 10px;
+        background: rgba(2, 6, 23, 0.06);
+        border-radius: 999px;
+        flex: 1;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #06b6d4, #2563eb);
+        width: 0%;
+      }
+      footer {
+        max-width: 1100px;
+        margin: 18px auto 40px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      /* responsive */
+      @media (max-width: 900px) {
+        .material {
+          grid-template-columns: 1fr;
+        }
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        .search-wrap input {
+          width: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <header>
+      <div class="brand">
+        <div class="logo">ج</div>
+        <div>
+          <div class="title">منصة الشرح — مشروع جواد</div>
+          <div style="font-size: 12px; opacity: 0.9">
+            مقترح واجهات لطلاب المدارس
+          </div>
+        </div>
+      </div>
+
+      <div class="search-wrap" role="search">
+        <input
+          id="searchInput"
+          placeholder="ابحث عن درس أو مادة..."
+          aria-label="بحث"
+        />
+        <button class="btn" id="searchBtn">بحث</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- عرض متعدد الواجهات: Home / Grades / Subjects / Material -->
+      <div id="view-root">
+        <!-- HOME -->
+        <section id="home-view" class="grid" style="gap: 18px">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 12px;
+            "
+          >
+            <div style="flex: 1">
+              <h2 style="margin: 0 0 6px 0">مرحبا يا طالب 👋</h2>
+              <p class="muted" style="margin: 0">
+                اختر صفك وابدأ التعلم. الصفوف والمواد كلها منظمة هنا.
+              </p>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center">
+              <div class="card" style="padding: 10px; border-radius: 10px">
+                <div class="muted">تقدمك العام</div>
+                <div class="progress-wrap" style="margin-top: 8px">
+                  <div class="muted">
+                    الصف: <strong id="current-grade-label">—</strong>
+                  </div>
+                  <div style="width: 160px">
+                    <div class="progress-bar" aria-hidden="true">
+                      <div class="progress-fill" id="global-progress"></div>
+                    </div>
+                  </div>
+                  <div class="muted" id="global-progress-percent">0%</div>
+                </div>
+              </div>
+              <button class="btn" id="go-grades">اختر صف</button>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="section-title">الصفوف</h3>
+            <div class="grid grades" id="gradesGrid">
+              <!-- كروت الصفوف تولد برمجياً -->
+            </div>
+          </div>
+
+          <div>
+            <h3 class="section-title">مواد مقترحة</h3>
+            <div class="grid subjects" id="topSubjects">
+              <!-- مواد شائعة -->
+            </div>
+          </div>
+        </section>
+
+        <!-- SUBJECTS VIEW -->
+        <section id="subjects-view" class="grid" style="display: none">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <h3 class="section-title" id="subjects-title">مواد الصف —</h3>
+            <div style="display: flex; gap: 8px">
+              <button class="btn" id="back-to-home">العودة</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="grid subjects" id="subjectsGrid">
+              <!-- موضوعات الصف -->
+            </div>
+          </div>
+        </section>
+
+        <!-- MATERIAL VIEW -->
+        <section id="material-view" class="grid" style="display: none">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <h3 class="section-title" id="material-title">مادة —</h3>
+            <div style="display: flex; gap: 8px">
+              <button class="btn" id="back-to-subjects">العودة للمواد</button>
+            </div>
+          </div>
+
+          <div class="material">
+            <div class="card">
+              <div class="section-title">شروحات الدروس</div>
+              <div id="lessonsList" class="lesson-list">
+                <!-- قائمة الدروس -->
+              </div>
+
+              <hr style="margin: 16px 0" />
+
+              <div class="section-title">اختبار سريع</div>
+              <div id="quizWrap" style="margin-top: 8px">
+                <!-- Quiz injected -->
+              </div>
+            </div>
+
+            <aside class="card">
+              <div class="section-title">مرفقات</div>
+              <div class="pdf-list" id="pdfList">
+                <!-- ملفات PDF -->
+              </div>
+
+              <div style="height: 14px"></div>
+
+              <div class="section-title">بنك الأسئلة</div>
+              <div class="qa-list" id="qaList"></div>
+            </aside>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>© 2025 — مشروع تعليمي توضيحي — صنع بواسطتك جواد 😉</footer>
+
+    <script>
+      /**********************
+       * بيانات نموذجية (JSON)
+       **********************/
+      const DATA = {
+        grades: [
+          { id: "g1", name: "الصف الأول", desc: "أساسيات ومفاهيم" },
+          { id: "g2", name: "الصف الثاني", desc: "تطوير مهارات" },
+          { id: "g3", name: "الصف الثالث", desc: "تعميق وفهم" },
+          { id: "g9", name: "الصف التاسع", desc: "مادة كاملة للصف التاسع" },
+          { id: "g12", name: "التوجيهي", desc: "التحضير للامتحانات النهائية" },
+        ],
+        subjects: {
+          // keyed by grade id
+          g9: [
+            {
+              id: "s-math",
+              title: "الرياضيات",
+              lessons: [
+                {
+                  id: "l1",
+                  title: "المعادلات البسيطة",
+                  video: "",
+                  text: "شرح مبسط عن المعادلات...",
+                },
+                {
+                  id: "l2",
+                  title: "الهندسة - الزوايا",
+                  video: "",
+                  text: "مفاهيم الزوايا والقياسات...",
+                },
+              ],
+              pdfs: [{ name: "كتيب الرياضيات الفصل الأول.pdf", url: "#" }],
+              qbank: [
+                { q: "ما ناتج 2+3؟", choices: ["3", "4", "5", "6"], answer: 2 },
+                {
+                  q: "زاوية مستقيمة تساوي؟",
+                  choices: ["90", "180", "360", "45"],
+                  answer: 1,
+                },
+              ],
+            },
+            {
+              id: "s-sci",
+              title: "العلوم",
+              lessons: [
+                {
+                  id: "sci1",
+                  title: "خلايا النبات والحيوان",
+                  video: "",
+                  text: "الفرق بين الخلايا...",
+                },
+              ],
+              pdfs: [{ name: "دفتر تجارب العلوم.pdf", url: "#" }],
+              qbank: [],
+            },
+            {
+              id: "s-ar",
+              title: "اللغة العربية",
+              lessons: [],
+              pdfs: [],
+              qbank: [],
+            },
+          ],
+          g12: [
+            {
+              id: "s-math12",
+              title: "الرياضيات المتقدمة",
+              lessons: [],
+              pdfs: [],
+              qbank: [],
+            },
+            {
+              id: "s-chem",
+              title: "الكيمياء",
+              lessons: [],
+              pdfs: [],
+              qbank: [],
+            },
+          ],
+        },
+      };
+
+      /**********************
+       * حالة محلية وحفظ التقدم
+       **********************/
+      const APP_STATE = {
+        currentGrade: null,
+        currentSubject: null,
+        progress: JSON.parse(localStorage.getItem("edu_progress") || "{}"), // { 'g9': { 's-math': 40 } }
+      };
+
+      function saveProgress() {
+        localStorage.setItem(
+          "edu_progress",
+          JSON.stringify(APP_STATE.progress)
+        );
+      }
+
+      /**********************
+       * عناصر DOM
+       **********************/
+      const gradesGrid = document.getElementById("gradesGrid");
+      const topSubjects = document.getElementById("topSubjects");
+      const subjectsGrid = document.getElementById("subjectsGrid");
+      const lessonsList = document.getElementById("lessonsList");
+      const pdfList = document.getElementById("pdfList");
+      const qaList = document.getElementById("qaList");
+
+      const homeView = document.getElementById("home-view");
+      const subjectsView = document.getElementById("subjects-view");
+      const materialView = document.getElementById("material-view");
+
+      const subjectsTitle = document.getElementById("subjects-title");
+      const materialTitle = document.getElementById("material-title");
+
+      const currentGradeLabel = document.getElementById("current-grade-label");
+      const globalProgressFill = document.getElementById("global-progress");
+      const globalProgressPercent = document.getElementById(
+        "global-progress-percent"
+      );
+
+      /**********************
+       * بناء واجهة الصفوف
+       **********************/
+      function renderGrades() {
+        gradesGrid.innerHTML = "";
+        DATA.grades.forEach((g) => {
+          const div = document.createElement("div");
+          div.className = "grade-card";
+          div.innerHTML = `
+          <div style="display:flex;flex-direction:column;align-items:flex-end">
+            <div class="grade-num">${g.name}</div>
+            <div class="grade-desc">${g.desc}</div>
+          </div>
+        `;
+          div.addEventListener("click", () => openSubjects(g.id));
+          gradesGrid.appendChild(div);
+        });
+      }
+
+      // بعض المواد مقترحة للصفحات الرئيسية
+      function renderTopSubjects() {
+        topSubjects.innerHTML = "";
+        const samples = [
+          { title: "الرياضيات", meta: "شرح + فيديو + أسئلة" },
+          { title: "العلوم", meta: "تجارب وملاحظات" },
+          { title: "اللغة العربية", meta: "قواعد وقراءة" },
+        ];
+        samples.forEach((s) => {
+          const card = document.createElement("div");
+          card.className = "subject-card";
+          card.innerHTML = `<div class="subject-title">${s.title}</div><div class="subject-meta">${s.meta}</div>`;
+          topSubjects.appendChild(card);
+        });
+      }
+
+      /**********************
+       * فتح صفحة المواد لصف محدد
+       **********************/
+      function openSubjects(gradeId) {
+        APP_STATE.currentGrade = gradeId;
+        // عنوان
+        const grade = DATA.grades.find((g) => g.id === gradeId);
+        subjectsTitle.textContent = `مواد ${grade ? grade.name : ""}`;
+        currentGradeLabel.textContent = grade ? grade.name : "—";
+        // عرض المواد المتاحة (إلا إذا فارغة)
+        const subs = DATA.subjects[gradeId] || [];
+        subjectsGrid.innerHTML = "";
+        if (subs.length === 0) {
+          subjectsGrid.innerHTML = `<div class="card">لا توجد مواد مضافة لهذا الصف بعد.</div>`;
+        } else {
+          subs.forEach((s) => {
+            const el = document.createElement("div");
+            el.className = "subject-card";
+            el.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div class="subject-title">${s.title}</div>
+                <div class="subject-meta">${s.lessons?.length || 0} دروس • ${
+              s.qbank?.length || 0
+            } أسئلة</div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+                <button class="btn" data-sub="${s.id}">افتح المادة</button>
+              </div>
+            </div>
+          `;
+            el.querySelector("button").addEventListener("click", () =>
+              openMaterial(gradeId, s.id)
+            );
+            subjectsGrid.appendChild(el);
+          });
+        }
+
+        // تحكم العرض
+        homeView.style.display = "none";
+        materialView.style.display = "none";
+        subjectsView.style.display = "block";
+        updateGlobalProgressUI();
+      }
+
+      /**********************
+       * فتح صفحة المادة
+       **********************/
+      function openMaterial(gradeId, subjectId) {
+        APP_STATE.currentSubject = subjectId;
+        const subs = DATA.subjects[gradeId] || [];
+        const s = subs.find((x) => x.id === subjectId);
+        materialTitle.textContent = `المادة — ${s ? s.title : ""}`;
+        // دروس
+        lessonsList.innerHTML = "";
+        if (s && s.lessons && s.lessons.length) {
+          s.lessons.forEach((ls) => {
+            const div = document.createElement("div");
+            div.className = "file-item";
+            div.innerHTML = `<div style="text-align:right">
+            <div style="font-weight:600">${ls.title}</div>
+            <div class="muted" style="margin-top:6px">${ls.text || ""}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+            <button class="btn small" data-lesson="${ls.id}">اشرح</button>
+          </div>`;
+            div
+              .querySelector("button")
+              .addEventListener("click", () => showLesson(s, ls));
+            lessonsList.appendChild(div);
+          });
+        } else {
+          lessonsList.innerHTML = `<div class="muted">لا توجد دروس مضافة لهذه المادة.</div>`;
+        }
+
+        // pdfs
+        pdfList.innerHTML = "";
+        if (s && s.pdfs && s.pdfs.length) {
+          s.pdfs.forEach((p) => {
+            const el = document.createElement("div");
+            el.className = "file-item";
+            el.innerHTML = `<div>${p.name}</div><div><a href="${p.url}" class="muted" target="_blank">عرض</a></div>`;
+            pdfList.appendChild(el);
+          });
+        } else {
+          pdfList.innerHTML = `<div class="muted">لا توجد ملفات مرفقة.</div>`;
+        }
+
+        // qbank
+        qaList.innerHTML = "";
+        if (s && s.qbank && s.qbank.length) {
+          s.qbank.forEach((q, idx) => {
+            const el = document.createElement("div");
+            el.className = "file-item";
+            el.innerHTML = `<div style="text-align:right"><div style="font-weight:600">س${
+              idx + 1
+            } - ${q.q}</div></div><div class="muted">اختيارات: ${q.choices.join(
+              ", "
+            )}</div>`;
+            qaList.appendChild(el);
+          });
+        } else {
+          qaList.innerHTML = `<div class="muted">لا توجد أسئلة محفوظة.</div>`;
+        }
+
+        // Quiz: نأخذ أول سؤالين من بنك الأسئلة كمثال
+        renderQuiz(s && s.qbank ? s.qbank.slice(0, 2) : []);
+
+        // تنقل العرض
+        subjectsView.style.display = "none";
+        homeView.style.display = "none";
+        materialView.style.display = "block";
+        updateGlobalProgressUI();
+      }
+
+      /**********************
+       * عرض درس (مودال بسيط داخل الصفحة)
+       **********************/
+      function showLesson(subject, lesson) {
+        // بسيط: نعرض الشرح في نافذة جديدة (يمكن تطويرها لعرض داخل الصفحة)
+        const text =
+          lesson.text || "لا يوجد شرح نصي. ممكن تضيف فيديو أو نص هنا.";
+        const html = `
+        <div style="padding:18px;direction:rtl">
+          <h3 style="margin-top:0">${lesson.title}</h3>
+          <div style="margin-top:10px">${text}</div>
+          <div style="margin-top:14px"><button id="markDone" class="btn">علم انك أنهيت الدرس</button></div>
+        </div>
+      `;
+        const w = window.open("", "_blank", "width=600,height=550");
+        w.document.write('<meta charset="utf-8"><title>شرح الدرس</title>');
+        w.document.write(
+          '<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600&display=swap" rel="stylesheet">'
+        );
+        w.document.write(
+          `<div style="font-family:'Cairo',sans-serif;padding:18px">${html}</div>`
+        );
+        w.document.close();
+        // عندما يضغط المستخدم علامة الإنجاز، نخزن تقدم وهمي
+        const interval = setInterval(() => {
+          try {
+            const btn = w.document.getElementById("markDone");
+            if (btn) {
+              btn.addEventListener("click", () => {
+                markLessonDone(APP_STATE.currentGrade, subject.id, lesson.id);
+                w.close();
+                updateGlobalProgressUI();
+              });
+              clearInterval(interval);
+            }
+          } catch (e) {}
+        }, 200);
+      }
+
+      /**********************
+       * سجل التقدم (تخزين محلي)
+       **********************/
+      function markLessonDone(gradeId, subjectId, lessonId) {
+        APP_STATE.progress[gradeId] = APP_STATE.progress[gradeId] || {};
+        APP_STATE.progress[gradeId][subjectId] = APP_STATE.progress[gradeId][
+          subjectId
+        ] || { done: [] };
+        const arr = APP_STATE.progress[gradeId][subjectId].done;
+        if (!arr.includes(lessonId)) arr.push(lessonId);
+        saveProgress();
+      }
+
+      function computeProgressPercent(gradeId) {
+        const subs = DATA.subjects[gradeId] || [];
+        if (!subs.length) return 0;
+        let totalLessons = 0,
+          doneLessons = 0;
+        subs.forEach((s) => {
+          totalLessons += s.lessons?.length || 0;
+          const doneArr =
+            ((APP_STATE.progress[gradeId] || {})[s.id] || {}).done || [];
+          doneLessons += doneArr.length;
+        });
+        if (totalLessons === 0) return 0;
+        return Math.round((doneLessons / totalLessons) * 100);
+      }
+
+      function updateGlobalProgressUI() {
+        const gradeId = APP_STATE.currentGrade;
+        const pct = gradeId ? computeProgressPercent(gradeId) : 0;
+        globalProgressFill.style.width = pct + "%";
+        globalProgressPercent.textContent = pct + "%";
+      }
+
+      /**********************
+       * Quiz renderer (بسيطة)
+       **********************/
+      function renderQuiz(questions) {
+        const wrap = document.getElementById("quizWrap");
+        wrap.innerHTML = "";
+        if (!questions || questions.length === 0) {
+          wrap.innerHTML = `<div class="muted">لا يوجد اختبار جاهز. يمكنك إضافة أسئلة لاحقاً.</div>`;
+          return;
+        }
+        // سنعرض سؤال تلو الآخر
+        let index = 0;
+        let score = 0;
+
+        const qEl = document.createElement("div");
+        qEl.innerHTML = `<div id="qTitle" style="font-weight:600;margin-bottom:8px"></div>
+        <div id="qOptions" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-start">
+          <button class="btn" id="nextQ">التالي</button>
+          <button class="btn" id="finishQ" style="display:none">انهاء</button>
+        </div>
+        <div id="qFeedback" style="margin-top:12px"></div>
+      `;
+        wrap.appendChild(qEl);
+
+        function showIndex(i) {
+          const q = questions[i];
+          document.getElementById("qTitle").textContent = `س${i + 1} — ${q.q}`;
+          const optWrap = document.getElementById("qOptions");
+          optWrap.innerHTML = "";
+          q.choices.forEach((c, ci) => {
+            const o = document.createElement("div");
+            o.className = "quiz-option";
+            o.textContent = c;
+            o.setAttribute("data-idx", ci);
+            o.addEventListener("click", () => {
+              [...optWrap.children].forEach((x) =>
+                x.classList.remove("selected")
+              );
+              o.classList.add("selected");
+            });
+            optWrap.appendChild(o);
+          });
+          document.getElementById("qFeedback").textContent = "";
+        }
+
+        showIndex(index);
+
+        document.getElementById("nextQ").addEventListener("click", () => {
+          const selected = document.querySelector(
+            "#qOptions .quiz-option.selected"
+          );
+          if (!selected) {
+            alert("اختر إجابة أولاً");
+            return;
+          }
+          const selIdx = parseInt(selected.getAttribute("data-idx"));
+          if (selIdx === questions[index].answer) score++;
+          index++;
+          if (index >= questions.length) {
+            document.getElementById("nextQ").style.display = "none";
+            document.getElementById("finishQ").style.display = "inline-block";
+            document.getElementById(
+              "qFeedback"
+            ).textContent = `إجاباتك: ${score} من ${questions.length}`;
+          } else {
+            showIndex(index);
+          }
+        });
+
+        document.getElementById("finishQ").addEventListener("click", () => {
+          alert(`انتهى الاختبار — نتيجتك ${score} / ${questions.length}`);
+          // يمكن تخزين النتيجة في التقدم
+          // مثال: تخزين نسبة اجتياز او علامات
+          // تحديث واجهة التقدم
+          APP_STATE.progress[APP_STATE.currentGrade] =
+            APP_STATE.progress[APP_STATE.currentGrade] || {};
+          APP_STATE.progress[APP_STATE.currentGrade][APP_STATE.currentSubject] =
+            APP_STATE.progress[APP_STATE.currentGrade][
+              APP_STATE.currentSubject
+            ] || {};
+          APP_STATE.progress[APP_STATE.currentGrade][
+            APP_STATE.currentSubject
+          ].lastQuizScore = Math.round((score / questions.length) * 100);
+          saveProgress();
+          updateGlobalProgressUI();
+        });
+      }
+
+      /**********************
+       * بحث (بسيط)
+       **********************/
+      const searchInput = document.getElementById("searchInput");
+      document.getElementById("searchBtn").addEventListener("click", doSearch);
+      searchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") doSearch();
+      });
+
+      function doSearch() {
+        const q = searchInput.value.trim();
+        if (!q) {
+          alert("اكتب ما تبحث عنه");
+          return;
+        }
+        // بحث بسيط في العناوين والدروس
+        const results = [];
+        Object.keys(DATA.subjects).forEach((gradeId) => {
+          DATA.subjects[gradeId].forEach((s) => {
+            if (s.title.includes(q))
+              results.push({ type: "مادة", title: s.title, gradeId });
+            (s.lessons || []).forEach((ls) => {
+              if (ls.title.includes(q) || (ls.text || "").includes(q))
+                results.push({
+                  type: "درس",
+                  title: ls.title,
+                  gradeId,
+                  subId: s.id,
+                });
+            });
+          });
+        });
+        if (results.length === 0) {
+          alert("لم يتم العثور على نتائج.");
+          return;
+        }
+        // نعرض النتائج بشكل سريع: افتح أول نتيجة إن كانت مادة أو درس
+        const first = results[0];
+        if (first.type === "مادة")
+          openMaterial(
+            first.gradeId,
+            first.title ? first.title.replace(/\s/g, "") : first.subId
+          );
+        else if (first.type === "درس") {
+          // افتح المادة ثم ابحث في الدروس لعرضها
+          openSubjects(first.gradeId);
+          // ننتظر ثم نفتح المادة إن أمكن
+          setTimeout(() => {
+            const subs = DATA.subjects[first.gradeId] || [];
+            const s = subs.find((x) => x.id === first.subId);
+            if (s) openMaterial(first.gradeId, s.id);
+          }, 220);
+        }
+      }
+
+      /**********************
+       * أزرار التنقل
+       **********************/
+      document.getElementById("go-grades").addEventListener("click", () => {
+        homeView.style.display = "none";
+        subjectsView.style.display = "block";
+        materialView.style.display = "none";
+      });
+      document.getElementById("back-to-home").addEventListener("click", () => {
+        homeView.style.display = "block";
+        subjectsView.style.display = "none";
+        materialView.style.display = "none";
+      });
+      document
+        .getElementById("back-to-subjects")
+        .addEventListener("click", () => {
+          homeView.style.display = "none";
+          subjectsView.style.display = "block";
+          materialView.style.display = "none";
+        });
+
+      /**********************
+       * init
+       **********************/
+      function init() {
+        renderGrades();
+        renderTopSubjects();
+        updateGlobalProgressUI();
+      }
+      init();
+    </script>
   </body>
 </html>
