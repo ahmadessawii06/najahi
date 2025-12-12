@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Najahi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        nav {
+            background-color: #0056b3;
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav li {
+            margin: 5px 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #004080;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #007BFF;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 3px;
+            background: #28A745;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input, select, textarea, button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28A745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            background: #e9ecef;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+        }
+        .tab-button.active {
+            background: white;
+            border-bottom: none;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .level-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .box {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .box:hover {
+            transform: translateY(-5px);
+        }
+        .feature-cards {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #e9ecef;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card.blue { background: #d1e7ff; }
+        .card.green { background: #d4edda; }
+        .card.pink { background: #f8d7da; }
+        .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .item-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .search-bar input {
+            width: 60%;
+            max-width: 500px;
+        }
+        .result-list {
+            list-style: none;
+            padding: 0;
+        }
+        .result-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .uni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .uni-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .group-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .group-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .teacher-search {
+            margin-bottom: 30px;
+        }
+        .teacher-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .teacher-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            .feature-cards, .donation-grid, .uni-grid, .teacher-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>نجاحي - منصة تعليمية لطلاب الثانوية</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#login">تسجيل الدخول</a></li>
+            <li><a href="#home">الصفحة الرئيسية</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#donate">التبرع بالمواد التعليمية</a></li>
+            <li><a href="#search">البحث عن الكتب</a></li>
+            <li><a href="#universities">الجامعات في فلسطين</a></li>
+            <li><a href="#groups">مجموعات الدراسة</a></li>
+            <li><a href="#teachers">البحث عن المعلمين</a></li>
+        </ul>
+    </nav>
+
+    <section id="login">
+        <div class="container">
+            <h2>تسجيل الدخول أو التسجيل</h2>
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab('login-tab')">تسجيل الدخول</button>
+                <button class="tab-button" onclick="openTab('signup-tab')">التسجيل</button>
+                <button class="tab-button" onclick="openTab('guest-tab')">المتابعة كضيف</button>
+                <button class="tab-button" onclick="openTab('forgot-tab')">نسيت كلمة المرور</button>
+            </div>
+            <div id="login-tab" class="tab-content active">
+                <form>
+                    <input type="email" placeholder="البريد الإلكتروني" required>
+                    <input type="password" placeholder="كلمة المرور" required>
+                    <button type="submit">تسجيل الدخول</button>
+                </form>
+            </div>
+            <div id="signup-tab" class="tab-content">
+                <form>
+                    <input type="text" placeholder="الاسم الكامل" required>
+                    <input type="email" placeholder="البريد الإلكتروني" required>
+                    <input type="password" placeholder="كلمة المرور" required>
+                    <button type="submit">التسجيل</button>
+                </form>
+            </div>
+            <div id="guest-tab" class="tab-content">
+                <p>يمكنك المتابعة كضيف دون تسجيل. اضغط على الزر أدناه للدخول.</p>
+                <button>المتابعة كضيف</button>
+            </div>
+            <div id="forgot-tab" class="tab-content">
+                <form>
+                    <input type="email" placeholder="البريد الإلكتروني" required>
+                    <button type="submit">إعادة تعيين كلمة المرور</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="home">
+        <div class="container">
+            <h2>الصفحة الرئيسية</h2>
+            <h3>المستوى 10</h3>
+            <div class="level-boxes">
+                <div class="box">مهني</div>
+                <div class="box">أكاديمي</div>
+            </div>
+            <h3>المستوى 11</h3>
+            <div class="level-boxes">
+                <div class="box">علمي</div>
+                <div class="box">أدبي</div>
+                <div class="box">صناعي</div>
+            </div>
+            <h3>المستوى 12</h3>
+            <div class="level-boxes">
+                <div class="box">علمي</div>
+                <div class="box">أدبي</div>
+                <div class="box">صناعي</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>من نحن</h2>
+            <p>نجاحي هي منصة تعليمية مخصصة لطلاب المرحلة الثانوية، تهدف إلى تقديم موارد تعليمية عالية الجودة لمساعدتهم في تحقيق النجاح الأكاديمي.</p>
+            <p>نقدم دروساً، كتباً، وأدوات تعليمية متنوعة لطلاب المستويات 10، 11، و12 في مجالات علمية، أدبية، وصناعية.</p>
+            <p>فريقنا ملتزم بتوفير بيئة تعليمية آمنة ومشجعة للطلاب ليتمكنوا من الوصول إلى أهدافهم التعليمية.</p>
+            <div class="feature-cards">
+                <div class="card blue">
+                    <div class="icon">📚</div>
+                    <h4>موارد تعليمية</h4>
+                    <p>كتب ودروس مجانية لجميع المواد.</p>
+                </div>
+                <div class="card green">
+                    <div class="icon">👥</div>
+                    <h4>مجتمع طلابي</h4>
+                    <p>انضم إلى مجموعات دراسية للتعاون.</p>
+                </div>
+                <div class="card pink">
+                    <div class="icon">🏫</div>
+                    <h4>دليل الجامعات</h4>
+                    <p>معلومات عن الجامعات في فلسطين.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate">
+        <div class="container">
+            <h2>التبرع بالمواد التعليمية</h2>
+            <p>تبرع بكتبك، مجلداتك، دفاترك، أو أي مواد تعليمية أخرى لمساعدة زملائك الطلاب. اتبع الخطوات أدناه للتبرع.</p>
+            <form>
+                <textarea placeholder="وصف المواد (مثل: كتاب فيزياء للمستوى 12)" required></textarea>
+                <select required>
+                    <option value="">حالة المواد</option>
+                    <option value="new">جديدة</option>
+                    <option value="good">جيدة</option>
+                    <option value="fair">متوسطة</option>
+                </select>
+                <input type="file" accept="image/*" multiple>
+                <button type="submit">إرسال التبرع</button>
+            </form>
+            <h3>المواد المتاحة للتبرع</h3>
+            <div class="donation-grid">
+                <div class="item-card">
+                    <h4>كتاب رياضيات</h4>
+                    <p>حالة: جيدة</p>
+                </div>
+                <div class="item-card">
+                    <h4>دفتر ملاحظات</h4>
+                    <p>حالة: جديدة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="search">
+        <div class="container">
+            <h2>البحث عن الكتب والمواد التعليمية</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="ابحث عن عنوان الكتاب، المؤلف، أو الموضوع...">
+                <button>بحث</button>
+            </div>
+            <p>استخدم الفلاتر: نوع المادة، المستوى، الموضوع.</p>
+            <ul class="result-list">
+                <li class="result-item">
+                    <h4>كتاب الفيزياء</h4>
+                    <p>المؤلف: جون دو</p>
+                    <p>وصف: دليل شامل للفيزياء الثانوية.</p>
+                    <button>الوصول إلى الكتاب</button>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="universities">
+        <div class="container">
+            <h2>الجامعات في فلسطين</h2>
+            <div class="uni-grid">
+                <div class="uni-card">
+                    <h4>جامعة النجاح الوطنية</h4>
+                    <p>الموقع: نابلس</p>
+                    <p>البرامج: هندسة، طب، علوم.</p>
+                    <p>نقاط بارزة: أكبر جامعة في فلسطين.</p>
+                </div>
+                <div class="uni-card">
+                    <h4>جامعة القدس المفتوحة</h4>
+                    <p>الموقع: رام الله</p>
+                    <p>البرامج: تعليم عن بعد، إدارة أعمال.</p>
+                    <p>نقاط بارزة: تركيز على التعليم المفتوح.</p>
+                </div>
+                <div class="uni-card">
+                    <h4>جامعة بيرزيت</h4>
+                    <p>الموقع: بيرزيت</p>
+                    <p>البرامج: علوم اجتماعية، فنون.</p>
+                    <p>نقاط بارزة: تاريخ عريق في التعليم.</p>
+                </div>
+                <div class="uni-card">
+                    <h4>الجامعة الأمريكية</h4>
+                    <p>الموقع: جنين</p>
+                    <p>البرامج: هندسة، تكنولوجيا.</p>
+                    <p>نقاط بارزة: شراكات دولية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="groups">
+        <div class="container">
+            <h2>مجموعات الدراسة</h2>
+            <p>انضم إلى مجموعات دراسية على وسائل التواصل الاجتماعي للتعاون مع زملائك.</p>
+            <div class="group-list">
+                <div class="group-item">
+                    <h4>مجموعة رياضيات المستوى 12</h4>
+                    <p>المنصة: فيسبوك</p>
+                    <p>رابط: <a href="#">انضم هنا</a></p>
+                </div>
+                <div class="group-item">
+                    <h4>مجموعة لغة عربية</h4>
+                    <p>المنصة: واتساب</p>
+                    <p>رابط: <a href="#">انضم هنا</a></p>
+                </div>
+                <div class="group-item">
+                    <h4>مجموعة فيزياء صناعي</h4>
+                    <p>المنصة: تليجرام</p>
+                    <p>رابط: <a href="#">انضم هنا</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="teachers">
+        <div class="container">
+            <h2>البحث عن المعلمين القريبين</h2>
+            <form class="teacher-search">
+                <input type="text" placeholder="الموقع">
+                <input type="text" placeholder="الموضوع">
+                <input type="text" placeholder="التوافر">
+                <button type="submit">بحث</button>
+            </form>
+            <div class="teacher-list">
+                <div class="teacher-card">
+                    <h4>أحمد محمد</h4>
+                    <p>المؤهلات: ماجستير في الرياضيات</p>
+                    <p>المواد: رياضيات، فيزياء</p>
+                    <p>الاتصال: ahmed@example.com</p>
+                </div>
+                <div class="teacher-card">
+                    <h4>فاطمة علي</h4>
+                    <p>المؤهلات: دكتوراه في اللغة العربية</p>
+                    <p>المواد: أدب، لغة</p>
+                    <p>الاتصال: fatima@example.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>تم تطويره بواسطة فريق SynTag</p>
+    </footer>
+
+    <script>
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

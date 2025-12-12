@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<!--
+  Najahi — Single-file static prototype
+  Usage note: This is a single-file static prototype. Forms and uploads are placeholders; server integration is required to operate.
+-->
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Najahi — منصة تعليمية</title>
+    <meta
+      name="description"
+      content="Najahi منصة تعليمية للمرحلة الثانوية في فلسطين — موارد، مجموعات دراسة، جامعات، ودروس خصوصية."
+    />
+    <style>
+      /* CSS Variables: soft education palette */
+      :root {
+        --primary: #3a79ff; /* soft blue */
+        --primary-600: #2f64d1;
+        --secondary: #2ebd7f; /* green */
+        --accent: #ffb6c1; /* pastel pink */
+        --bg: #f5f8fb; /* soft background */
+        --card: #ffffff;
+        --text: #0f172a; /* dark slate */
+        --muted: #51607a;
+        --border: #e6edf5;
+        --focus: #ffca80; /* warm focus ring */
+        --success: #2bb673;
+        --warning: #f59e0b;
+        --danger: #e11d48;
+        --shadow: 0 8px 24px rgba(16, 24, 40, 0.06),
+          0 2px 8px rgba(16, 24, 40, 0.04);
+        --radius: 14px;
+        --radius-sm: 10px;
+        --radius-lg: 22px;
+      }
+
+      /* Global resets and base */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Noto Sans Arabic", "Segoe UI", "Tahoma", "Arial",
+          system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      svg {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      .visually-hidden {
+        position: absolute !important;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      /* Focus styles for accessibility */
+      :focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 2px;
+        border-radius: 8px;
+      }
+
+      /* Header and navigation */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: saturate(180%) blur(6px);
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 0;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 800;
+        color: var(--primary);
+      }
+      .logo svg {
+        width: 32px;
+        height: 32px;
+      }
+      nav {
+        margin-inline-start: auto;
+      }
+      .nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .nav-list a {
+        display: inline-block;
+        padding: 0.5rem 0.75rem;
+        border-radius: 999px;
+        color: var(--muted);
+        border: 1px solid transparent;
+        transition: 0.2s ease;
+      }
+      .nav-list a:hover,
+      .nav-list a[aria-current="page"] {
+        color: var(--primary-600);
+        background: #eef5ff;
+        border-color: #d9e8ff;
+      }
+
+      /* Hero / breadcrumb strip */
+      .hero {
+        padding: 1rem 0 0.75rem;
+      }
+      .hero-note {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #345;
+        font-size: 0.95rem;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: #e8fff5;
+        color: #0f5132;
+        border: 1px solid #c9f2dc;
+        padding: 0.25rem 0.5rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.85rem;
+      }
+      .badge svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      /* Section base styling */
+      section {
+        padding: 1.25rem 0 2rem;
+        scroll-margin-top: 80px; /* keeps anchor visible under sticky header */
+      }
+      .section-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1rem;
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: #1e293b;
+        margin: 0.25rem 0 0.75rem;
+      }
+      .title-underline {
+        height: 3px;
+        border-radius: 999px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--secondary),
+          var(--accent)
+        );
+        width: 88px;
+      }
+
+      /* Grid and card utilities */
+      .grid {
+        display: grid;
+        gap: 1rem;
+      }
+      .grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      @media (max-width: 900px) {
+        .grid-4 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 720px) {
+        .grid-3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 520px) {
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease,
+          border-color 0.2s ease;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(16, 24, 40, 0.08),
+          0 3px 12px rgba(16, 24, 40, 0.06);
+        border-color: #dbe7f5;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .soft {
+        background: #f9fbff;
+        border-color: #eaf1fb;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 0.95rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--primary-600);
+      }
+      .btn-secondary {
+        background: #eafff5;
+        color: #0b5e36;
+        border-color: #cdebdc;
+      }
+      .btn-ghost {
+        background: #ffffff;
+        color: var(--primary);
+        border-color: #d9e8ff;
+      }
+      .btn-muted {
+        background: #f5f8fb;
+        color: #1e293b;
+        border-color: #e6edf5;
+      }
+      .btn-danger {
+        background: #fee2e2;
+        color: #991b1b;
+        border-color: #fecaca;
+      }
+      .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      /* Forms */
+      form {
+        display: grid;
+        gap: 0.75rem;
+      }
+      label {
+        font-weight: 700;
+        color: #334155;
+      }
+      .field {
+        display: grid;
+        gap: 0.35rem;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="file"],
+      select,
+      textarea {
+        appearance: none;
+        width: 100%;
+        padding: 0.65rem 0.75rem;
+        border: 1px solid #d8e2f0;
+        border-radius: 12px;
+        background: #ffffff;
+        color: #0f172a;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      input::placeholder,
+      textarea::placeholder {
+        color: #8091a7;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #a9c8ff;
+        box-shadow: 0 0 0 4px rgba(58, 121, 255, 0.14);
+        outline: none;
+      }
+      .help {
+        font-size: 0.85rem;
+        color: #64748b;
+      }
+      .error {
+        font-size: 0.85rem;
+        color: var(--danger);
+      }
+
+      /* Auth layout */
+      .auth-grid {
+        display: grid;
+        gap: 1rem;
+      }
+      @media (min-width: 860px) {
+        .auth-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      .auth-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .divider {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: #6b7280;
+        margin: 0.25rem 0 0.5rem;
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #e6edf5;
+      }
+
+      /* CSS-only panels via :target */
+      .panel {
+        position: relative;
+        border: 1px dashed #dbe7f5;
+        padding: 0.75rem;
+        border-radius: var(--radius-sm);
+        background: #f7fbff;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        place-items: center;
+        padding: 1rem;
+        background: rgba(15, 23, 42, 0.45);
+      }
+      .modal .modal-card {
+        width: min(680px, 96vw);
+        background: #fff;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        padding: 1rem;
+      }
+      .modal:target {
+        display: grid;
+      }
+
+      /* Home grade cards */
+      .grade-group {
+        margin: 0.5rem 0 1rem;
+      }
+      .grade-title {
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: #eef5ff;
+        color: #1646a5;
+        border: 1px solid #d9e8ff;
+        border-radius: 999px;
+        padding: 0.25rem 0.5rem;
+        font-weight: 700;
+        font-size: 0.85rem;
+      }
+      .icon-card {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .icon-circle {
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(140deg, #e9f3ff, #f7fbff);
+        border: 1px solid #dbe7f5;
+      }
+      .icon-circle svg {
+        width: 22px;
+        height: 22px;
+        color: #2f64d1;
+      }
+
+      /* Feature cards */
+      .feature {
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid var(--border);
+        padding: 1rem;
+      }
+      .feature.blue {
+        background: #eef5ff;
+      }
+      .feature.green {
+        background: #eafff5;
+      }
+      .feature.pink {
+        background: #fff1f4;
+      }
+
+      /* details/summary for collapsible content */
+      details {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #ffffff;
+        margin: 0.25rem 0;
+        box-shadow: var(--shadow);
+      }
+      summary {
+        cursor: pointer;
+        padding: 0.65rem 0.75rem;
+        font-weight: 700;
+        color: #1f2937;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      summary::marker {
+        content: "";
+      }
+      details[open] summary {
+        border-bottom: 1px solid var(--border);
+        background: #f7fbff;
+      }
+
+      /* Results list */
+      .result {
+        display: grid;
+        gap: 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: var(--shadow);
+        padding: 0.75rem;
+      }
+      .result .meta {
+        color: #475569;
+        font-size: 0.9rem;
+      }
+
+      /* University cards */
+      .uni-card .facts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.35rem;
+      }
+      .fact {
+        background: #f1f5f9;
+        color: #334155;
+        border: 1px solid #e2e8f0;
+        border-radius: 999px;
+        padding: 0.2rem 0.5rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      /* Groups list */
+      .group-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #fff;
+        padding: 0.75rem;
+        box-shadow: var(--shadow);
+      }
+      .group-left {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+      }
+      .platform {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 999px;
+        border: 1px solid #e6edf5;
+        background: #f5f8fb;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #334155;
+      }
+
+      /* Tutors */
+      .tutor {
+        display: grid;
+        grid-template-columns: 56px 1fr auto;
+        gap: 0.75rem;
+        align-items: center;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #fff;
+        padding: 0.75rem;
+        box-shadow: var(--shadow);
+      }
+      @media (max-width: 560px) {
+        .tutor {
+          grid-template-columns: 48px 1fr;
+        }
+      }
+      .avatar {
+        width: 56px;
+        height: 56px;
+        border-radius: 999px;
+        background: #eef2ff;
+        border: 1px solid #d9e8ff;
+        display: grid;
+        place-items: center;
+      }
+      .avatar svg {
+        width: 28px;
+        height: 28px;
+        color: #3a79ff;
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 2rem;
+        padding: 1.25rem 0;
+        border-top: 1px solid var(--border);
+        background: linear-gradient(180deg, #f9fbff 0%, #ffffff 100%);
+        color: #334155;
+      }
+
+      /* Utility spacing */
+      .space {
+        height: 0.5rem;
+      }
+      .mt-1 {
+        margin-top: 0.25rem;
+      }
+      .mt-2 {
+        margin-top: 0.5rem;
+      }
+      .mt-3 {
+        margin-top: 0.75rem;
+      }
+      .mt-4 {
+        margin-top: 1rem;
+      }
+      .mb-1 {
+        margin-bottom: 0.25rem;
+      }
+      .mb-2 {
+        margin-bottom: 0.5rem;
+      }
+      .mb-3 {
+        margin-bottom: 0.75rem;
+      }
+      .mb-4 {
+        margin-bottom: 1rem;
+      }
+      .center {
+        text-align: center;
+      }
+      .nowrap {
+        white-space: nowrap;
+      }
+      .small {
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="visually-hidden">التخطي إلى المحتوى</a>
+    <header role="banner" aria-label="رأس الموقع">
+      <div class="container header-inner">
+        <a href="#home" class="logo" aria-label="الانتقال إلى الصفحة الرئيسية">
+          <!-- Inline SVG logo -->
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+            <circle
+              cx="12"
+              cy="12"
+              r="11"
+              stroke="currentColor"
+              stroke-width="2"
+            ></circle>
+            <path
+              d="M5 12l4 4 10-10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
+          </svg>
+          <span>Najahi</span>
+        </a>
+        <nav aria-label="التنقل الرئيسي">
+          <ul class="nav-list">
+            <li><a href="#auth">الحساب</a></li>
+            <li><a href="#home" aria-current="page">الرئيسية</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#donate">تبرع</a></li>
+            <li><a href="#search">بحث</a></li>
+            <li><a href="#universities">الجامعات</a></li>
+            <li><a href="#groups">مجموعات دراسة</a></li>
+            <li><a href="#teachers">المدرسون الخصوصيون</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container hero">
+      <div class="hero-note">
+        <span class="badge" aria-label="وضع تجريبي">
+          <!-- spark icon -->
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 2l2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5z"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            ></path>
+          </svg>
+          نسخة تجريبية
+        </span>
+        <span
+          >Najahi — منصة تعليمية للطلبة في فلسطين. كل النماذج غير فعّالة وتحتاج
+          دمج خادوم للتشغيل.</span
+        >
+      </div>
+    </div>
+
+    <main id="main" class="container" role="main">
+      <!-- Page 1: Authentication -->
+      <section id="auth" aria-labelledby="auth-title">
+        <div class="section-title">
+          <h2 id="auth-title" class="mb-1">الحساب</h2>
+          <span class="title-underline" aria-hidden="true"></span>
+        </div>
+        <div class="auth-grid">
+          <!-- Login Card -->
+          <div class="card" aria-label="تسجيل الدخول">
+            <h3 class="mb-2">تسجيل الدخول</h3>
+            <form aria-describedby="login-help">
+              <div class="field">
+                <label for="login-email">البريد الإلكتروني</label>
+                <input
+                  id="login-email"
+                  type="email"
+                  inputmode="email"
+                  autocomplete="email"
+                  placeholder="example@mail.com"
+                  aria-required="true"
+                />
+                <span class="help">أدخل بريدك المسجل.</span>
+              </div>
+              <div class="field">
+                <label for="login-pass">كلمة المرور</label>
+                <input
+                  id="login-pass"
+                  type="password"
+                  autocomplete="current-password"
+                  placeholder="••••••••"
+                  aria-required="true"
+                />
+                <span class="help">لا تشارك معلومات الدخول مع أحد.</span>
+              </div>
+              <div class="auth-actions">
+                <button type="button" class="btn btn-primary">دخول</button>
+                <a class="btn btn-ghost" href="#home">متابعة كزائر</a>
+                <a class="btn btn-muted" href="#forgot">نسيت كلمة المرور؟</a>
+              </div>
+              <p id="login-help" class="small muted mt-2">
+                النموذج تجريبي غير مرتبط بخادوم.
+              </p>
+            </form>
+          </div>
+
+          <!-- Sign Up Card -->
+          <div class="card" aria-label="التسجيل">
+            <h3 class="mb-2">التسجيل</h3>
+            <form aria-describedby="signup-help">
+              <div class="field">
+                <label for="sign-name">الاسم الكامل</label>
+                <input
+                  id="sign-name"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="الاسم كما في الهوية"
+                />
+                <span class="help">اكتب اسمك لتمييز حسابك.</span>
+              </div>
+              <div class="field">
+                <label for="sign-email">البريد الإلكتروني</label>
+                <input
+                  id="sign-email"
+                  type="email"
+                  inputmode="email"
+                  autocomplete="email"
+                  placeholder="example@mail.com"
+                />
+                <span class="help">سنرسل رسالة تأكيد إلى بريدك.</span>
+              </div>
+              <div class="field">
+                <label for="sign-pass">كلمة المرور</label>
+                <input
+                  id="sign-pass"
+                  type="password"
+                  autocomplete="new-password"
+                  placeholder="••••••••"
+                />
+                <span class="help">طول مناسب مع مزج الحروف والأرقام.</span>
+              </div>
+              <div class="field">
+                <label for="sign-pass2">تأكيد كلمة المرور</label>
+                <input
+                  id="sign-pass2"
+                  type="password"
+                  autocomplete="new-password"
+                  placeholder="أعد الإدخال"
+                />
+                <span class="error" aria-live="polite"
+                  >مثال لرسالة خطأ: الكلمات غير متطابقة.</span
+                >
+              </div>
+              <div class="auth-actions">
+                <button type="button" class="btn btn-secondary">
+                  إنشاء حساب
+                </button>
+                <a class="btn btn-ghost" href="#home">متابعة كزائر</a>
+              </div>
+              <p id="signup-help" class="small muted mt-2">
+                بإنشاء حساب، توافق على قواعد الاستخدام التعليمية.
+              </p>
+            </form>
+          </div>
+
+          <!-- Guest / Info Card -->
+          <div class="card soft" aria-label="المتابعة كزائر">
+            <h3 class="mb-2">الوصول السريع</h3>
+            <p class="muted">
+              يمكنك استعراض المصادر والمجموعات فورًا دون تسجيل.
+            </p>
+            <div class="mt-3">
+              <a
+                class="btn btn-primary"
+                href="#home"
+                aria-label="الانتقال إلى الرئيسية كزائر"
+                >متابعة كزائر</a
+              >
+            </div>
+            <div class="divider mt-3"><span>أو</span></div>
+            <p class="small">
+              هل تحتاج مساعدة؟ <a href="#about">تعرف علينا</a> أو
+              <a href="#groups">انضم إلى مجموعة</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Forgot panel via :target -->
+        <div
+          id="forgot"
+          class="panel mt-3"
+          aria-labelledby="forgot-title"
+          role="region"
+        >
+          <h3 id="forgot-title" class="mb-2">استعادة كلمة المرور</h3>
+          <form>
+            <div class="field">
+              <label for="forgot-email">البريد الإلكتروني</label>
+              <input
+                id="forgot-email"
+                type="email"
+                inputmode="email"
+                placeholder="example@mail.com"
+              />
+              <span class="help"
+                >سنرسل رابط إعادة تعيين إن كان البريد مسجلًا.</span
+              >
+            </div>
+            <button type="button" class="btn btn-secondary">
+              إرسال الرابط
+            </button>
+            <a class="btn btn-muted" href="#auth">إغلاق</a>
+          </form>
+        </div>
+      </section>
+
+      <hr class="visually-hidden" />
+
+      <!-- Page 2: Home -->
+      <section id="home" aria-labelledby="home-title">
+        <div class="section-title">
+          <h2 id="home-title" class="mb-1">المستويات</h2>
+          <span class="title-underline" aria-hidden="true"></span>
+        </div>
+
+        <!-- Grade 10 -->
+        <div class="grade-group">
+          <div class="grade-title">
+            <span class="pill">الصف 10</span>
+          </div>
+          <div class="grid grid-2">
+            <a
+              href="#grade10-voc"
+              class="card icon-card"
+              aria-controls="grade10-modal"
+              aria-label="الصف 10 مسار مهني"
+            >
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3l7 4v5c0 5-3.5 7-7 9-3.5-2-7-4-7-9V7l7-4z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>مهني</strong>
+                <p class="muted small">ورش، كهرباء، ميكانيك، مهارات عملية.</p>
+              </div>
+            </a>
+            <a
+              href="#grade10-acad"
+              class="card icon-card"
+              aria-controls="grade10-modal"
+              aria-label="الصف 10 مسار أكاديمي"
+            >
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 8l8-4 8 4-8 4-8-4v6l8 4 8-4"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>أكاديمي</strong>
+                <p class="muted small">رياضيات، علوم، لغات، تأسيس متين.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Grade 11 -->
+        <div class="grade-group">
+          <div class="grade-title">
+            <span class="pill">الصف 11</span>
+          </div>
+          <div class="grid grid-3">
+            <a
+              href="#grade11-sci"
+              class="card icon-card"
+              aria-label="الصف 11 علمي"
+            >
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="6"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></circle>
+                  <path
+                    d="M12 6v12M6 12h12"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>علمي</strong>
+                <p class="muted small">فيزياء، كيمياء، أحياء، رياضيات.</p>
+              </div>
+            </a>
+            <a
+              href="#grade11-lit"
+              class="card icon-card"
+              aria-label="الصف 11 أدبي"
+            >
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M5 4h10a4 4 0 014 4v12H9a4 4 0 01-4-4V4z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>أدبي</strong>
+                <p class="muted small">لغة عربية، تاريخ، جغرافيا، ثقافة.</p>
+              </div>
+            </a>
+            <a
+              href="#grade11-ind"
+              class="card icon-card"
+              aria-label="الصف 11 صناعي"
+            >
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M3 16h18M4 12h16M6 8h12M8 4h8"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>صناعي</strong>
+                <p class="muted small">رسم هندسي، مواد وتقنيات.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Grade 12 -->
+        <div class="grade-group">
+          <div class="grade-title">
+            <span class="pill">الصف 12</span>
+          </div>
+          <div class="grid grid-3">
+            <a
+              href="#grade12-sci"
+              class="card icon-card"
+              aria-label="الصف 12 علمي"
+            >
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2l4 8-4 4-4-4 4-8z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>علمي</strong>
+                <p class="muted small">مسارات STEM واستعداد للجامعة.</p>
+              </div>
+            </a>
+            <a
+              href="#grade12-lit"
+              class="card icon-card"
+              aria-label="الصف 12 أدبي"
+            >
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M6 5h12M6 9h12M6 13h12M6 17h8"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>أدبي</strong>
+                <p class="muted small">إثراء لغوي ومعارف إنسانية.</p>
+              </div>
+            </a>
+            <a
+              href="#grade12-ind"
+              class="card icon-card"
+              aria-label="الصف 12 صناعي"
+            >
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 17l5-10 5 10H7z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>صناعي</strong>
+                <p class="muted small">تطبيقات عملية ومساقات تقنية.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- CSS modal example for grade anchors -->
+        <div
+          id="grade10-voc"
+          class="modal"
+          aria-labelledby="grade10-voc-title"
+          aria-modal="true"
+          role="dialog"
+        >
+          <div class="modal-card">
+            <h3 id="grade10-voc-title">الصف 10 — مسار مهني</h3>
+            <p class="muted">
+              نظرة عامة على الوحدات العملية والمهارات الأساسية في الكهرباء
+              والميكانيك والنجارة.
+            </p>
+            <div class="mt-2">
+              <a href="#home" class="btn btn-muted">إغلاق</a>
+              <a href="#search" class="btn btn-primary">استعراض المواد</a>
+            </div>
+          </div>
+        </div>
+        <div
+          id="grade10-acad"
+          class="modal"
+          aria-labelledby="grade10-acad-title"
+          aria-modal="true"
+          role="dialog"
+        >
+          <div class="modal-card">
+            <h3 id="grade10-acad-title">الصف 10 — مسار أكاديمي</h3>
+            <p class="muted">
+              أساسيات الرياضيات والعلوم واللغات لتعزيز المهارات التحليلية
+              واللغوية.
+            </p>
+            <div class="mt-2">
+              <a href="#home" class="btn btn-muted">إغلاق</a>
+              <a href="#search" class="btn btn-primary">استعراض المواد</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="visually-hidden" />
+
+      <!-- Page 3: About -->
+      <section id="about" aria-labelledby="about-title">
+        <div class="section-title center">
+          <h2 id="about-title" class="mb-1">من نحن</h2>
+          <span class="title-underline" aria-hidden="true"></span>
+        </div>
+        <div class="section-card">
+          <p>
+            Najahi منصة تعليمية موجهة لطلبة المرحلة الثانوية في فلسطين. نوفّر
+            مواد تعليمية، أدلة اختيار التخصص، مساحات للتعاون، وروابط إلى
+            الجامعات المحلية لمساعدة الطلبة على اتخاذ قرارات واعية.
+          </p>
+          <p>
+            نثق بأن الوصول المنظّم إلى المعرفة يصنع فرقًا. لذلك بنينا تجربة
+            بسيطة، سريعة، وقابلة للوصول تدعم الأجهزة المحمولة أولًا وتراعي
+            احتياجات القراءة بالعربية واتجاه الكتابة من اليمين إلى اليسار.
+          </p>
+          <p>
+            تسعى المنصة إلى تعزيز روح التعلم الذاتي، وتنظيم موارد الصفوف 10–12،
+            وتمكين الطلبة من المشاركة في مجموعات دراسة أو الاستعانة بمدرسين
+            خصوصيين عند الحاجة.
+          </p>
+        </div>
+        <div class="grid grid-3 mt-3">
+          <div class="feature blue" aria-label="موارد منظمة">
+            <h3 class="mb-1">موارد منظمة</h3>
+            <p class="muted">
+              تصنيفات واضحة حسب الصف والمبحث مع بحث مرن للوصول السريع.
+            </p>
+          </div>
+          <div class="feature green" aria-label="مجتمع داعم">
+            <h3 class="mb-1">مجتمع داعم</h3>
+            <p class="muted">مجموعات تعاونية ومسارات مشاركة مواد وخبرات.</p>
+          </div>
+          <div class="feature pink" aria-label="إرشاد جامعي">
+            <h3 class="mb-1">إرشاد جامعي</h3>
+            <p class="muted">
+              بطاقات عن الجامعات الفلسطينية والتخصصات الأكثر طلبًا.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="visually-hidden" />
+
+      <!-- Page 4: Donate -->
+      <section id="donate" aria-labelledby="donate-title">
+        <div class="section-title">
+          <h2 id="donate-title" class="mb-1">تبرع بالمواد التعليمية</h2>
+          <span class="title-underline" aria-hidden="true"></span>
+        </div>
+        <div class="section-card">
+          <p>
+            ساهم بكتبك ودفاترك وموادك التعليمية ليصل النفع إلى الجميع. املأ
+            النموذج التالي بمعلومات دقيقة؛ لن يتم رفع الملفات فعليًا في هذه
+            النسخة.
+          </p>
+          <form aria-describedby="donate-help">
+            <div class="grid grid-2">
+              <div class="field">
+                <label for="donor-name">اسم الطالب / جهة التبرع</label>
+                <input id="donor-name" type="text" placeholder="الاسم" />
+              </div>
+              <div class="field">
+                <label for="donor-city">الموقع / المدينة</label>
+                <input
+                  id="donor-city"
+                  type="text"
+                  placeholder="نابلس، رام الله..."
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="donor-desc">وصف المواد</label>
+              <textarea
+                id="donor-desc"
+                placeholder="نبذة مختصرة عن حالة ونوع المواد"
+              ></textarea>
+            </div>
+            <div class="grid grid-3">
+              <div class="field">
+                <label for="donor-type">نوع المواد</label>
+                <select id="donor-type" multiple aria-label="اختر نوع المواد">
+                  <option>كتب</option>
+                  <option>دفاتر</option>
+                  <option>ملفات</option>
+                  <option>قرطاسية</option>
+                  <option>أخرى</option>
+                </select>
+                <span class="help">يمكن تحديد أكثر من نوع.</span>
+              </div>
+              <div class="field">
+                <label for="donor-cond">حالة المواد</label>
+                <select id="donor-cond">
+                  <option>جديدة</option>
+                  <option>مستعملة جيدة</option>
+                  <option>مستعملة مقبولة</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="donor-qty">الكمية</label>
+                <input
+                  id="donor-qty"
+                  type="number"
+                  min="1"
+                  placeholder="عدد القطع"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="donor-files">صور للمواد</label>
+              <input id="donor-files" type="file" accept="image/*" multiple />
+              <span class="help">لن يتم رفع الصور في النسخة التجريبية.</span>
+            </div>
+            <div>
+              <button type="button" class="btn btn-primary">
+                إرسال التبرع
+              </button>
+              <span class="small muted"
+                >يتم التواصل عبر البريد لإتمام الاستلام.</span
+              >
+            </div>
+          </form>
+          <p id="donate-help" class="visually-hidden">
+            النموذج غير مرتبط بخادوم.
+          </p>
+        </div>
+
+        <h3 class="mt-3 mb-2">تبرعات حديثة</h3>
+        <div class="grid grid-3">
+          <!-- Sample donated item -->
+          <div class="card">
+            <div class="icon-card">
+              <!-- Placeholder image -->
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect
+                    x="4"
+                    y="5"
+                    width="16"
+                    height="14"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></rect>
+                  <path
+                    d="M4 9h16"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>كتاب رياضيات 12</strong>
+                <p class="muted small">حالة: مستعملة جيدة</p>
+              </div>
+            </div>
+            <div class="mt-2">
+              <a class="btn btn-ghost" href="mailto:donor@example.com">تواصل</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="icon-card">
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M3 7h18v10H3z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                  <path
+                    d="M7 7v10M17 7v10"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>دفاتر جامعية</strong>
+                <p class="muted small">حالة: جديدة</p>
+              </div>
+            </div>
+            <div class="mt-2">
+              <a class="btn btn-ghost" href="mailto:donor@example.com">تواصل</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="icon-card">
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M6 6h12v12H6z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                  <path
+                    d="M6 10h12"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>ملفات بلاستيكية</strong>
+                <p class="muted small">حالة: مستعملة مقبولة</p>
+              </div>
+            </div>
+            <div class="mt-2">
+              <a class="btn btn-ghost" href="mailto:donor@example.com">تواصل</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="visually-hidden" />
+
+      <!-- Page 5: Search -->
+      <section id="search" aria-labelledby="search-title">
+        <div class="section-title">
+          <h2 id="search-title" class="mb-1">البحث</h2>
+          <span class="title-underline" aria-hidden="true"></span>
+        </div>
+        <div class="section-card">
+          <form role="search" aria-label="بحث عن المواد">
+            <div class="field">
+              <label for="q">ابحث</label>
+              <input
+                id="q"
+                type="text"
+                placeholder="ابحث عن كتب، مؤلفين، أو مواد"
+              />
+              <span class="help">اكتب كلمة مفتاحية ثم استعرض النتائج.</span>
+            </div>
+            <details class="mt-2">
+              <summary aria-controls="filters">عوامل التصفية</summary>
+              <div id="filters" class="grid grid-3" style="padding: 0.75rem">
+                <div class="field">
+                  <label for="f-type">نوع المادة</label>
+                  <select id="f-type">
+                    <option>كتاب</option>
+                    <option>ملخص</option>
+                    <option>ورقة عمل</option>
+                    <option>بنك أسئلة</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-grade">الصف</label>
+                  <select id="f-grade">
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="f-subject">المبحث</label>
+                  <select id="f-subject">
+                    <option>رياضيات</option>
+                    <option>فيزياء</option>
+                    <option>لغة عربية</option>
+                    <option>إنجليزي</option>
+                  </select>
+                </div>
+              </div>
+            </details>
+            <div class="mt-2">
+              <button type="button" class="btn btn-primary">عرض النتائج</button>
+              <button type="button" class="btn btn-muted">
+                ترتيب حسب الصلة
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <h3 class="mt-3 mb-2">نتائج مقترحة</h3>
+        <div class="grid grid-3">
+          <div class="result">
+            <strong>أساسيات التفاضل</strong>
+            <div class="meta">المؤلف: فريق Najahi — الصف 12 — الرياضيات</div>
+            <p class="muted small">
+              مذكرة موجزة تشمل قواعد الاشتقاق وتمارين محلولة.
+            </p>
+            <div>
+              <a href="#home" class="btn btn-secondary">عرض</a>
+              <a href="#home" class="btn btn-ghost">تحميل</a>
+            </div>
+          </div>
+          <div class="result">
+            <strong>الكهرباء الدائرية</strong>
+            <div class="meta">المؤلف: مهندسون متطوعون — الصف 11 — الفيزياء</div>
+            <p class="muted small">شرح مبسّط لقوانين كيرشوف وتطبيقات عملية.</p>
+            <div>
+              <a href="#home" class="btn btn-secondary">عرض</a>
+              <a href="#home" class="btn btn-ghost">تحميل</a>
+            </div>
+          </div>
+          <div class="result">
+            <strong>مهارات التعبير</strong>
+            <div class="meta">المؤلف: مركز اللغة — الصف 11 — اللغة العربية</div>
+            <p class="muted small">
+              تدريبات على كتابة رسائل وتقارير بأسلوب واضح.
+            </p>
+            <div>
+              <a href="#home" class="btn btn-secondary">عرض</a>
+              <a href="#home" class="btn btn-ghost">تحميل</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="visually-hidden" />
+
+      <!-- Page 6: Universities -->
+      <section id="universities" aria-labelledby="uni-title">
+        <div class="section-title">
+          <h2 id="uni-title" class="mb-1">الجامعات في فلسطين</h2>
+          <span class="title-underline" aria-hidden="true"></span>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card uni-card" aria-label="جامعة النجاح الوطنية">
+            <header class="icon-card">
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 10l8-5 8 5v8H4v-8z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                  <path
+                    d="M10 12h4v6h-4z"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>جامعة النجاح الوطنية (An-Najah)</strong>
+                <p class="muted small">
+                  نابلس — برامج الهندسة والطب والعلوم الاجتماعية.
+                </p>
+              </div>
+            </header>
+            <div class="facts">
+              <span class="fact">تأسست: 1977</span>
+              <span class="fact">أبرز الكليات: الهندسة، الطب</span>
+            </div>
+            <details class="mt-2">
+              <summary>اقرأ المزيد</summary>
+              <p>
+                حرم علمي متقدّم ومراكز بحثية، فرص تدريب محلية، وشراكات مع مؤسسات
+                فلسطينية.
+              </p>
+              <p class="muted small">
+                موقع إلكتروني: ابحث عن "An-Najah University".
+              </p>
+            </details>
+          </article>
+
+          <article class="card uni-card" aria-label="جامعة القدس المفتوحة">
+            <header class="icon-card">
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M3 6h18v12H3z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                  <path
+                    d="M8 10h8M8 14h8"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>جامعة القدس المفتوحة (Al-Quds Open)</strong>
+                <p class="muted small">
+                  تعليم مفتوح — مرونة للطلبة العاملين وتعدد الفروع.
+                </p>
+              </div>
+            </header>
+            <div class="facts">
+              <span class="fact">تأسست: 1991</span>
+              <span class="fact">أبرز: إدارة، علوم تربوية</span>
+            </div>
+            <details class="mt-2">
+              <summary>اقرأ المزيد</summary>
+              <p>
+                تقديم مساقات عبر التعلم المدمج مع دعم تقني ومراكز امتحانات
+                موزعة.
+              </p>
+              <p class="muted small">للتواصل: راجع الفرع الأقرب في مدينتك.</p>
+            </details>
+          </article>
+
+          <article class="card uni-card" aria-label="جامعة بيرزيت">
+            <header class="icon-card">
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M6 18V8l6-4 6 4v10"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                  <path
+                    d="M6 12h12"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>جامعة بيرزيت (Birzeit)</strong>
+                <p class="muted small">
+                  رام الله — سمعة بحثية وبرامج إنسانية وتقنية.
+                </p>
+              </div>
+            </header>
+            <div class="facts">
+              <span class="fact">تأسست: 1972</span>
+              <span class="fact">أبرز: الحقوق، الحاسوب</span>
+            </div>
+            <details class="mt-2">
+              <summary>اقرأ المزيد</summary>
+              <p>بيئة طلابية نشطة ونوادٍ أكاديمية وثقافية مع فرص تبادل.</p>
+              <p class="muted small">الموقع: "Birzeit University".</p>
+            </details>
+          </article>
+
+          <article class="card uni-card" aria-label="الجامعة الأمريكية في جنين">
+            <header class="icon-card">
+              <span class="icon-circle">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 4l9 5-9 5-9-5 9-5z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                  ></path>
+                  <path
+                    d="M5 15l7 4 7-4"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  ></path>
+                </svg>
+              </span>
+              <div>
+                <strong>الجامعة الأمريكية (American University)</strong>
+                <p class="muted small">
+                  جنين — برامج حديثة وبنية تحتية متطورة.
+                </p>
+              </div>
+            </header>
+            <div class="facts">
+              <span class="fact">حديثة</span>
+              <span class="fact">أبرز: الأعمال، علوم البيانات</span>
+            </div>
+            <details class="mt-2">
+              <summary>اقرأ المزيد</summary>
+              <p>
+                مناهج معاصرة وروابط مع سوق العمل، تركيز على المهارات الرقمية.
+              </p>
+              <p class="muted small">تواصل عبر مكتب القبول.</p>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <hr class="visually-hidden" />
+
+      <!-- Page 7: Study Groups -->
+      <section id="groups" aria-labelledby="groups-title">
+        <div class="section-title">
+          <h2 id="groups-title" class="mb-1">مجموعات الدراسة</h2>
+          <span class="title-underline" aria-hidden="true"></span>
+        </div>
+        <div class="section-card">
+          <p>
+            انضم إلى مجموعات حسب المنصة والمادة لتبادل الملاحظات وحل الأسئلة.
+            الروابط أدناه للإرشاد فقط؛ ابحث باسم المجموعة أو تواصل مع المشرف.
+          </p>
+        </div>
+        <div class="grid grid-2 mt-2">
+          <div class="group-item" aria-label="مجموعة فيسبوك رياضيات 12">
+            <div class="group-left">
+              <span class="platform">
+                <!-- Facebook icon -->
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M14 8h2V5h-2a3 3 0 00-3 3v2H9v3h2v6h3v-6h2l1-3h-3V8z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  ></path>
+                </svg>
+                Facebook
+              </span>
+              <div>
+                <strong>رياضيات 12 — حل تمارين</strong>
+                <p class="muted small">ابحث عن الاسم وانضم بطلب عضوية.</p>
+              </div>
+            </div>
+            <a class="btn btn-ghost" href="#">انضم</a>
+          </div>
+
+          <div class="group-item" aria-label="مجموعة واتساب فيزياء 11">
+            <div class="group-left">
+              <span class="platform">
+                <!-- WhatsApp icon -->
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 3a8 8 0 018 8c0 4.4-3.6 8-8 8a8.4 8.4 0 01-3.7-.9L5 20l1.9-3.4A8 8 0 0112 3z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  ></path>
+                </svg>
+                WhatsApp
+              </span>
+              <div>
+                <strong>فيزياء 11 — مراجعة</strong>
+                <p class="muted small">اطلب من زملائك رابط الدعوة.</p>
+              </div>
+            </div>
+            <a class="btn btn-ghost" href="#">انضم</a>
+          </div>
+
+          <div class="group-item" aria-label="مجموعة تليجرام عربي 11">
+            <div class="group-left">
+              <span class="platform">
+                <!-- Telegram icon -->
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M21 5L3 12l6 2 2 6 3-5 4-10z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  ></path>
+                </svg>
+                Telegram
+              </span>
+              <div>
+                <strong>لغة عربية 11 — تعبير</strong>
+                <p class="muted small">
+                  ابحث باسم المجموعة أو استخدم كود الدعوة.
+                </p>
+              </div>
+            </div>
+            <a class="btn btn-ghost" href="#">انضم</a>
+          </div>
+
+          <div class="group-item" aria-label="مجموعة ديسكورد برمجة">
+            <div class="group-left">
+              <span class="platform">
+                <!-- Discord icon -->
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M6 7c3-2 9-2 12 0l2 10c-3 2-9 2-12 0L6 7z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  ></path>
+                </svg>
+                Discord
+              </span>
+              <div>
+                <strong>برمجة — أساسيات</strong>
+                <p class="muted small">انضم عبر رابط عام أو كود السيرفر.</p>
+              </div>
+            </div>
+            <a class="btn btn-ghost" href="#">انضم</a>
+          </div>
+        </div>
+
+        <h3 class="mt-3 mb-2">أضف مجموعتك</h3>
+        <div class="section-card">
+          <form>
+            <div class="grid grid-3">
+              <div class="field">
+                <label for="grp-name">اسم المجموعة</label>
+                <input
+                  id="grp-name"
+                  type="text"
+                  placeholder="مثال: رياضيات توجيهي"
+                />
+              </div>
+              <div class="field">
+                <label for="grp-platform">المنصة</label>
+                <select id="grp-platform">
+                  <option>Facebook</option>
+                  <option>WhatsApp</option>
+                  <option>Telegram</option>
+                  <option>Discord</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="grp-link">الرابط</label>
+                <input
+                  id="grp-link"
+                  type="text"
+                  placeholder="رابط الانضمام أو الكود"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="grp-level">المستوى / المادة</label>
+              <input
+                id="grp-level"
+                type="text"
+                placeholder="الصف 11 — فيزياء"
+              />
+            </div>
+            <button type="button" class="btn btn-secondary">إرسال</button>
+            <span class="small muted">سيتم مراجعة الإدخال قبل نشره.</span>
+          </form>
+        </div>
+      </section>
+
+      <hr class="visually-hidden" />
+
+      <!-- Page 8: Tutors -->
+      <section id="teachers" aria-labelledby="teachers-title">
+        <div class="section-title">
+          <h2 id="teachers-title" class="mb-1">المدرسون الخصوصيون</h2>
+          <span class="title-underline" aria-hidden="true"></span>
+        </div>
+        <div class="section-card">
+          <form aria-label="تصفية المدرسين">
+            <div class="grid grid-3">
+              <div class="field">
+                <label for="t-city">المدينة</label>
+                <select id="t-city">
+                  <option>نابلس</option>
+                  <option>رام الله</option>
+                  <option>جنين</option>
+                  <option>الخليل</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="t-subject">المادة</label>
+                <select id="t-subject">
+                  <option>رياضيات</option>
+                  <option>فيزياء</option>
+                  <option>لغة عربية</option>
+                  <option>إنجليزي</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="t-availability">التوفر</label>
+                <select id="t-availability">
+                  <option>مساءً</option>
+                  <option>صباحًا</option>
+                  <option>عطلة نهاية الأسبوع</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary mt-2">بحث</button>
+          </form>
+        </div>
+
+        <div class="grid grid-2 mt-2">
+          <!-- Tutor 1 -->
+          <div class="tutor" aria-label="مدرس رياضيات">
+            <div class="avatar">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                ></circle>
+                <path
+                  d="M4 20c2-4 14-4 16 0"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <strong>أحمد ع.</strong>
+              <p class="muted small">ماجستير رياضيات — رياضيات 11 و12</p>
+              <p class="small">المدينة: نابلس</p>
+            </div>
+            <div>
+              <a class="btn btn-secondary" href="mailto:tutor1@example.com"
+                >تواصل</a
+              >
+            </div>
+          </div>
+          <!-- Tutor 2 -->
+          <div class="tutor" aria-label="مدرس فيزياء">
+            <div class="avatar">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                ></circle>
+                <path
+                  d="M4 20c2-4 14-4 16 0"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <strong>سارة م.</strong>
+              <p class="muted small">بكالوريوس فيزياء — فيزياء 11</p>
+              <p class="small">المدينة: رام الله</p>
+            </div>
+            <div>
+              <a class="btn btn-secondary" href="tel:+970000000000">اتصال</a>
+            </div>
+          </div>
+          <!-- Tutor 3 -->
+          <div class="tutor" aria-label="مدرس لغة عربية">
+            <div class="avatar">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                ></circle>
+                <path
+                  d="M4 20c2-4 14-4 16 0"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <strong>ليلى خ.</strong>
+              <p class="muted small">دبلوم تربية — لغة عربية 11 و12</p>
+              <p class="small">المدينة: جنين</p>
+            </div>
+            <div>
+              <a class="btn btn-secondary" href="mailto:tutor3@example.com"
+                >تواصل</a
+              >
+            </div>
+          </div>
+          <!-- Tutor 4 -->
+          <div class="tutor" aria-label="مدرس إنجليزي">
+            <div class="avatar">
+              <svg viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="12"
+                  cy="8"
+                  r="4"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                ></circle>
+                <path
+                  d="M4 20c2-4 14-4 16 0"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <strong>يوسف ر.</strong>
+              <p class="muted small">شهادة IELTS — إنجليزي 10–12</p>
+              <p class="small">المدينة: الخليل</p>
+            </div>
+            <div>
+              <a class="btn btn-secondary" href="mailto:tutor4@example.com"
+                >تواصل</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="grid grid-3">
+          <div>
+            <strong>Najahi</strong>
+            <p class="small muted">منصة تعليمية تجريبية — الوصول للجميع.</p>
+          </div>
+          <div>
+            <strong>روابط سريعة</strong>
+            <p class="small">
+              <a href="#home">الرئيسية</a> · <a href="#search">بحث</a> ·
+              <a href="#universities">الجامعات</a>
+            </p>
+          </div>
+          <div>
+            <strong>شؤون المستخدم</strong>
+            <p class="small">
+              <a href="#auth">الحساب</a> · <a href="#donate">تبرع</a> ·
+              <a href="#groups">مجموعات</a>
+            </p>
+          </div>
+        </div>
+        <p class="small muted mt-3">SynTag Team Devlobment</p>
+      </div>
+    </footer>
+  </body>
+</html>
