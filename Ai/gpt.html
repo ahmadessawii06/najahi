@@ -1,373 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Najahi</title>
-    <style>
-      /* ===== GLOBAL STYLES ===== */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Arial", sans-serif;
-      }
-      body {
-        direction: rtl;
-        background-color: #f9f9f9;
-        color: #333;
-      }
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      h1,
-      h2,
-      h3 {
-        margin-bottom: 15px;
-      }
-      button {
-        cursor: pointer;
-      }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      .hidden {
-        display: none;
-      }
-      nav {
-        background-color: #2e86c1;
-        color: #fff;
-        padding: 15px 20px;
-        text-align: center;
-      }
-      nav a {
-        margin: 0 10px;
-        font-weight: bold;
-        color: #fff;
-      }
-      nav a:hover {
-        text-decoration: underline;
-      }
-      /* ===== BUTTONS ===== */
-      .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        margin: 5px;
-        background-color: #3498db;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        transition: 0.3s;
-      }
-      .btn:hover {
-        background-color: #1f618d;
-      }
-      /* ===== LOGIN / SIGNUP ===== */
-      .auth-box {
-        background-color: #fff;
-        max-width: 400px;
-        margin: 50px auto;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      .auth-box input {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-      /* ===== LEVEL BOXES ===== */
-      .levels {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-      .level-box {
-        background-color: #fff;
-        padding: 40px 20px;
-        border-radius: 10px;
-        width: 150px;
-        text-align: center;
-        font-size: 18px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        transition: 0.3s;
-      }
-      .level-box:hover {
-        transform: scale(1.05);
-      }
-      /* ===== SECTION CARDS ===== */
-      .cards {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        margin-top: 30px;
-        gap: 20px;
-      }
-      .card {
-        flex: 1 1 200px;
-        padding: 20px;
-        border-radius: 10px;
-        background-color: #d6eaf8;
-        text-align: center;
-      }
-      .card.green {
-        background-color: #d5f5e3;
-      }
-      .card.pink {
-        background-color: #fadbd8;
-      }
-      .card i {
-        font-size: 40px;
-        margin-bottom: 10px;
-        display: block;
-      }
-      /* ===== FORMS ===== */
-      form {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        max-width: 600px;
-        margin: 20px auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-      }
-      form input,
-      form textarea,
-      form select {
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-        width: 100%;
-      }
-      form button {
-        width: 150px;
-        align-self: center;
-      }
-      /* ===== SEARCH RESULTS ===== */
-      .results {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 20px;
-      }
-      .result-item {
-        background-color: #fff;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      }
-      /* ===== UNIVERSITY & GROUP LIST ===== */
-      .list-item {
-        background-color: #fff;
-        margin: 10px 0;
-        padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      }
-      /* ===== FOOTER ===== */
-      footer {
-        text-align: center;
-        padding: 20px;
-        background-color: #2e86c1;
-        color: #fff;
-        margin-top: 40px;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- NAVIGATION -->
-    <nav>
-      <a href="#page1">تسجيل الدخول</a>
-      <a href="#page2">الصفحة الرئيسية</a>
-      <a href="#page3">من نحن</a>
-      <a href="#page4">التبرع</a>
-      <a href="#page5">البحث</a>
-      <a href="#page6">الجامعات</a>
-      <a href="#page7">المجموعات الدراسية</a>
-      <a href="#page8">المعلمون</a>
-    </nav>
-
-    <!-- PAGE 1: LOGIN / SIGNUP -->
-    <section id="page1" class="container">
-      <div class="auth-box">
-        <h1>Najahi</h1>
-        <input type="text" placeholder="اسم المستخدم" />
-        <input type="password" placeholder="كلمة المرور" />
-        <button class="btn">تسجيل الدخول</button>
-        <button class="btn">إنشاء حساب</button>
-        <button class="btn">الدخول كضيف</button>
-        <p><a href="#">نسيت كلمة المرور؟</a></p>
-      </div>
-    </section>
-
-    <!-- PAGE 2: HOME / LEVELS -->
-    <section id="page2" class="container">
-      <h2>المستويات الدراسية</h2>
-      <h3>الصف 10</h3>
-      <div class="levels">
-        <div class="level-box">مهني</div>
-        <div class="level-box">أكاديمي</div>
-      </div>
-      <h3>الصف 11</h3>
-      <div class="levels">
-        <div class="level-box">علمي</div>
-        <div class="level-box">أدبي</div>
-        <div class="level-box">صناعي</div>
-      </div>
-      <h3>الصف 12</h3>
-      <div class="levels">
-        <div class="level-box">علمي</div>
-        <div class="level-box">أدبي</div>
-        <div class="level-box">صناعي</div>
-      </div>
-    </section>
-
-    <!-- PAGE 3: ABOUT US -->
-    <section id="page3" class="container">
-      <h2 style="text-align: center; margin-bottom: 20px">من نحن</h2>
-      <div
-        style="
-          background: #fff;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          margin-bottom: 30px;
-        "
-      >
-        <p>
-          نحن منصة تعليمية تهدف إلى مساعدة طلاب الثانوية في الوصول إلى محتوى
-          تعليمي عالي الجودة.
-        </p>
-        <p>
-          تساعد المنصة الطلاب في تنظيم دراستهم، ومشاركة الموارد، والتواصل مع
-          المعلمين والزملاء.
-        </p>
-        <p>نسعى لتقديم بيئة تعليمية حديثة وسهلة الاستخدام لجميع الطلاب.</p>
-      </div>
-      <div class="cards">
-        <div class="card">
-          <i>📚</i>
-          <h3>المواد الدراسية</h3>
-          <p>نوفر مجموعة واسعة من المواد الدراسية لجميع الصفوف.</p>
-        </div>
-        <div class="card green">
-          <i>👩‍🏫</i>
-          <h3>الدروس الخصوصية</h3>
-          <p>نساعد الطلاب في الوصول إلى معلمين مؤهلين بسهولة.</p>
-        </div>
-        <div class="card pink">
-          <i>🤝</i>
-          <h3>التعاون</h3>
-          <p>نشجع الطلاب على التعاون من خلال مجموعات دراسية ومشاريع مشتركة.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAGE 4: DONATE MATERIALS -->
-    <section id="page4" class="container">
-      <h2>التبرع بالمواد التعليمية</h2>
-      <form>
-        <input type="text" placeholder="اسم المادة" />
-        <textarea placeholder="وصف المادة"></textarea>
-        <select>
-          <option value="">حالة المادة</option>
-          <option value="جديدة">جديدة</option>
-          <option value="مستعملة">مستعملة</option>
-        </select>
-        <input type="file" />
-        <button class="btn">تبرع الآن</button>
-      </form>
-    </section>
-
-    <!-- PAGE 5: SEARCH BOOKS -->
-    <section id="page5" class="container">
-      <h2>البحث عن المواد التعليمية</h2>
-      <form>
-        <input type="text" placeholder="ابحث عن كتاب أو مادة" />
-        <button class="btn">بحث</button>
-      </form>
-      <div class="results">
-        <div class="result-item">
-          <h3>كتاب الرياضيات</h3>
-          <p>المؤلف: أحمد علي</p>
-          <p>وصف: كتاب شامل للرياضيات للصف 11.</p>
-          <button class="btn">عرض</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAGE 6: UNIVERSITIES -->
-    <section id="page6" class="container">
-      <h2>الجامعات في فلسطين</h2>
-      <div class="list-item">
-        <h3>جامعة النجاح الوطنية</h3>
-        <p>موقع: نابلس</p>
-        <p>برامج: علوم، هندسة، إدارة أعمال</p>
-      </div>
-      <div class="list-item">
-        <h3>جامعة بيرزيت</h3>
-        <p>موقع: رام الله</p>
-        <p>برامج: علوم، أدب، اقتصاد</p>
-      </div>
-      <div class="list-item">
-        <h3>جامعة القدس المفتوحة</h3>
-        <p>موقع: القدس</p>
-        <p>برامج: تعليم عن بعد، علوم، إدارة</p>
-      </div>
-      <div class="list-item">
-        <h3>الجامعة الأمريكية في فلسطين</h3>
-        <p>موقع: رام الله</p>
-        <p>برامج: علوم، إدارة، هندسة</p>
-      </div>
-    </section>
-
-    <!-- PAGE 7: STUDY GROUPS -->
-    <section id="page7" class="container">
-      <h2>المجموعات الدراسية</h2>
-      <div class="list-item">
-        <h3>مجموعة فيسبوك – رياضيات 11</h3>
-        <p>الصف: 11</p>
-        <p>المنصة: Facebook</p>
-        <a href="#" class="btn">انضم الآن</a>
-      </div>
-      <div class="list-item">
-        <h3>مجموعة واتساب – علوم 12</h3>
-        <p>الصف: 12</p>
-        <p>المنصة: WhatsApp</p>
-        <a href="#" class="btn">انضم الآن</a>
-      </div>
-      <div class="list-item">
-        <h3>مجموعة تليجرام – أدب 10</h3>
-        <p>الصف: 10</p>
-        <p>المنصة: Telegram</p>
-        <a href="#" class="btn">انضم الآن</a>
-      </div>
-    </section>
-
-    <!-- PAGE 8: FIND TEACHERS -->
-    <section id="page8" class="container">
-      <h2>البحث عن المعلمين القريبين</h2>
-      <div class="list-item">
-        <h3>أحمد محمد</h3>
-        <p>المؤهلات: بكالوريوس في الفيزياء</p>
-        <p>المواد: الفيزياء، الرياضيات</p>
-        <p>الاتصال: 059XXXXXXX</p>
-      </div>
-      <div class="list-item">
-        <h3>سارة علي</h3>
-        <p>المؤهلات: ماجستير في الكيمياء</p>
-        <p>المواد: الكيمياء، الأحياء</p>
-        <p>الاتصال: 059XXXXXXX</p>
-      </div>
-    </section>
-
-    <footer>جميع الحقوق محفوظة © Najahi | فريق التطوير: SynTag</footer>
-  </body>
-</html>
