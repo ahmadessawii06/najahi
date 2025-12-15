@@ -8,7 +8,1277 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <style src = "CSS/styles.css"></style>
+    <style>
+      /* CSS Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      :root {
+        --primary-blue: #2c5aa0;
+        --secondary-blue: #4a7bc8;
+        --light-blue: #e8f1ff;
+        --accent-green: #2a9d8f;
+        --accent-yellow: #e9c46a;
+        --accent-orange: #f4a261;
+        --light-gray: #f5f7fa;
+        --medium-gray: #e0e6ef;
+        --dark-gray: #6c757d;
+        --text-dark: #333;
+        --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --shadow-light: 0 2px 6px rgba(0, 0, 0, 0.05);
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        background-color: var(--light-gray);
+        color: var(--text-dark);
+        line-height: 1.6;
+        min-height: 100vh;
+        padding-top: 80px;
+      }
+
+      /* Header & Navigation */
+      header {
+        background-color: white;
+        box-shadow: var(--shadow);
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1000;
+        padding: 0 5%;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--primary-blue);
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .logo i {
+        font-size: 2rem;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 600;
+        font-size: 1.05rem;
+        padding: 8px 12px;
+        border-radius: 8px;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        background-color: var(--light-blue);
+        color: var(--primary-blue);
+      }
+
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--primary-blue);
+        cursor: pointer;
+      }
+
+      /* Main Content */
+      .page {
+        display: none;
+        animation: fadeIn 0.5s ease;
+        padding: 30px 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .page-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .page-header h1 {
+        color: var(--primary-blue);
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .page-header h1::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--accent-green);
+        border-radius: 2px;
+      }
+
+      .page-header p {
+        color: var(--dark-gray);
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin: 20px auto 0;
+      }
+
+      /* Home Page - Updated Layout */
+      .levels-container {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        margin-top: 40px;
+      }
+
+      .level {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 30px;
+      }
+
+      .level-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .level-header h2 {
+        color: var(--primary-blue);
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+
+      .level-header p {
+        color: var(--dark-gray);
+      }
+
+      /* Boxes Container - Updated for space-between */
+      .boxes-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 25px;
+      }
+
+      /* Level 10 - Single box centered */
+      .level-10 .boxes-container {
+        justify-content: center;
+      }
+
+      .box {
+        background-color: var(--light-blue);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        transition: var(--transition);
+        border: 2px solid transparent;
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .box:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+        border-color: var(--primary-blue);
+      }
+
+      .box-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid rgba(44, 90, 160, 0.1);
+      }
+
+      .box-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: var(--primary-blue);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin-left: 20px;
+      }
+
+      .box-title {
+        font-size: 1.8rem;
+        color: var(--primary-blue);
+      }
+
+      .subjects-list {
+        list-style: none;
+      }
+
+      .subject-item {
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        background-color: white;
+        border-radius: 8px;
+        border-right: 4px solid var(--primary-blue);
+        display: flex;
+        align-items: center;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .subject-item:hover {
+        background-color: #f0f7ff;
+        transform: translateX(-5px);
+      }
+
+      .subject-item i {
+        color: var(--accent-green);
+        margin-left: 15px;
+        font-size: 1.2rem;
+      }
+
+      /* Level-specific colors */
+      .level-10 .box {
+        max-width: 800px;
+        width: 100%;
+      }
+
+      .level-10 .box-icon {
+        background-color: #2a9d8f;
+      }
+
+      .level-10 .box-title {
+        color: #2a9d8f;
+      }
+
+      .level-11 .industrial .box-icon {
+        background-color: #f4a261;
+      }
+
+      .level-11 .industrial .box-title {
+        color: #f4a261;
+      }
+
+      .level-11 .scientific .box-icon {
+        background-color: #2c5aa0;
+      }
+
+      .level-11 .scientific .box-title {
+        color: #2c5aa0;
+      }
+
+      .level-11 .literary .box-icon {
+        background-color: #e9c46a;
+      }
+
+      .level-11 .literary .box-title {
+        color: #e9c46a;
+      }
+
+      .level-12 .industrial .box-icon {
+        background-color: #e76f51;
+      }
+
+      .level-12 .industrial .box-title {
+        color: #e76f51;
+      }
+
+      .level-12 .scientific .box-icon {
+        background-color: #3a86ff;
+      }
+
+      .level-12 .scientific .box-title {
+        color: #3a86ff;
+      }
+
+      .level-12 .literary .box-icon {
+        background-color: #8338ec;
+      }
+
+      .level-12 .literary .box-title {
+        color: #8338ec;
+      }
+
+      /* Material Page Styles */
+      .material-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        background-color: white;
+        border-radius: var(--border-radius);
+        padding: 30px;
+        box-shadow: var(--shadow);
+      }
+
+      .material-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .material-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: var(--primary-blue);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+      }
+
+      .material-details h1 {
+        color: var(--primary-blue);
+        margin-bottom: 10px;
+      }
+
+      .material-details p {
+        color: var(--dark-gray);
+      }
+
+      .back-btn {
+        padding: 10px 25px;
+        background-color: var(--light-blue);
+        color: var(--primary-blue);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .back-btn:hover {
+        background-color: var(--primary-blue);
+        color: white;
+      }
+
+      .resources-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .resource-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+        padding: 30px;
+        transition: var(--transition);
+      }
+
+      .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+      }
+
+      .resource-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--light-gray);
+      }
+
+      .resource-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--light-blue);
+        color: var(--primary-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-left: 15px;
+      }
+
+      .resource-title {
+        font-size: 1.5rem;
+        color: var(--primary-blue);
+      }
+
+      .resource-list {
+        list-style: none;
+      }
+
+      .resource-item {
+        padding: 12px 15px;
+        margin-bottom: 10px;
+        background-color: var(--light-gray);
+        border-radius: 8px;
+        border-right: 3px solid var(--accent-green);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .resource-item a {
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 600;
+        flex: 1;
+      }
+
+      .resource-item a:hover {
+        text-decoration: underline;
+      }
+
+      .resource-meta {
+        font-size: 0.85rem;
+        color: var(--dark-gray);
+        background-color: white;
+        padding: 3px 10px;
+        border-radius: 15px;
+      }
+
+      /* Responsive adjustments for boxes */
+      @media (max-width: 1200px) {
+        .boxes-container {
+          justify-content: center;
+        }
+
+        .box {
+          min-width: 350px;
+          max-width: 400px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .box {
+          min-width: 100%;
+        }
+
+        .level-10 .box {
+          max-width: 100%;
+        }
+
+        .material-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 20px;
+        }
+
+        .resources-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Login Page */
+      .auth-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 70vh;
+      }
+
+      .auth-box {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        width: 100%;
+        max-width: 450px;
+        padding: 40px;
+      }
+
+      .auth-tabs {
+        display: flex;
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--medium-gray);
+      }
+
+      .auth-tab {
+        flex: 1;
+        text-align: center;
+        padding: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--dark-gray);
+        transition: var(--transition);
+      }
+
+      .auth-tab.active {
+        color: var(--primary-blue);
+        border-bottom: 3px solid var(--primary-blue);
+        margin-bottom: -2px;
+      }
+
+      .auth-form {
+        display: none;
+      }
+
+      .auth-form.active {
+        display: block;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid var(--medium-gray);
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.1);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 30px;
+        background-color: var(--primary-blue);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        text-align: center;
+        width: 100%;
+      }
+
+      .btn:hover {
+        background-color: var(--secondary-blue);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: var(--accent-green);
+      }
+
+      .btn-secondary:hover {
+        background-color: #23867a;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--primary-blue);
+        color: var(--primary-blue);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--light-blue);
+      }
+
+      .auth-links {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .auth-links a {
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      /* About Page */
+      .about-content {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 40px;
+        margin-bottom: 50px;
+        line-height: 1.8;
+        text-align: center;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .feature-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 35px 25px;
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-card:nth-child(1) {
+        background-color: #e8f7ff;
+      }
+
+      .feature-card:nth-child(2) {
+        background-color: #e8fff2;
+      }
+
+      .feature-card:nth-child(3) {
+        background-color: #ffe8f1;
+      }
+
+      .feature-icon {
+        font-size: 3.5rem;
+        margin-bottom: 25px;
+      }
+
+      .feature-card:nth-child(1) .feature-icon {
+        color: var(--primary-blue);
+      }
+
+      .feature-card:nth-child(2) .feature-icon {
+        color: var(--accent-green);
+      }
+
+      .feature-card:nth-child(3) .feature-icon {
+        color: #e84393;
+      }
+
+      .feature-card h3 {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        color: var(--text-dark);
+      }
+
+      /* Donation Page */
+      .donation-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      @media (max-width: 992px) {
+        .donation-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .donate-form,
+      .donations-grid {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 30px;
+      }
+
+      .donations-grid {
+        overflow-y: auto;
+        max-height: 800px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .file-upload {
+        border: 2px dashed var(--medium-gray);
+        border-radius: 8px;
+        padding: 40px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .file-upload:hover {
+        border-color: var(--primary-blue);
+        background-color: var(--light-blue);
+      }
+
+      .donation-item {
+        border-bottom: 1px solid var(--medium-gray);
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .donation-item:last-child {
+        border-bottom: none;
+      }
+
+      .donation-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        object-fit: cover;
+        background-color: var(--light-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-blue);
+        font-size: 2rem;
+      }
+
+      .donation-info h4 {
+        margin-bottom: 8px;
+        color: var(--primary-blue);
+      }
+
+      .donation-status {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      .status-available {
+        background-color: #d4edda;
+        color: #155724;
+      }
+
+      .status-reserved {
+        background-color: #fff3cd;
+        color: #856404;
+      }
+
+      /* Search Page */
+      .search-container {
+        max-width: 900px;
+        margin: 0 auto 50px;
+      }
+
+      .search-box {
+        display: flex;
+        margin-bottom: 40px;
+        box-shadow: var(--shadow);
+        border-radius: 50px;
+        overflow: hidden;
+      }
+
+      .search-box input {
+        flex: 1;
+        padding: 20px 30px;
+        border: none;
+        font-size: 1.1rem;
+        background-color: white;
+      }
+
+      .search-box button {
+        background-color: var(--primary-blue);
+        color: white;
+        border: none;
+        padding: 0 40px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        transition: var(--transition);
+      }
+
+      .search-box button:hover {
+        background-color: var(--secondary-blue);
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 30px;
+        justify-content: center;
+      }
+
+      .filter-btn {
+        padding: 10px 20px;
+        background-color: white;
+        border: 1px solid var(--medium-gray);
+        border-radius: 30px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 600;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background-color: var(--primary-blue);
+        color: white;
+        border-color: var(--primary-blue);
+      }
+
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .result-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-light);
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .result-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+      }
+
+      .result-img {
+        height: 180px;
+        background-color: var(--light-blue);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-blue);
+        font-size: 3rem;
+      }
+
+      .result-info {
+        padding: 25px;
+      }
+
+      .result-info h4 {
+        margin-bottom: 10px;
+        color: var(--primary-blue);
+        font-size: 1.3rem;
+      }
+
+      .result-meta {
+        color: var(--dark-gray);
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+
+      /* Universities Page */
+      .universities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .university-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .university-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .university-header {
+        background-color: var(--primary-blue);
+        color: white;
+        padding: 25px;
+        text-align: center;
+      }
+
+      .university-header h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .university-body {
+        padding: 25px;
+      }
+
+      .university-detail {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+      }
+
+      .university-detail i {
+        color: var(--primary-blue);
+        margin-left: 10px;
+        margin-top: 3px;
+      }
+
+      /* Study Groups Page */
+      .groups-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+      }
+
+      .group-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        padding: 30px;
+        transition: var(--transition);
+      }
+
+      .group-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .group-platform {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .platform-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin-left: 15px;
+      }
+
+      .facebook {
+        background-color: #1877f2;
+      }
+
+      .whatsapp {
+        background-color: #25d366;
+      }
+
+      .telegram {
+        background-color: #0088cc;
+      }
+
+      .other {
+        background-color: var(--accent-orange);
+      }
+
+      .group-subject {
+        display: inline-block;
+        padding: 5px 15px;
+        background-color: var(--light-blue);
+        color: var(--primary-blue);
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .join-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 25px;
+        background-color: var(--accent-green);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+      }
+
+      .join-btn:hover {
+        background-color: #23867a;
+      }
+
+      /* Teachers Page */
+      .teachers-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .teachers-search {
+        flex: 1;
+        max-width: 500px;
+        display: flex;
+      }
+
+      .teachers-search input {
+        flex: 1;
+        padding: 15px 20px;
+        border: 1px solid var(--medium-gray);
+        border-radius: 8px 0 0 8px;
+        font-size: 1rem;
+      }
+
+      .teachers-search button {
+        background-color: var(--primary-blue);
+        color: white;
+        border: none;
+        padding: 0 25px;
+        border-radius: 0 8px 8px 0;
+        cursor: pointer;
+      }
+
+      .teachers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+      }
+
+      .teacher-card {
+        background-color: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .teacher-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .teacher-header {
+        background-color: var(--light-blue);
+        padding: 30px;
+        text-align: center;
+        position: relative;
+      }
+
+      .teacher-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: var(--primary-blue);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        margin: 0 auto 15px;
+      }
+
+      .teacher-rating {
+        color: var(--accent-yellow);
+        margin-top: 10px;
+      }
+
+      .teacher-body {
+        padding: 25px;
+      }
+
+      .teacher-subjects {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .subject-tag {
+        padding: 5px 12px;
+        background-color: var(--light-blue);
+        color: var(--primary-blue);
+        border-radius: 20px;
+        font-size: 0.85rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary-blue);
+        color: white;
+        padding: 50px 5% 20px;
+        margin-top: 80px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-section h3 {
+        font-size: 1.3rem;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50px;
+        height: 3px;
+        background-color: var(--accent-green);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: #d0d7e7;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .footer-links a:hover {
+        color: white;
+        padding-right: 5px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      .social-links a:hover {
+        background-color: var(--accent-green);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #d0d7e7;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          background-color: white;
+          flex-direction: column;
+          padding: 20px;
+          box-shadow: var(--shadow);
+          border-top: 2px solid var(--light-blue);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-toggle {
+          display: block;
+        }
+
+        .page-header h1 {
+          font-size: 2rem;
+        }
+
+        .level-header h2 {
+          font-size: 1.7rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .auth-box {
+          padding: 30px 25px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .teachers-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .teachers-search {
+          max-width: 100%;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .page {
+          padding: 20px 15px;
+        }
+
+        .features,
+        .results-grid,
+        .universities-grid,
+        .groups-container,
+        .teachers-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Header & Navigation -->
@@ -1575,6 +2845,398 @@
         </p>
       </div>
     </footer>
-    <script src = "JS/app.js"></script>
+
+    <script>
+      // Navigation functionality
+      const navToggle = document.getElementById("navToggle");
+      const navLinks = document.getElementById("navLinks");
+
+      navToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+
+      // Material data storage
+      const materialResources = {
+        فيزياء: {
+          exams: [
+            {
+              name: "امتحان الفصل الأول في الفيزياء",
+              type: "PDF",
+              size: "2.3MB",
+            },
+            { name: "امتحان تجريبي للفيزياء 2023", type: "PDF", size: "1.8MB" },
+            {
+              name: "أسئلة امتحانات سابقة مع الحلول",
+              type: "ZIP",
+              size: "4.5MB",
+            },
+          ],
+          materials: [
+            {
+              name: "كتاب الفيزياء الرسمي للصف العاشر",
+              type: "PDF",
+              size: "15MB",
+            },
+            {
+              name: "ملزمة التجارب العملية في الفيزياء",
+              type: "PDF",
+              size: "3.2MB",
+            },
+            {
+              name: "شرح قوانين الفيزياء الأساسية",
+              type: "PDF",
+              size: "2.1MB",
+            },
+          ],
+          summaries: [
+            { name: "ملخص شامل لوحدات الفيزياء", type: "PDF", size: "1.5MB" },
+            { name: "خرائط ذهنية للفيزياء", type: "PDF", size: "800KB" },
+            { name: "ملخص القوانين الفيزيائية", type: "PDF", size: "1.2MB" },
+          ],
+          videos: [
+            {
+              name: "شرح التجارب العملية - قناة التعليم",
+              type: "Youtube",
+              duration: "45 دقيقة",
+            },
+            {
+              name: "حل مسائل الفيزياء المعقدة",
+              type: "Youtube",
+              duration: "30 دقيقة",
+            },
+            {
+              name: "دورة مراجعة الفيزياء للامتحان",
+              type: "Youtube",
+              duration: "2 ساعة",
+            },
+          ],
+        },
+        رياضيات: {
+          exams: [
+            { name: "امتحان الجبر للفصل الأول", type: "PDF", size: "1.8MB" },
+            { name: "امتحان الهندسة والقياس", type: "PDF", size: "2.1MB" },
+            {
+              name: "مجموعة امتحانات رياضيات سابقة",
+              type: "ZIP",
+              size: "5.2MB",
+            },
+          ],
+          materials: [
+            { name: "كتاب الرياضيات الرسمي كامل", type: "PDF", size: "22MB" },
+            { name: "تمارين وحلول الرياضيات", type: "PDF", size: "4.5MB" },
+            { name: "دليل المعلم في الرياضيات", type: "PDF", size: "8.3MB" },
+          ],
+          summaries: [
+            { name: "ملخص قوانين الرياضيات", type: "PDF", size: "1.1MB" },
+            { name: "خرائط ذهنية للرياضيات", type: "PDF", size: "950KB" },
+            { name: "ملخص الهندسة التحليلية", type: "PDF", size: "1.4MB" },
+          ],
+          videos: [
+            {
+              name: "شرح الدوال والتمثيل البياني",
+              type: "Youtube",
+              duration: "40 دقيقة",
+            },
+            {
+              name: "حل المعادلات التفاضلية",
+              type: "Youtube",
+              duration: "35 دقيقة",
+            },
+            {
+              name: "دورة شاملة في الهندسة",
+              type: "Youtube",
+              duration: "3 ساعات",
+            },
+          ],
+        },
+        كيمياء: {
+          exams: [
+            { name: "امتحان الكيمياء العضوية", type: "PDF", size: "1.9MB" },
+            { name: "امتحان تجريبي للكيمياء 2023", type: "PDF", size: "2.0MB" },
+            { name: "أسئلة الكيمياء التحليلية", type: "PDF", size: "1.5MB" },
+          ],
+          materials: [
+            { name: "كتاب الكيمياء الرسمي", type: "PDF", size: "18MB" },
+            { name: "دليل التجارب الكيميائية", type: "PDF", size: "3.8MB" },
+            { name: "شرح الجدول الدوري", type: "PDF", size: "2.5MB" },
+          ],
+          summaries: [
+            { name: "ملخص الكيمياء العضوية", type: "PDF", size: "1.3MB" },
+            { name: "الجدول الدوري مع الخواص", type: "PDF", size: "900KB" },
+            { name: "ملخص التفاعلات الكيميائية", type: "PDF", size: "1.1MB" },
+          ],
+          videos: [
+            {
+              name: "شرح التفاعلات الكيميائية",
+              type: "Youtube",
+              duration: "50 دقيقة",
+            },
+            {
+              name: "التجارب الكيميائية العملية",
+              type: "Youtube",
+              duration: "25 دقيقة",
+            },
+            {
+              name: "مراجعة الكيمياء العضوية",
+              type: "Youtube",
+              duration: "1.5 ساعة",
+            },
+          ],
+        },
+      };
+
+      // Default resources for any material
+      const defaultResources = {
+        exams: [
+          { name: "امتحان الفصل الأول", type: "PDF", size: "1.5MB" },
+          { name: "امتحان الفصل الثاني", type: "PDF", size: "1.7MB" },
+          { name: "امتحان تجريبي نهائي", type: "PDF", size: "2.0MB" },
+        ],
+        materials: [
+          { name: "الكتاب الرسمي للمادة", type: "PDF", size: "15MB" },
+          { name: "دليل الأنشطة العملية", type: "PDF", size: "3.0MB" },
+          { name: "شرح الدروس الأساسية", type: "PDF", size: "2.5MB" },
+        ],
+        summaries: [
+          { name: "ملخص شامل للمادة", type: "PDF", size: "1.2MB" },
+          { name: "خرائط ذهنية للمادة", type: "PDF", size: "850KB" },
+          { name: "ملخص القوانين والنظريات", type: "PDF", size: "1.0MB" },
+        ],
+        videos: [
+          {
+            name: "شرح دروس المادة - الجزء الأول",
+            type: "Youtube",
+            duration: "40 دقيقة",
+          },
+          {
+            name: "شرح دروس المادة - الجزء الثاني",
+            type: "Youtube",
+            duration: "35 دقيقة",
+          },
+          {
+            name: "مراجعة نهائية للمادة",
+            type: "Youtube",
+            duration: "1.5 ساعة",
+          },
+        ],
+      };
+
+      // Show/hide pages
+      function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll(".page").forEach((page) => {
+          page.classList.remove("active");
+        });
+
+        // Show selected page
+        document.getElementById(pageId).classList.add("active");
+
+        // Update active nav link
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          link.classList.remove("active");
+        });
+
+        // Find the link that corresponds to this page
+        const activeLink = Array.from(
+          document.querySelectorAll(".nav-link")
+        ).find((link) => {
+          return link.getAttribute("onclick") === `showPage('${pageId}')`;
+        });
+
+        if (activeLink && pageId !== "material") {
+          activeLink.classList.add("active");
+        }
+
+        // Close mobile menu if open
+        if (navLinks.classList.contains("active")) {
+          navLinks.classList.remove("active");
+        }
+
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+
+      // Open material page
+      function openMaterialPage(materialName, materialIcon, materialDesc) {
+        // Set material info
+        document.getElementById("materialTitle").textContent = materialName;
+        document.getElementById("materialDescText").textContent = materialDesc;
+
+        // Set material icon
+        const iconElement = document.getElementById("materialIcon");
+        iconElement.innerHTML = `<i class="${materialIcon}"></i>`;
+
+        // Get resources for this material or use defaults
+        const resources = materialResources[materialName] || defaultResources;
+
+        // Populate exams list
+        const examsList = document.getElementById("examsList");
+        examsList.innerHTML = "";
+        resources.exams.forEach((exam) => {
+          examsList.innerHTML += `
+                    <li class="resource-item">
+                        <a href="#" onclick="downloadResource('${exam.name}')">${exam.name}</a>
+                        <span class="resource-meta">${exam.type} • ${exam.size}</span>
+                    </li>
+                `;
+        });
+
+        // Populate materials list
+        const materialsList = document.getElementById("materialsList");
+        materialsList.innerHTML = "";
+        resources.materials.forEach((material) => {
+          materialsList.innerHTML += `
+                    <li class="resource-item">
+                        <a href="#" onclick="downloadResource('${material.name}')">${material.name}</a>
+                        <span class="resource-meta">${material.type} • ${material.size}</span>
+                    </li>
+                `;
+        });
+
+        // Populate summaries list
+        const summariesList = document.getElementById("summariesList");
+        summariesList.innerHTML = "";
+        resources.summaries.forEach((summary) => {
+          summariesList.innerHTML += `
+                    <li class="resource-item">
+                        <a href="#" onclick="downloadResource('${summary.name}')">${summary.name}</a>
+                        <span class="resource-meta">${summary.type} • ${summary.size}</span>
+                    </li>
+                `;
+        });
+
+        // Populate videos list
+        const videosList = document.getElementById("videosList");
+        videosList.innerHTML = "";
+        resources.videos.forEach((video) => {
+          videosList.innerHTML += `
+                    <li class="resource-item">
+                        <a href="#" onclick="watchVideo('${video.name}')">${video.name}</a>
+                        <span class="resource-meta">${video.type} • ${video.duration}</span>
+                    </li>
+                `;
+        });
+
+        // Show material page
+        showPage("material");
+      }
+
+      // Simulate download
+      function downloadResource(resourceName) {
+        alert(
+          `سيبدأ تحميل: ${resourceName}\n(هذه ميزة تجريبية، في التطبيق الكامل سيبدأ التحميل الفعلي)`
+        );
+      }
+
+      // Simulate video watch
+      function watchVideo(videoName) {
+        alert(
+          `سيتم فتح فيديو: ${videoName}\n(هذه ميزة تجريبية، في التطبيق الكامل سيتم تشغيل الفيديو)`
+        );
+      }
+
+      // Auth form switching
+      function showAuthForm(formId) {
+        // Hide all forms
+        document.querySelectorAll(".auth-form").forEach((form) => {
+          form.classList.remove("active");
+        });
+
+        // Show selected form
+        document.getElementById(`${formId}-form`).classList.add("active");
+
+        // Update active tab
+        document.querySelectorAll(".auth-tab").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        // Activate corresponding tab
+        const activeTab = Array.from(
+          document.querySelectorAll(".auth-tab")
+        ).find((tab) => {
+          return tab.getAttribute("onclick") === `showAuthForm('${formId}')`;
+        });
+
+        if (activeTab) {
+          activeTab.classList.add("active");
+        }
+      }
+
+      // Continue as guest function
+      function continueAsGuest() {
+        alert("مرحباً بك كزائر! يمكنك تصفح المحتوى المتاح للعموم.");
+        showPage("home");
+      }
+
+      // Search functionality
+      function performSearch() {
+        const searchInput = document.getElementById("search-input");
+        const query = searchInput.value.trim();
+
+        if (query) {
+          alert(
+            `سيتم البحث عن: "${query}" - هذه ميزة تجريبية، في التطبيق الكامل سيتم عرض نتائج البحث.`
+          );
+        } else {
+          alert("يرجى إدخال كلمات للبحث عنها.");
+        }
+      }
+
+      // Filter functionality
+      function setFilter(filter) {
+        document.querySelectorAll(".filter-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        event.target.classList.add("active");
+        alert(`تم تطبيق عامل التصفية: ${filter}`);
+      }
+
+      // Form submission handlers
+      document.addEventListener("DOMContentLoaded", function () {
+        // Login form
+        document
+          .getElementById("login-form")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("تم تسجيل الدخول بنجاح! سيتم توجيهك إلى الصفحة الرئيسية.");
+            showPage("home");
+          });
+
+        // Signup form
+        document
+          .getElementById("signup-form")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert(
+              "تم إنشاء حسابك بنجاح! يرجى التحقق من بريدك الإلكتروني لتأكيد الحساب."
+            );
+            showAuthForm("login");
+          });
+
+        // Forgot password form
+        document
+          .getElementById("forgot-form")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert(
+              "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني."
+            );
+            showAuthForm("login");
+          });
+
+        // Donation form
+        document
+          .getElementById("donation-form")
+          .addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert(
+              "شكراً لك على تبرعك! سيتواصل معك أحد المتطوعين لترتيب استلام المواد."
+            );
+            // Reset form
+            e.target.reset();
+          });
+      });
+    </script>
   </body>
 </html>
