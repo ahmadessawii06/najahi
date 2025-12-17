@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client'
-import App from './header'
+import App from './components/header'
 import '/src/index.css'
 import RenderFooter from './components/footer'
 import { StrictMode } from 'react'
