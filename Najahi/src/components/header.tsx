@@ -1,10 +1,10 @@
 import { useState } from "react";
-
+import Login from '../pages/Login'
 
 interface AppProps {
   pageName: string;
 }
-function App({ pageName }: AppProps) {
+function Header({ pageName }: AppProps) {
   const [page, setPage] = useState(pageName);
 
   const showPage = (page: string) => { setPage(page); };
@@ -57,7 +57,7 @@ function App({ pageName }: AppProps) {
       {/*fix this*/}
       <div className="page-content">
         {page === 'home' && <h1>home</h1>}
-        {page === 'login' && <h1>login</h1>}
+        {page === 'login' && <h1><Login /></h1>}
         {page === 'about' && <h1>about</h1>}
         {page === 'donation' && <h1>donation</h1>}
         {page === 'search' && <h1>search</h1>}
@@ -69,4 +69,4 @@ function App({ pageName }: AppProps) {
   );
 }
 
-export default App
+export default Header
