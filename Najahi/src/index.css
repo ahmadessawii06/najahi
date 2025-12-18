@@ -513,9 +513,7 @@
         background-color: rgb(255, 255, 255);
         border-radius: var(--border-radius);
         box-shadow: var(--shadow);
-        width: 100%;
-        max-width: 400px;
-        max-height: 550px;
+        width: 560px;     
         padding: 40px;
         padding-top:0px;
         margin-top: 0px;
@@ -553,6 +551,8 @@
 
       .form-group {
         margin-bottom: 10px;
+      
+        
       }
 
       .form-group label {
@@ -561,6 +561,7 @@
         font-weight: 600;
         color: var(--text-dark);
       }
+   
 
       .form-control {
         width: 100%;
@@ -599,6 +600,7 @@
 
       .btn-secondary {
         background-color: var(--accent-green);
+      
       }
 
       .btn-secondary:hover {
@@ -745,6 +747,7 @@
   }
 
   .form-row {
+  
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;

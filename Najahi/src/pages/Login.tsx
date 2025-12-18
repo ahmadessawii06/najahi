@@ -145,7 +145,7 @@ function Login() {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="signup-confirm">تأكيد كلمة المرور</label>
+                  <label htmlFor="signup-confirm" className = "password">تأكيد كلمة المرور</label>
                   <input
                     type="password"
                     id="signup-confirm"
