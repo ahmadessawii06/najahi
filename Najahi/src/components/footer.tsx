@@ -11,7 +11,7 @@ function RenderFooter({ pageName }: AppProps) {
   };
 
   return (
-    <footer>
+    <footer>-
       <div className="footer-container">
         <div className="footer-section">
           <div className="footer-logo">
