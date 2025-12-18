@@ -1143,6 +1143,8 @@ footer {
   color: white;
   padding: 50px 5% 20px;
   margin-top: 80px;
+  margin-bottom: 0;
+  padding-bottom: 50px;
 }
 
 .footer-container {
@@ -1161,6 +1163,8 @@ footer {
   gap: 10px;
 }
 
+
+/* .hi (back) */
 .footer-section h3 {
   font-size: 1.3rem;
   margin-bottom: 25px;
@@ -1197,12 +1201,13 @@ footer {
   padding-right: 5px;
 }
 
+
 .social-links {
   display: flex;
-
   justify-content: center;
   gap: 15px;
   margin-top: 20px;
+ 
 }
 
 .social-links a {
@@ -1333,6 +1338,5 @@ margin-top: 100%;
 }
 
 .syntag-logo{
-
-  margin-top: 50px;
+margin-right: 50px;
 }
