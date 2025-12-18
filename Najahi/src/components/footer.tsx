@@ -22,12 +22,7 @@ return(
             منصة تعليمية متكاملة لدعم طلاب الثانوية العامة في فلسطين. نقدم موارد
             تعليمية شاملة، مجموعات دراسة، وتوجيه أكاديمي لتحقيق النجاح.
           </p>
-          <div className="social-links">
-            <a href="#"><i className="fab fa-facebook-f"></i></a>
-            <a href="#"><i className="fab fa-twitter"></i></a>
-            <a href="#"><i className="fab fa-instagram"></i></a>
-            <a href="#"><i className="fab fa-youtube"></i></a>
-          </div>
+         
         </div>
 
         <div className="footer-section">
@@ -78,7 +73,18 @@ return(
         </p>
         <p>
           تم التطوير بواسطة فريق SynTag
-        </p>
+        </p> 
+           <div className="social-links">
+            <a href="https://github.com/ahmadessawii06" target = "_blank"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://github.com/LeenArafat" target = "_blank"><i className="fab fa-twitter"></i></a>
+            <a href="https://github.com/yaqeenashour" target = "_blank"><i className="fab fa-instagram"></i></a>
+            <a href="https://github.com/jawadshahen28" target = "_blank"><i className="fab fa-youtube"></i></a>
+            
+            </div>
+            <div className="logo-containar"></div>
+              <img src="../public/Icons/SynTag-WithoutBG.png" alt="SynTag Icon" className = "syntag-logo"/>
+              
+           
       </div>
     </footer>
     )
