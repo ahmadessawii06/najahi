@@ -9,20 +9,22 @@ import Search from "./pages/Search";
 import Uni from "./pages/Uni";
 import Groups from "./pages/Groups";
 import Teacher from "./pages/Teacher";
+import { Navigate } from "react-router-dom";
 function App() {
   return (
     <>
       <Header />
 
       <Routes>
-        <Route path="/main" element={<Main/>} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/main" element={<Main />} />
         <Route path="/login" element={<Login />} />
         <Route path="/donation" element={<Donation />} />
-        <Route path = "/about" element = {<About />}></Route>
-        <Route path = "/search" element = {<Search />}></Route>
-        <Route path = "/uni" element = {<Uni />}></Route>
-        <Route path = "/groups" element = {<Groups />}></Route>
-        <Route path = "/teachers" element = {<Teacher />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/search" element={<Search />}></Route>
+        <Route path="/uni" element={<Uni />}></Route>
+        <Route path="/groups" element={<Groups />}></Route>
+        <Route path="/teachers" element={<Teacher />}></Route>
       </Routes>
 
       <RenderFooter pageName="login" />
