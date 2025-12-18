@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 import About from "./pages/About";
 import Search from "./pages/Search";
-import Uni from "./pages/Uni";
+import University from "./pages/Uni";
 import Groups from "./pages/Groups";
 import Teacher from "./pages/Teacher";
 import { Navigate } from "react-router-dom";
@@ -22,7 +22,7 @@ function App() {
         <Route path="/donation" element={<Donation />} />
         <Route path="/about" element={<About />}></Route>
         <Route path="/search" element={<Search />}></Route>
-        <Route path="/uni" element={<Uni />}></Route>
+        <Route path="/uni" element={<University />}></Route>
         <Route path="/groups" element={<Groups />}></Route>
         <Route path="/teachers" element={<Teacher />}></Route>
       </Routes>

@@ -917,12 +917,14 @@ nav {
 
 /* Universities Page */
 .universities-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 30px;
 }
 
 .university-card {
+  width: 500px;
   background-color: white;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
