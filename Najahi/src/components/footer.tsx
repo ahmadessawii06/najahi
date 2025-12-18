@@ -22,6 +22,12 @@ function RenderFooter({ pageName }: AppProps) {
             منصة تعليمية متكاملة لدعم طلاب الثانوية العامة في فلسطين. نقدم موارد
             تعليمية شاملة، مجموعات دراسة، وتوجيه أكاديمي لتحقيق النجاح.
           </p>
+           <img
+          src="../public/Icons/SynTag-WithoutBG.png"
+          alt="SynTag Icon"
+          className="syntag-logo"
+        /> 
+       
         </div>
 
         <div className="footer-section">
@@ -171,22 +177,18 @@ function RenderFooter({ pageName }: AppProps) {
           <a href="https://github.com/jawadshahen28" target="_blank">  
              <p className="ahmad-p"> Jawad Shaheen</p>
           </a> 
+         
           </nav>
         
-           
+         
        
-        </div>
+          </div>
 
-          
+         
 
 
-
-         <div className="logo-containar"></div>
-        <img
-          src="../public/Icons/SynTag-WithoutBG.png"
-          alt="SynTag Icon"
-          className="syntag-logo"
-        /> 
+        
+      
         </div>
     </footer>
   );
