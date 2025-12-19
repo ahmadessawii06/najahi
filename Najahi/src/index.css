@@ -1,5 +1,6 @@
-/*comment version 2*/
-/*comment version 3*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -1533,22 +1534,22 @@ footer {
 }
 .group-card,
 .university-card {
-  opacity: 0; /* مخفية بالبداية */
-  animation: fadeInUp 0.6s forwards; /* forwards عشان تبقى النتيجة بعد الانتهاء */
+  opacity: 0;
+  animation: fadeInUp 0.6s forwards; 
 }
 
 .najah,
 .kds,
 .berzet,
 .amerkeyh {
-  transition: transform 0.3s ease; /* تجعل التكبير سلس */
-  cursor: pointer; /* يظهر مؤشر اليد عند المرور */
+  transition: transform 0.3s ease;
+  cursor: pointer; 
 }
 
 .najah:hover ,.kds:hover,
 .berzet:hover,
 .amerkeyh:hover {
-  transform: scale(1.1); /* تكبير الصورة 20% عند المرور */
+  transform: scale(1.1); 
 }
 
 
@@ -1560,9 +1561,14 @@ footer {
 
 
 
+ .Syn {
+  color: blue;
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;}
 
-/* Fix This Later */
-.syntag{
-
-  max-width: 90px;
-}
+  .Tag {
+  color: red;
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;}
