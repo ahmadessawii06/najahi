@@ -1,6 +1,10 @@
 
 import { Link } from "react-router-dom";
-
+import facebookIcon from '../assets/Social-Icons/facebook.png'
+import twitterIcon from '../assets/Social-Icons/twitter.png'
+import instagramIcon from '../assets/Social-Icons/instagram.png'
+import youtubeIcon from '../assets/Social-Icons/youtube.png'
+import telegramIcon from '../assets/Social-Icons/telegram.png'
 function RenderFooter() {
   return (
     <footer>
@@ -16,12 +20,17 @@ function RenderFooter() {
             منصة تعليمية متكاملة لدعم طلاب الثانوية العامة في فلسطين. نقدم موارد
             تعليمية شاملة، مجموعات دراسة، وتوجيه أكاديمي لتحقيق النجاح.
           </p>
+          <div className="social-links">
+            <a href="http://facebook.com/" target="_blank"><i > <img src={facebookIcon} className="platform-image-in-footer" /></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i > <img src={instagramIcon} className="platform-image-in-footer" /></i></a>
+            <a href="https://x.com/" target="_blank"><i > <img src={twitterIcon} className="platform-image-in-footer" /></i></a>
+            <a href="https://youtube.com" target="_blank"><i > <img src={youtubeIcon} className="platform-image-in-footer" /></i></a>
+            <a href="https://web.telegram.org/" target="_blank"><i > <img src={telegramIcon} className="platform-image-in-footer" /></i></a>
 
-          <img
-            src="/Icons/SynTag-WithoutBG.png"
-            alt="SynTag Icon"
-            className="syntag-logo"
-          />
+            
+        
+          </div>
+         
         </div>
 
       
@@ -87,47 +96,7 @@ function RenderFooter() {
         <p>جميع الحقوق محفوظة لمنصة نجاحي &copy; 2026</p>
         <p>تم التطوير بواسطة فريق SynTag</p>
 
-        <div className="social-links">
-          <nav className="git-ahmad">
-            <a
-              href="https://github.com/ahmadessawii06"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-           
-            </a>
-          </nav>
-
-          <nav className="git-leen">
-            <a
-              href="https://github.com/LeenArafat"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-           
-            </a>
-          </nav>
-
-          <nav className="git-yaqeen">
-            <a
-              href="https://github.com/yaqeenashour"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-           
-            </a>
-          </nav>
-
-          <nav className="git-jawad">
-            <a
-              href="https://github.com/jawadshahen28"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-            
-            </a>
-          </nav>
-        </div>
+        
       </div>
     </footer>
   );
