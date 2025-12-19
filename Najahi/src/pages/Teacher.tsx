@@ -1,5 +1,5 @@
 
-import TeachersCard from "../components/TeacherCard";
+import TeachersCard from "../components/TeachersCard";
 
 function Teachers() {
     return (
