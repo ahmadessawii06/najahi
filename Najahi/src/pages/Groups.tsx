@@ -1,6 +1,10 @@
 import '../index.css';
-
-
+import facebookIcon from '../assets/Social-Icons/facebook.png'
+import discordIcon from '../assets/Social-Icons/discord.png'
+import whatsappIcon from '../assets/Social-Icons/whatsapp.png'
+import telegramIcon from '../assets/Social-Icons/telegram.png'
+import zoomIcon from '../assets/Social-Icons/zoom.png'
+import massengerIcon from '../assets/Social-Icons/messenger.png'
 // Arrow Function 
 const Groups = () => {
   // Delcare Gruops
@@ -8,7 +12,7 @@ const Groups = () => {
     {
       id: 1,
       platform: 'facebook',
-      icon: 'F',
+      icon: facebookIcon,
       title: 'مجموعة فيسبوك',
       description: 'طلاب الصف العاشر - مسار أكاديمي',
       subject: 'رياضيات، علوم، لغة عربية',
@@ -23,7 +27,7 @@ const Groups = () => {
     { 
       id: 2,
       platform: 'whatsapp',
-      icon: 'W',
+      icon: whatsappIcon,
       title: 'مجموعة واتساب',
       description: 'طلاب الصف الحادي عشر - فرع علمي',
       subject: 'فيزياء، كيمياء، أحياء',
@@ -38,7 +42,7 @@ const Groups = () => {
     {
       id: 3,
       platform: 'telegram',
-      icon: 'T',
+      icon: telegramIcon,
       title: 'قناة تيليجرام',
       description: 'طلاب الصف الثاني عشر - جميع الفروع',
       subject: 'جميع المواد، توجيهي',
@@ -53,7 +57,7 @@ const Groups = () => {
     {
       id: 4,
       platform: 'other',
-      icon: 'Z',
+      icon: zoomIcon,
       title: 'لقائات زوم',
       description: 'طلاب الصف الثاني عشر الأدبي',
       subject: 'تاريخ، جغرافيا، لغة عربية',
@@ -68,7 +72,7 @@ const Groups = () => {
     {
   id: 5,
   platform: 'discord',
-  icon: 'D',
+  icon: discordIcon,
   title: 'مجموعة ديسكورد للعلوم',
   description: 'طلاب الصف الحادي عشر العلمي',
   subject: 'رياضيات، فيزياء، كيمياء',
@@ -82,7 +86,7 @@ const Groups = () => {
 },{
   id: 6,
   platform: 'facebook',
-  icon: 'F',
+  icon: facebookIcon,
   title: 'مجموعة فيسبوك للرياضيات',
   description: 'طلاب الصف الحادي عشر العلمي',
   subject: 'رياضيات، تفاضل وتكامل',
@@ -96,7 +100,7 @@ const Groups = () => {
 },{
   id: 7,
   platform: 'messenger',
-  icon: 'M',
+  icon: massengerIcon,
   title: 'مجموعة ماسنجر للواجبات',
   description: 'طلاب الصف العاشر',
   subject: 'جميع المواد',
@@ -110,7 +114,7 @@ const Groups = () => {
 },{
   id: 8,
   platform: 'whatsapp',
-  icon: 'W',
+  icon: whatsappIcon,
   title: 'مجموعة واتساب للعلوم',
   description: 'طلاب الصف الثاني عشر العلمي',
   subject: 'فيزياء، كيمياء',
@@ -124,7 +128,7 @@ const Groups = () => {
 },{
   id: 9,
   platform: 'telegram',
-  icon: 'T',
+  icon: telegramIcon,
   title: 'قناة تيليجرام للتوجيهي',
   description: 'طلاب التوجيهي - جميع الفروع',
   subject: 'ملخصات، امتحانات تجريبية',
@@ -139,7 +143,7 @@ const Groups = () => {
 ,{
   id: 9,
   platform: 'telegram',
-  icon: 'T',
+  icon: telegramIcon,
   title: 'قناة تيليجرام للتوجيهي',
   description: 'طلاب التوجيهي - جميع الفروع',
   subject: 'ملخصات، امتحانات تجريبية',
@@ -155,20 +159,7 @@ const Groups = () => {
 
   ];
 
-  const getPlatformColor = (platform: string): string => {
-    switch (platform) {
-      case 'facebook':
-        return '#1877F2';
-      case 'whatsapp':
-        return '#25D366';
-      case 'telegram':
-        return '#0088CC';
-      case 'zoom':
-            return "#0B5CFF";
-      default:
-        return '#6C757D';
-    }
-  };
+
 
   return (
     <section id="groups" className="groups-page">
@@ -185,9 +176,13 @@ const Groups = () => {
             <div className="group-platform">
               <div 
                 className="platform-icon"
-                style={{ backgroundColor: getPlatformColor(group.platform) }}
+             
               >
-                {group.icon}
+                            <img 
+                src={group.icon}
+                alt={group.platform}
+                className="platform-image"
+              />
               </div>
               <div>
                 <h3 className="group-title">{group.title}</h3>

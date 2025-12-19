@@ -1551,3 +1551,10 @@ footer {
   transform: scale(1.1); /* تكبير الصورة 20% عند المرور */
 }
 
+
+.platform-image {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
