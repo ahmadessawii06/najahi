@@ -1561,4 +1561,8 @@ footer {
 
 
 
+/* Fix This Later */
+.syntag{
 
+  max-width: 90px;
+}

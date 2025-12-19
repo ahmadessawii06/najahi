@@ -10,6 +10,7 @@ import University from "./pages/Uni";
 import Groups from "./pages/Groups";
 import Teacher from "./pages/Teacher";
 import { Navigate } from "react-router-dom";
+import SynTag from "./pages/SynTag";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
         <Route path="/uni" element={<University />}></Route>
         <Route path="/groups" element={<Groups />}></Route>
         <Route path="/teachers" element={<Teacher />}></Route>
+        <Route path="/syntag" element={<SynTag />}></Route>
       </Routes>
 
       <RenderFooter />

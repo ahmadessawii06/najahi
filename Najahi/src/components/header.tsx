@@ -19,6 +19,7 @@ function Header() {
             <li><NavLink to="/uni">الجامعات الفلسطينية</NavLink></li>
             <li><NavLink to = "/groups">مجموعات الدراسة</NavLink></li>
             <li><NavLink to = "/teachers">المعلمون القريبون</NavLink></li>
+            <li><NavLink to = "/syntag"><img src="../public/Icons/SynTag-WithoutBG.png" className="syntag" /></NavLink></li>
           </ul>
         </nav>
       </div>
