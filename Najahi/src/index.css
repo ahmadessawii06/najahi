@@ -1664,3 +1664,8 @@ footer {
   font-family: "Pacifico", cursive;
   font-weight: 400;
   font-style: normal;}
+
+
+  .page {
+  min-height: 100vh;
+  overflow-y: auto;}
