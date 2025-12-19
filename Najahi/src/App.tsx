@@ -1,16 +1,16 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import RenderFooter from "./components/footer";
 import Header from "./components/header";
 import Donation from "./pages/Donation";
 import Login from "./pages/Login";
-import Main from "./pages/Main";
+import Home from "./pages/Home";
 import About from "./pages/About";
 import Search from "./pages/Search";
 import University from "./pages/Uni";
 import Groups from "./pages/Groups";
 import Teacher from "./pages/Teacher";
-import { Navigate } from "react-router-dom";
 import SynTag from "./pages/SynTag";
+import SubHomePage from "./pages/subHomePage";
 function App() {
   return (
     <>
@@ -18,7 +18,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/main" element={<Main />} />
+        <Route path="/home" element={<Home />}>
+           <Route path=":grade/:track?/:materialName" element={<SubHomePage />} > </Route>
+        </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/donation" element={<Donation />} />
         <Route path="/about" element={<About />}></Route>

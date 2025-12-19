@@ -256,6 +256,11 @@ nav {
   cursor: pointer;
 }
 
+.subject-item a {
+  text-decoration: none;
+  color: black;
+}
+
 .subject-item:hover {
   background-color: #f0f7ff;
   transform: translateX(-5px);
