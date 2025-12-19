@@ -27,7 +27,7 @@ function App() {
         <Route path="/teachers" element={<Teacher />}></Route>
       </Routes>
 
-      <RenderFooter pageName="login" />
+      <RenderFooter />
     </>
   );
 }
