@@ -1,6 +1,10 @@
 
 import TeachersCard from "../components/TeachersCard";
-
+import BioloyIcon from "../assets/Teacher-Photos/biology.jpg";
+import MathIcon from "../assets/Teacher-Photos/Math.jpg"
+import ArabicIcon from '../assets/Teacher-Photos/Arabic.jpg'
+import PhiIcon from '../assets/Teacher-Photos/chemistry.jpg'
+import tare5 from '../assets/Teacher-Photos/geography.jpg'
 function Teachers() {
     return (
         <>
@@ -20,7 +24,7 @@ function Teachers() {
   location={"نابلس"}
   price= {"للساعة 100 شيكل" }
   subjects={["رياضيات"]}
-  icon={"/math.jpg"} />
+  icon={MathIcon} />
 
 <TeachersCard name={"أ. سارة أحمد"}
   title={"معلمة فيزياء+ كيمياء"}
@@ -29,7 +33,7 @@ function Teachers() {
   location={"رام الله"}
   price={"للساعة 100 شيكل"}
   subjects={["فيزياء " ,"كيمياء"]}
-  icon={"/chemistry.jpg"} />
+  icon={PhiIcon} />
 
   <TeachersCard name={"د. نورا حسن"}
   title={"معلمة أحياء "}
@@ -38,7 +42,7 @@ function Teachers() {
   location={"الخليل"}
   price={"للساعة 90 شيكل"}
   subjects={["أحياء"]}
-  icon={"/biology.jpg"} />
+  icon={BioloyIcon} />
 
   <TeachersCard name={"أ. أحمد عبد الرحمن"}
   title={"مدرس لغة عربية وآداب"}
@@ -47,7 +51,7 @@ function Teachers() {
   location={"جنين"}
   price={"للساعة 60 شيكل"}
   subjects={["لغة عربية", "أدب"]}
-  icon={"/Arabic.jpg"} />
+  icon={ArabicIcon} />
 
   <TeachersCard name={"د. ليلى مصطفى"}
   title={"معلمة تاريخ وجغرافيا"}
@@ -56,7 +60,7 @@ function Teachers() {
   location={"طولكرم"}
   price={"للساعة 70 شيكل"}
   subjects={["تاريخ", "جغرافيا"]}
-  icon={"/geography.jpg"} />
+  icon={tare5} />
     
   </div>
     </>
