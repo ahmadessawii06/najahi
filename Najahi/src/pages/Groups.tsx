@@ -1,6 +1,9 @@
 import '../index.css';
 
+
+// Arrow Function 
 const Groups = () => {
+  // Delcare Gruops
   const groupsData = [
     {
       id: 1,
@@ -30,7 +33,7 @@ const Groups = () => {
         { label: 'نشاط المجموعة:', value: 'نشطة أسبوعياً' }
       ],
       buttonText: 'انضم إلى المجموعة',
-      link: 'https://chat.whatsapp.com/K3O7tQYy8Fm5RCACpYDrcE'
+      link: 'https://chat.whatsapp.com'
     },
     {
       id: 3,
