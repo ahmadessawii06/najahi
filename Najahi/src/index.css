@@ -1165,7 +1165,6 @@ footer {
   gap: 10px;
 }
 
-
 /* .hi (back) */
 .footer-section h3 {
   font-size: 1.3rem;
@@ -1203,13 +1202,11 @@ footer {
   padding-right: 5px;
 }
 
-
 .social-links {
   display: flex;
   justify-content: center;
   gap: 15px;
   margin-top: 20px;
- 
 }
 
 .social-links a {
@@ -1230,7 +1227,7 @@ footer {
 }
 
 .social-links .git-leen a {
-   background-image: url("../src/assets/GitHub-Accounts/leen-profile.png");
+  background-image: url("../src/assets/GitHub-Accounts/leen-profile.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1243,7 +1240,7 @@ footer {
   background-repeat: no-repeat;
 }
 
-.social-links .git-jawad a  {
+.social-links .git-jawad a {
   background-image: url("../src/assets/GitHub-Accounts/jawad-profile.png");
   background-size: cover;
   background-position: center;
@@ -1334,15 +1331,14 @@ footer {
 }
 
 .ahmad-p {
-font-size: 12px;
-text-align: center;
-margin-top: 100%;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 100%;
 }
 
-.syntag-logo{
-margin-right: 50px;
+.syntag-logo {
+  margin-right: 50px;
 }
-
 
 /**/
 /* Groups Page Styles */
@@ -1393,7 +1389,8 @@ margin-right: 50px;
   gap: 15px;
 }
 
-.group-card:hover, .university-card:hover {
+.group-card:hover,
+.university-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
@@ -1524,7 +1521,6 @@ margin-right: 50px;
   }
 }
 
-
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -1535,7 +1531,23 @@ margin-right: 50px;
     transform: translateY(0);
   }
 }
-.group-card ,.university-card{
+.group-card,
+.university-card {
   opacity: 0; /* مخفية بالبداية */
   animation: fadeInUp 0.6s forwards; /* forwards عشان تبقى النتيجة بعد الانتهاء */
 }
+
+.najah,
+.kds,
+.berzet,
+.amerkeyh {
+  transition: transform 0.3s ease; /* تجعل التكبير سلس */
+  cursor: pointer; /* يظهر مؤشر اليد عند المرور */
+}
+
+.najah:hover ,.kds:hover,
+.berzet:hover,
+.amerkeyh:hover {
+  transform: scale(1.1); /* تكبير الصورة 20% عند المرور */
+}
+

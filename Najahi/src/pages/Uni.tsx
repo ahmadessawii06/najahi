@@ -18,7 +18,7 @@ export default function University() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={najahIcon} />
+              <img  className = "najah" src={najahIcon} />
             </a>
 
             <h3>جامعة النجاح الوطنية</h3>
@@ -54,8 +54,8 @@ export default function University() {
               href="https://www.facebook.com/QouChannel?locale=ar_AR"
               target="_blank"
               rel="noopener noreferrer"
-            >
-              <img src={openIcon} />
+            > 
+              <img src={openIcon} className="kds"/>
             </a>
 
             <h3>جامعة القدس المفتوحة</h3>
@@ -90,8 +90,8 @@ export default function University() {
               href="https://www.facebook.com/BirzeitUniversity?locale=ar_AR"
               target="_blank"
               rel="noopener noreferrer"
-            >
-              <img src={berzit} alt="" />
+            > 
+              <img src={berzit} alt="" className = "berzet"/>
             </a>
 
             <h3>جامعة بيرزيت</h3>
@@ -127,7 +127,7 @@ export default function University() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={amercina} alt="" />
+              <img src={amercina} alt="" className = "amerkeyh" />
             </a>
 
             <h3>الجامعة الأمريكية</h3>
