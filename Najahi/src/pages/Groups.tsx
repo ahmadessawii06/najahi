@@ -76,7 +76,81 @@ const Groups = () => {
   ],
   buttonText: 'انضم إلى القروب',
   link: 'https://discord.gg/fake-link-for-study-group'
+},{
+  id: 6,
+  platform: 'facebook',
+  icon: 'F',
+  title: 'مجموعة فيسبوك للرياضيات',
+  description: 'طلاب الصف الحادي عشر العلمي',
+  subject: 'رياضيات، تفاضل وتكامل',
+  details: 'مجموعة فيسبوك لمناقشة مسائل الرياضيات الصعبة، شرح الدروس، ومشاركة أوراق العمل.',
+  stats: [
+    { label: 'عدد الأعضاء:', value: '320 طالب' },
+    { label: 'نشاط المجموعة:', value: 'نشطة يومياً' }
+  ],
+  buttonText: 'انضم إلى المجموعة',
+  link: 'https://www.facebook.com/groups/fake-math-group'
+},{
+  id: 7,
+  platform: 'messenger',
+  icon: 'M',
+  title: 'مجموعة ماسنجر للواجبات',
+  description: 'طلاب الصف العاشر',
+  subject: 'جميع المواد',
+  details: 'مجموعة ماسنجر سريعة لتبادل الواجبات اليومية والتنبيهات المهمة بين الطلاب.',
+  stats: [
+    { label: 'عدد الأعضاء:', value: '25 طالب' },
+    { label: 'نشاط المجموعة:', value: 'نشطة يومياً' }
+  ],
+  buttonText: 'انضم إلى المجموعة',
+  link: 'https://m.me/join/fake-messenger-group'
+},{
+  id: 8,
+  platform: 'whatsapp',
+  icon: 'W',
+  title: 'مجموعة واتساب للعلوم',
+  description: 'طلاب الصف الثاني عشر العلمي',
+  subject: 'فيزياء، كيمياء',
+  details: 'مجموعة واتساب لمراجعة الدروس العلمية، حل الأسئلة الوزارية، والاستعداد للامتحانات.',
+  stats: [
+    { label: 'عدد الأعضاء:', value: '40 طالب' },
+    { label: 'نشاط المجموعة:', value: 'نشطة أسبوعياً' }
+  ],
+  buttonText: 'انضم إلى المجموعة',
+  link: 'https://chat.whatsapp.com/fake-whatsapp-group'
+},{
+  id: 9,
+  platform: 'telegram',
+  icon: 'T',
+  title: 'قناة تيليجرام للتوجيهي',
+  description: 'طلاب التوجيهي - جميع الفروع',
+  subject: 'ملخصات، امتحانات تجريبية',
+  details: 'قناة تيليجرام لنشر ملخصات الدروس، نماذج امتحانات، ونصائح دراسية يومية.',
+  stats: [
+    { label: 'عدد الأعضاء:', value: '1500 طالب' },
+    { label: 'نشاط القناة:', value: 'نشطة يومياً' }
+  ],
+  buttonText: 'انضم إلى القناة',
+  link: 'https://t.me/fake-tawjihi-channel'
 }
+,{
+  id: 9,
+  platform: 'telegram',
+  icon: 'T',
+  title: 'قناة تيليجرام للتوجيهي',
+  description: 'طلاب التوجيهي - جميع الفروع',
+  subject: 'ملخصات، امتحانات تجريبية',
+  details: 'قناة تيليجرام لنشر ملخصات الدروس، نماذج امتحانات، ونصائح دراسية يومية.',
+  stats: [
+    { label: 'عدد الأعضاء:', value: '1500 طالب' },
+    { label: 'نشاط القناة:', value: 'نشطة يومياً' }
+  ],
+  buttonText: 'انضم إلى القناة',
+  link: 'https://t.me/fake-tawjihi-channel'
+}
+
+
+
 
   ];
 
