@@ -153,8 +153,6 @@ const Groups = () => {
 }
 
 
-
-
   ];
 
   const getPlatformColor = (platform: string): string => {
@@ -165,9 +163,9 @@ const Groups = () => {
         return '#25D366';
       case 'telegram':
         return '#0088CC';
-      default:
-        case 'zoom':
+      case 'zoom':
             return "#0B5CFF";
+      default:
         return '#6C757D';
     }
   };
