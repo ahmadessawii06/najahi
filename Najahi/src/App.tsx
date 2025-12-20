@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter as Router,Routes, Route, Navigate } from "react-router-dom";
 import RenderFooter from "./components/footer";
 import Header from "./components/header";
 import Donation from "./pages/Donation";
@@ -14,6 +14,7 @@ import SubHomePage from "./pages/subHomePage";
 function App() {
   return (
     <>
+        <Router>
       <Header />
 
       <Routes>
@@ -32,6 +33,7 @@ function App() {
       </Routes>
 
       <RenderFooter />
+      </Router>
     </>
   );
 }
