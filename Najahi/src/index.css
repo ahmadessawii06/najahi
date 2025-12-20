@@ -1855,7 +1855,6 @@ footer {
   color: var(--accent-green);
   font-size: 0.95rem;
   font-weight: 600;
-  text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 25px;
 }
