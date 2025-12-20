@@ -1,34 +1,64 @@
-function SynTag() {
-  return (
-   <>
-    <p className="SynTag-parag">
-      نحن 
-      <span className="Syn">     Syn</span>
-      <span className="Tag">Tag   </span>
-       فريق من طلاب تخصص علم الحاسوب في سوق العمل (Computer Science Apprentice) في جامعة النجاح الوطنية، يجمعنا الشغف بالتقنية والبرمجة وبناء حلول رقمية مبتكرة. <br></br>
-نعمل باستمرار على تطوير مهاراتنا العملية والاستعداد الحقيقي لسوق العمل من خلال تنفيذ مشاريع واقعية والعمل بروح الفريق.    <br></br>
-اضغط على الأيقونات أدناه لاستكشاف حسابات GitHub الخاصة بأعضاء الفريق والاطلاع على أعمالهم البرمجية.
-    </p>
+import { useEffect, useState } from 'react';
+import Card from '../components/GithubsCard';
 
-    <div className="social-links">
-      <nav className="git-ahmad">
-        <a href="https://github.com/ahmadessawii06" target="_blank" rel="noopener noreferrer" >  </a>
-      </nav>
-
-      <nav className="git-leen">
-        <a href="https://github.com/LeenArafat" target="_blank" rel="noopener noreferrer" > </a>
-      </nav>
-
-      <nav className="git-yaqeen">
-        <a href="https://github.com/yaqeenashour" target="_blank" rel="noopener noreferrer"  > </a>
-      </nav>
-
-      <nav className="git-jawad">
-        <a href="https://github.com/jawadshahen28" target="_blank" rel="noopener noreferrer" > </a>
-      </nav>
-    </div>
-   </>
-  )
+interface TeamMember {
+  name: string;
+  role: string;
+  github: string;
+  image: string;
 }
 
-export default SynTag
+function SynTag() {
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const response = await fetch('/data/team.json'); 
+        if (!response.ok) {
+          throw new Error('فشل في تحميل بيانات الفريق');
+        }
+
+        const data = await response.json();
+        setTeamMembers(data);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTeam();
+  }, []);
+
+  if (loading) return <p>Loading team...</p>;
+  if (error) return <p>{error}</p>;
+
+  return (
+    <div className="page active">
+      <div className="page-header">
+        <h1 className="syntag-title">
+          <span className="Syn">Syn</span>
+          <span className="Tag">Tag</span> Team
+        </h1>
+        <p>Meet the brilliant minds behind the Najahi platform</p>
+      </div>
+
+      <div className="team-grid">
+        {teamMembers.map((member, index) => (
+          <Card
+            key={index}
+            name={member.name}
+            role={member.role}
+            github={member.github}
+            image={member.image}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default SynTag;
