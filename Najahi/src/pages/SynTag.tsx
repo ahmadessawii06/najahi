@@ -1,34 +1,41 @@
+import { useEffect, useState } from 'react';
+import Card from '../components/GithubsCard';
 
-import Card from '../components/GithubsCard'
-
-const teamMembers = [
-  {
-    name: 'Ahmad Essawii',
-    role: 'Team Leader',
-    github: 'https://github.com/ahmadessawii06',
-    image: 'https://github.com/ahmadessawii06.png'
-  },
-  {
-    name: 'Leen Arafat',
-    role: 'Team Co-Leader',
-    github: 'https://github.com/LeenArafat',
-    image: 'https://github.com/LeenArafat.png'
-  },
-  {
-    name: 'Yaqeen Ashour',
-    role: 'FrontEnd Developer',
-    github: 'https://github.com/yaqeenashour',
-    image: 'https://github.com/yaqeenashour.png'
-  },
-  {
-    name: 'Jawad Shahen',
-    role: 'BackEnd Developer',
-    github: 'https://github.com/jawadshahen28',
-    image: 'https://github.com/jawadshahen28.png'
-  }
-];
+interface TeamMember {
+  name: string;
+  role: string;
+  github: string;
+  image: string;
+}
 
 function SynTag() {
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const response = await fetch('/data/team.json'); 
+        if (!response.ok) {
+          throw new Error('فشل في تحميل بيانات الفريق');
+        }
+
+        const data = await response.json();
+        setTeamMembers(data);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTeam();
+  }, []);
+
+  if (loading) return <p>Loading team...</p>;
+  if (error) return <p>{error}</p>;
+
   return (
     <div className="page active">
       <div className="page-header">

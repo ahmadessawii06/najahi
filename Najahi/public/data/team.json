@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Ahmad Essawii",
+    "role": "Team Leader",
+    "github": "https://github.com/ahmadessawii06",
+    "image": "https://github.com/ahmadessawii06.png"
+  },
+  {
+    "name": "Leen Arafat",
+    "role": "Team Co-Leader",
+    "github": "https://github.com/LeenArafat",
+    "image": "https://github.com/LeenArafat.png"
+  },
+  {
+    "name": "Yaqeen Ashour",
+    "role": "FrontEnd Developer",
+    "github": "https://github.com/yaqeenashour",
+    "image": "https://github.com/yaqeenashour.png"
+  },
+  {
+    "name": "Jawad Shahen",
+    "role": "BackEnd Developer",
+    "github": "https://github.com/jawadshahen28",
+    "image": "https://github.com/jawadshahen28.png"
+  }
+]
