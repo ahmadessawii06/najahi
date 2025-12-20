@@ -59,15 +59,15 @@ function Home() {
               </div>
 
               <ul className="subjects-list">
-                <li className="subject-item"><Link to="/home/10/فيزياء">{subjectIcons["فيزياء"]} فيزياء</Link></li>
-                <li className="subject-item"><Link to="/home/10/كيمياء">{subjectIcons["الكيمياء"] || "🧪"} كيمياء</Link></li>
-                <li className="subject-item"><Link to="/home/10/احياء">{subjectIcons["احياء"]} أحياء</Link></li>
-                <li className="subject-item"><Link to="/home/10/رياضيات">{subjectIcons["الرياضيات"]} رياضيات</Link></li>
-                <li className="subject-item"><Link to="/home/10/اللغة-الانجليزية">{subjectIcons["اللغة-الانجليزية"]} انجليزي</Link></li>
-                <li className="subject-item"><Link to="/home/10/دين">{subjectIcons["دين"]} التربية-الاسلامية</Link></li>
-                <li className="subject-item"><Link to="/home/10/الدراسات-الفلسطينية">{subjectIcons["الدراسات-الفلسطينية"]} الدراسات الفلسطينية</Link></li>
-                <li className="subject-item"><Link to="/home/10/اللغة-العربية">{subjectIcons["اللغة-العربية"]} عربي</Link></li>
-                <li className="subject-item"><Link to="/home/10/تكنولوجيا">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا-المعلومات</Link></li>
+                <Link to="/home/10/فيزياء"><li className="subject-item">{subjectIcons["فيزياء"]} فيزياء</li></Link>
+                <Link to="/home/10/كيمياء"><li className="subject-item">{subjectIcons["الكيمياء"] || "🧪"} كيمياء</li></Link>
+                <Link to="/home/10/احياء"><li className="subject-item">{subjectIcons["احياء"]} أحياء</li></Link>
+                <Link to="/home/10/رياضيات"><li className="subject-item">{subjectIcons["الرياضيات"]} رياضيات</li></Link>
+                <Link to="/home/10/اللغة-الانجليزية"><li className="subject-item">{subjectIcons["اللغة-الانجليزية"]} انجليزي</li></Link>
+                <Link to="/home/10/دين"><li className="subject-item">{subjectIcons["دين"]} التربية-الاسلامية</li></Link>
+                <Link to="/home/10/الدراسات-الفلسطينية"><li className="subject-item">{subjectIcons["الدراسات-الفلسطينية"]} الدراسات الفلسطينية</li></Link>
+                <Link to="/home/10/اللغة-العربية"><li className="subject-item">{subjectIcons["اللغة-العربية"]} عربي</li></Link>
+                <Link to="/home/10/تكنولوجيا"><li className="subject-item">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا-المعلومات</li></Link>
               </ul>
             </div>
           </div>
@@ -89,14 +89,15 @@ function Home() {
               </div>
 
               <ul className="subjects-list">
-                <li className="subject-item"><Link to="/home/11/صناعي/فيزياء">{subjectIcons["فيزياء"]} الفيزياء</Link></li>
-                <li className="subject-item"><Link to="/home/11/صناعي/الرياضيات">{subjectIcons["الرياضيات"]} الرياضيات</Link></li>
-                <li className="subject-item"><Link to="/home/11/صناعي/اللغة-العربية">{subjectIcons["اللغة-العربية"]} اللغة العربية</Link></li>
-                <li className="subject-item"><Link to="/home/11/صناعي/التربية-الاسلامية">{subjectIcons["دين"]} التربية الإسلامية</Link></li>
-                <li className="subject-item"><Link to="/home/11/صناعي/تكنولوجيا-المعلومات">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا المعلومات</Link></li>
-                <li className="subject-item"><Link to="/home/11/صناعي/اللغة-الانجليزية">{subjectIcons["اللغة-الانجليزية"]} انجليزي</Link></li>
-                <li className="subject-item"><Link to="/home/11/صناعي/الرسم-الصناعي">{subjectIcons["الرسم-الصناعي"]} رسم صناعي</Link></li>
-                <li className="subject-item"><Link to="/home/11/صناعي/علم-الصناعة">{subjectIcons["علم-الصناعة"]} علم صناعة</Link></li>
+                <Link to="/home/11/صناعي/فيزياء"><li className="subject-item">{subjectIcons["فيزياء"]} الفيزياء</li></Link>
+                <Link to="/home/11/صناعي/الرياضيات"><li className="subject-item">{subjectIcons["الرياضيات"]} الرياضيات</li></Link>
+                <Link to="/home/11/صناعي/اللغة-العربية"><li className="subject-item">{subjectIcons["اللغة-العربية"]} اللغة العربية</li></Link>
+                <Link to="/home/11/صناعي/التربية-الاسلامية"><li className="subject-item">{subjectIcons["دين"]} التربية الإسلامية</li></Link>
+                <Link to="/home/11/صناعي/تكنولوجيا-المعلومات"><li className="subject-item">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا المعلومات</li></Link>
+                <Link to="/home/11/صناعي/اللغة-الانجليزية"><li className="subject-item">{subjectIcons["اللغة-الانجليزية"]} انجليزي</li></Link>
+                <Link to="/home/11/صناعي/الرسم-الصناعي"><li className="subject-item">{subjectIcons["الرسم-الصناعي"]} رسم صناعي</li></Link>
+                <Link to="/home/11/صناعي/علم-الصناعة"><li className="subject-item">{subjectIcons["علم-الصناعة"]} علم صناعة</li></Link>
+
               </ul>
             </div>
 
@@ -108,14 +109,15 @@ function Home() {
               </div>
 
               <ul className="subjects-list">
-                <li className="subject-item"><Link to="/home/11/علمي/الفيزياء">{subjectIcons["فيزياء"]} الفيزياء</Link></li>
-                <li className="subject-item"><Link to="/home/11/علمي/الكيمياء">{subjectIcons["الكيمياء"]} الكيمياء</Link></li>
-                <li className="subject-item"><Link to="/home/11/علمي/الاحياء">{subjectIcons["احياء"]} الأحياء</Link></li>
-                <li className="subject-item"><Link to="/home/11/علمي/الرياضيات">{subjectIcons["الرياضيات"]} الرياضيات</Link></li>
-                <li className="subject-item"><Link to="/home/11/علمي/التربية-الاسلامية">{subjectIcons["دين"]} التربية الإسلامية</Link></li>
-                <li className="subject-item"><Link to="/home/11/علمي/اللغة-العربية">{subjectIcons["اللغة-العربية"]} اللغة العربية</Link></li>
-                <li className="subject-item"><Link to="/home/11/علمي/تكنولوجيا-المعلومات">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا المعلومات</Link></li>
-                <li className="subject-item"><Link to="/home/11/علمي/اللغة-الانجليزية">{subjectIcons["اللغة-الانجليزية"]} اللغة الإنجليزية</Link></li>
+                <Link to="/home/11/علمي/الفيزياء"><li className="subject-item">{subjectIcons["فيزياء"]} الفيزياء</li></Link>
+                <Link to="/home/11/علمي/الكيمياء"><li className="subject-item">{subjectIcons["الكيمياء"]} الكيمياء</li></Link>
+                <Link to="/home/11/علمي/الاحياء"><li className="subject-item">{subjectIcons["احياء"]} الأحياء</li></Link>
+                <Link to="/home/11/علمي/الرياضيات"><li className="subject-item">{subjectIcons["الرياضيات"]} الرياضيات</li></Link>
+                <Link to="/home/11/علمي/التربية-الاسلامية"><li className="subject-item">{subjectIcons["دين"]} التربية الإسلامية</li></Link>
+                <Link to="/home/11/علمي/اللغة-العربية"><li className="subject-item">{subjectIcons["اللغة-العربية"]} اللغة العربية</li></Link>
+                <Link to="/home/11/علمي/تكنولوجيا-المعلومات"><li className="subject-item">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا المعلومات</li></Link>
+                <Link to="/home/11/علمي/اللغة-الانجليزية"><li className="subject-item">{subjectIcons["اللغة-الانجليزية"]} اللغة الإنجليزية</li></Link>
+
               </ul>
             </div>
 
@@ -127,16 +129,17 @@ function Home() {
               </div>
 
               <ul className="subjects-list">
-                <li className="subject-item"><Link to="/home/11/ادبي/التربية-الاسلامية">{subjectIcons["دين"]} التربية الإسلامية</Link></li>
-                <li className="subject-item"><Link to="/home/11/ادبي/الجغرافيا">{subjectIcons["الجغرافيا"]} الجغرافيا</Link></li>
-                <li className="subject-item"><Link to="/home/11/ادبي/التاريخ">{subjectIcons["التاريخ"]} التاريخ</Link></li>
-                <li className="subject-item"><Link to="/home/11/ادبي/الرياضيات">{subjectIcons["الرياضيات"]} الرياضيات</Link></li>
-                <li className="subject-item"><Link to="/home/11/ادبي/اللغة-العربية-الاداب">{subjectIcons["اللغة-العربية-الاداب"]} عربي أدب</Link></li>
-                <li className="subject-item"><Link to="/home/11/ادبي/اللغة-الانجليزية-الاداب">{subjectIcons["اللغة-الانجليزية-الاداب"]} انجليزي أدب</Link></li>
-                <li className="subject-item"><Link to="/home/11/ادبي/تكنولوجيا-المعلومات">{subjectIcons["تكنولوجيا-المعلومات"]} التكنولوجيا</Link></li>
-                <li className="subject-item"><Link to="/home/11/ادبي/الثقافة-العلمية">{subjectIcons["الثقافة-العلمية"]} الثقافة العلمية</Link></li>
-                <li className="subject-item"><Link to="/home/11/ادبي/اللغة-العربية">{subjectIcons["اللغة-العربية"]} عربي</Link></li>
-                <li className="subject-item"><Link to="/home/11/ادبي/اللغة-الانجليزية">{subjectIcons["اللغة-الانجليزية"]} انجليزي</Link></li>
+                <Link to="/home/11/ادبي/التربية-الاسلامية"><li className="subject-item">{subjectIcons["دين"]} التربية الإسلامية</li></Link>
+                <Link to="/home/11/ادبي/الجغرافيا"><li className="subject-item">{subjectIcons["الجغرافيا"]} الجغرافيا</li></Link>
+                <Link to="/home/11/ادبي/التاريخ"><li className="subject-item">{subjectIcons["التاريخ"]} التاريخ</li></Link>
+                <Link to="/home/11/ادبي/الرياضيات"><li className="subject-item">{subjectIcons["الرياضيات"]} الرياضيات</li></Link>
+                <Link to="/home/11/ادبي/اللغة-العربية-الاداب"><li className="subject-item">{subjectIcons["اللغة-العربية-الاداب"]} عربي أدب</li></Link>
+                <Link to="/home/11/ادبي/اللغة-الانجليزية-الاداب"><li className="subject-item">{subjectIcons["اللغة-الانجليزية-الاداب"]} انجليزي أدب</li></Link>
+                <Link to="/home/11/ادبي/تكنولوجيا-المعلومات"><li className="subject-item">{subjectIcons["تكنولوجيا-المعلومات"]} التكنولوجيا</li></Link>
+                <Link to="/home/11/ادبي/الثقافة-العلمية"><li className="subject-item">{subjectIcons["الثقافة-العلمية"]} الثقافة العلمية</li></Link>
+                <Link to="/home/11/ادبي/اللغة-العربية"><li className="subject-item">{subjectIcons["اللغة-العربية"]} عربي</li></Link>
+                <Link to="/home/11/ادبي/اللغة-الانجليزية"><li className="subject-item">{subjectIcons["اللغة-الانجليزية"]} انجليزي</li></Link>
+
               </ul>
             </div>
           </div>
@@ -158,14 +161,14 @@ function Home() {
               </div>
 
               <ul className="subjects-list">
-                <li className="subject-item"><Link to="/home/12/صناعي/فيزياء">{subjectIcons["فيزياء"]} الفيزياء</Link></li>
-                <li className="subject-item"><Link to="/home/12/صناعي/الرياضيات">{subjectIcons["الرياضيات"]} الرياضيات</Link></li>
-                <li className="subject-item"><Link to="/home/12/صناعي/اللغة-العربية">{subjectIcons["اللغة-العربية"]} اللغة العربية</Link></li>
-                <li className="subject-item"><Link to="/home/12/صناعي/التربية-الاسلامية">{subjectIcons["دين"]} التربية الإسلامية</Link></li>
-                <li className="subject-item"><Link to="/home/12/صناعي/تكنولوجيا-المعلومات">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا المعلومات</Link></li>
-                <li className="subject-item"><Link to="/home/12/صناعي/اللغة-الانجليزية">{subjectIcons["اللغة-الانجليزية"]} انجليزي</Link></li>
-                <li className="subject-item"><Link to="/home/12/صناعي/الرسم-الصناعي">{subjectIcons["الرسم-الصناعي"]} رسم صناعي</Link></li>
-                <li className="subject-item"><Link to="/home/12/صناعي/علم-الصناعة">{subjectIcons["علم-الصناعة"]} علم صناعة</Link></li>
+                <Link to="/home/12/صناعي/فيزياء"><li className="subject-item">{subjectIcons["فيزياء"]} الفيزياء</li></Link>
+                <Link to="/home/12/صناعي/الرياضيات"><li className="subject-item">{subjectIcons["الرياضيات"]} الرياضيات</li></Link>
+                <Link to="/home/12/صناعي/اللغة-العربية"><li className="subject-item">{subjectIcons["اللغة-العربية"]} اللغة العربية</li></Link>
+                <Link to="/home/12/صناعي/التربية-الاسلامية"><li className="subject-item">{subjectIcons["دين"]} التربية الإسلامية</li></Link>
+                <Link to="/home/12/صناعي/تكنولوجيا-المعلومات"><li className="subject-item">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا المعلومات</li></Link>
+                <Link to="/home/12/صناعي/اللغة-الانجليزية"><li className="subject-item">{subjectIcons["اللغة-الانجليزية"]} انجليزي</li></Link>
+                <Link to="/home/12/صناعي/الرسم-الصناعي"><li className="subject-item">{subjectIcons["الرسم-الصناعي"]} رسم صناعي</li></Link>
+                <Link to="/home/12/صناعي/علم-الصناعة"><li className="subject-item">{subjectIcons["علم-الصناعة"]} علم صناعة</li></Link>
               </ul>
             </div>
 
@@ -177,14 +180,15 @@ function Home() {
               </div>
 
               <ul className="subjects-list">
-                <li className="subject-item"><Link to="/home/12/علمي/الفيزياء">{subjectIcons["فيزياء"]} الفيزياء</Link></li>
-                <li className="subject-item"><Link to="/home/12/علمي/الكيمياء">{subjectIcons["الكيمياء"]} الكيمياء</Link></li>
-                <li className="subject-item"><Link to="/home/12/علمي/الاحياء">{subjectIcons["احياء"]} الأحياء</Link></li>
-                <li className="subject-item"><Link to="/home/12/علمي/الرياضيات">{subjectIcons["الرياضيات"]} الرياضيات</Link></li>
-                <li className="subject-item"><Link to="/home/12/علمي/التربية-الاسلامية">{subjectIcons["دين"]} التربية الإسلامية</Link></li>
-                <li className="subject-item"><Link to="/home/12/علمي/اللغة-العربية">{subjectIcons["اللغة-العربية"]} اللغة العربية</Link></li>
-                <li className="subject-item"><Link to="/home/12/علمي/تكنولوجيا-المعلومات">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا المعلومات</Link></li>
-                <li className="subject-item"><Link to="/home/12/علمي/اللغة-الانجليزية">{subjectIcons["اللغة-الانجليزية"]} اللغة الإنجليزية</Link></li>
+                <Link to="/home/12/علمي/الفيزياء"><li className="subject-item">{subjectIcons["فيزياء"]} الفيزياء</li></Link>
+                <Link to="/home/12/علمي/الكيمياء"><li className="subject-item">{subjectIcons["الكيمياء"]} الكيمياء</li></Link>
+                <Link to="/home/12/علمي/الاحياء"><li className="subject-item">{subjectIcons["احياء"]} الأحياء</li></Link>
+                <Link to="/home/12/علمي/الرياضيات"><li className="subject-item">{subjectIcons["الرياضيات"]} الرياضيات</li></Link>
+                <Link to="/home/12/علمي/التربية-الاسلامية"><li className="subject-item">{subjectIcons["دين"]} التربية الإسلامية</li></Link>
+                <Link to="/home/12/علمي/اللغة-العربية"><li className="subject-item">{subjectIcons["اللغة-العربية"]} اللغة العربية</li></Link>
+                <Link to="/home/12/علمي/تكنولوجيا-المعلومات"><li className="subject-item">{subjectIcons["تكنولوجيا-المعلومات"]} تكنولوجيا المعلومات</li></Link>
+                <Link to="/home/12/علمي/اللغة-الانجليزية"><li className="subject-item">{subjectIcons["اللغة-الانجليزية"]} اللغة الإنجليزية</li></Link>
+
               </ul>
             </div>
 
@@ -196,16 +200,16 @@ function Home() {
               </div>
 
               <ul className="subjects-list">
-                <li className="subject-item"><Link to="/home/12/ادبي/التربية-الاسلامية">{subjectIcons["دين"]} التربية الإسلامية</Link></li>
-                <li className="subject-item"><Link to="/home/12/ادبي/الجغرافيا">{subjectIcons["الجغرافيا"]} الجغرافيا</Link></li>
-                <li className="subject-item"><Link to="/home/12/ادبي/التاريخ">{subjectIcons["التاريخ"]} التاريخ</Link></li>
-                <li className="subject-item"><Link to="/home/12/ادبي/الرياضيات">{subjectIcons["الرياضيات"]} الرياضيات</Link></li>
-                <li className="subject-item"><Link to="/home/12/ادبي/اللغة-العربية-الاداب">{subjectIcons["اللغة-العربية-الاداب"]} عربي أدب</Link></li>
-                <li className="subject-item"><Link to="/home/12/ادبي/اللغة-الانجليزية-الاداب">{subjectIcons["اللغة-الانجليزية-الاداب"]} انجليزي أدب</Link></li>
-                <li className="subject-item"><Link to="/home/12/ادبي/تكنولوجيا-المعلومات">{subjectIcons["تكنولوجيا-المعلومات"]} التكنولوجيا</Link></li>
-                <li className="subject-item"><Link to="/home/12/ادبي/الثقافة-العلمية">{subjectIcons["الثقافة-العلمية"]} الثقافة العلمية</Link></li>
-                <li className="subject-item"><Link to="/home/12/ادبي/اللغة-العربية">{subjectIcons["اللغة-العربية"]} عربي</Link></li>
-                <li className="subject-item"><Link to="/home/12/ادبي/اللغة-الانجليزية">{subjectIcons["اللغة-الانجليزية"]} انجليزي</Link></li>
+                <Link to="/home/12/ادبي/التربية-الاسلامية"><li className="subject-item">{subjectIcons["دين"]} التربية الإسلامية</li></Link>
+                <Link to="/home/12/ادبي/الجغرافيا"><li className="subject-item">{subjectIcons["الجغرافيا"]} الجغرافيا</li></Link>
+                <Link to="/home/12/ادبي/التاريخ"><li className="subject-item">{subjectIcons["التاريخ"]} التاريخ</li></Link>
+                <Link to="/home/12/ادبي/الرياضيات"><li className="subject-item">{subjectIcons["الرياضيات"]} الرياضيات</li></Link>
+                <Link to="/home/12/ادبي/اللغة-العربية-الاداب"><li className="subject-item">{subjectIcons["اللغة-العربية-الاداب"]} عربي أدب</li></Link>
+                <Link to="/home/12/ادبي/اللغة-الانجليزية-الاداب"><li className="subject-item">{subjectIcons["اللغة-الانجليزية-الاداب"]} انجليزي أدب</li></Link>
+                <Link to="/home/12/ادبي/تكنولوجيا-المعلومات"><li className="subject-item">{subjectIcons["تكنولوجيا-المعلومات"]} التكنولوجيا</li></Link>
+                <Link to="/home/12/ادبي/الثقافة-العلمية"><li className="subject-item">{subjectIcons["الثقافة-العلمية"]} الثقافة العلمية</li></Link>
+                <Link to="/home/12/ادبي/اللغة-العربية"><li className="subject-item">{subjectIcons["اللغة-العربية"]} عربي</li></Link>
+                <Link to="/home/12/ادبي/اللغة-الانجليزية"><li className="subject-item">{subjectIcons["اللغة-الانجليزية"]} انجليزي</li></Link>
               </ul>
             </div>
           </div>
