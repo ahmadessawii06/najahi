@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import Card from '../components/GithubsCard';
+import { useEffect, useState } from "react";
+import Card from "../components/GithubsCard";
 
 interface TeamMember {
   name: string;
@@ -16,9 +16,9 @@ function SynTag() {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        const response = await fetch('/data/team.json');
+        const response = await fetch(`${import.meta.env.BASE_URL}data/team.json`);
         if (!response.ok) {
-          throw new Error('فشل في تحميل بيانات الفريق');
+          throw new Error("فشل في تحميل بيانات الفريق");
         }
 
         const data = await response.json();
@@ -44,12 +44,14 @@ function SynTag() {
           <span className="Tag">Tag</span> Team
         </h1>
 
-
-        <h2 className='page-header2' > <p >
-نحن أربعة طلاب من جامعة النجاح الوطنية، من تخصص علم الحاسوب في سوق العمل (CAP). هدفنا هو مساعدة الطلاب على تحسين تجربة التعلم الخاصة بهم من خلال توفير الموارد والدعم المفيد. يعرض هذا القسم أعضاء فريقنا على GitHub ويسلط الضوء على عملنا التعاوني.
-        </p>
+        <h2 className="page-header2">
+          <p>
+            نحن أربعة طلاب من جامعة النجاح الوطنية، من تخصص علم الحاسوب في سوق
+            العمل (CAP). هدفنا هو مساعدة الطلاب على تحسين تجربة التعلم الخاصة
+            بهم من خلال توفير الموارد والدعم المفيد. يعرض هذا القسم أعضاء فريقنا
+            على GitHub ويسلط الضوء على عملنا التعاوني.
+          </p>
         </h2>
-
       </div>
 
       <div className="team-grid">
