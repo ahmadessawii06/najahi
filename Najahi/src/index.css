@@ -509,6 +509,8 @@ nav {
 /* Login Page */
 .auth-container {
   display: flex;
+  position: relative;
+  bottom: 100px;
   justify-content: center;
   align-items: center;
   min-height: 70vh;
