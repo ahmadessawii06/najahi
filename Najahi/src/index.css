@@ -2034,8 +2034,9 @@ background-position: center; /* تتمركز في الوسط */
 
 .page-header2 p {
   font-size: 1.2rem;
-  color: #000000;
-  max-width: 1000px;
+   color: white;
+  text-shadow: 0 0 10px rgb(24, 165, 172) , 0 0 20px rgb(24, 165, 172) , 0 0 40px rgb(24, 165, 172);
+   max-width: 1000px;
   margin: 0 auto;
   line-height: 1.6;
   padding: 15px 20px;
