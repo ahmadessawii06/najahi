@@ -1,4 +1,7 @@
 import React, { useState } from 'react'; 
+import { useNavigate } from 'react-router-dom';
+
+
 
 function Login() {
   const [activeForm, setActiveForm] = useState<'login' | 'signup' | 'forgot'>('login');
@@ -7,10 +10,20 @@ function Login() {
     setActiveForm(formType);
   };
   
-  const continueAsGuest = () => {
-    alert('✅ تم المتابعة كزائر!');
-    console.log('Continue as guest');
-  };
+        const navigate = useNavigate();
+
+        const continueAsGuest = () => {
+        alert(' سيتم الانتقال إلى صفحة الرئيسية ✅ ');
+        navigate('/home');
+
+        // ننتظر قليلًا قبل عمل scroll
+        setTimeout(() => {
+          const pageHeader = document.querySelector('.HomeMain');
+          if (pageHeader) {
+            pageHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100); // 100ms عادة كافية
+      };
   
   const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

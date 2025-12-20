@@ -39,7 +39,7 @@ function Home() {
   return (
     <>
       <div className="page-header">
-        <h1>الصفحة الرئيسية</h1>
+        <h1 className="HomeMain">الصفحة الرئيسية</h1>
         <p>اختر صفك الدراسي للوصول إلى المواد والموارد التعليمية المناسبة</p>
       </div>
 
