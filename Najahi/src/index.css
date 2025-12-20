@@ -1670,4 +1670,10 @@ footer {
   min-height: 100vh;
   overflow-y: auto;}
 
-
+.SynTag-parag{
+  
+    color: white;
+    text-shadow: 0 0 10px rgb(159, 99, 237) , 0 0 20px rgb(159, 99, 237) , 0 0 40px rgb(159, 99, 237);
+    font-size: 35px;
+    font-weight: bold;
+}
