@@ -1,7 +1,7 @@
 
 export default function About() {
   return (
-    <section id="about" className="page">
+    <section id="about" className="page active">
       <div className="page-header">
         <h1>من نحن</h1>
       </div>
