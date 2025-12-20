@@ -2041,3 +2041,10 @@ background-position: center; /* تتمركز في الوسط */
   padding: 15px 20px;
   
 } 
+
+
+.subject-item, .subjects-list a { text-decoration: none; }
+ 
+  
+
+
