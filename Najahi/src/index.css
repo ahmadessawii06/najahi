@@ -2030,3 +2030,14 @@ background-position: center; /* تتمركز في الوسط */
 
   display: block;
 }
+
+
+.page-header2 p {
+  font-size: 1.2rem;
+  color: #000000;
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.6;
+  padding: 15px 20px;
+  
+} 
