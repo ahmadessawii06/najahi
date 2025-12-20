@@ -1,5 +1,4 @@
-import React from 'react';                                                    
-  
+
 interface TeacherCardProps {
   name: string;
   title: string;
