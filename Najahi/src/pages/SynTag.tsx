@@ -16,7 +16,7 @@ function SynTag() {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        const response = await fetch('/data/team.json'); 
+        const response = await fetch('/data/team.json');
         if (!response.ok) {
           throw new Error('فشل في تحميل بيانات الفريق');
         }
@@ -43,12 +43,12 @@ function SynTag() {
           <span className="Syn">Syn</span>
           <span className="Tag">Tag</span> Team
         </h1>
-      
 
-<h2 className='page-header2' > <p >
-We are four students from An-Najah National University, majoring in Computer Science as part of the Apprenticeship Program (CAP). Our goal is to help students improve their learning experience by providing useful resources and support. This section showcases our GitHub team members and highlights our collaborative work.
-</p>
-</h2>
+
+        <h2 className='page-header2' > <p >
+نحن أربعة طلاب من جامعة النجاح الوطنية، من تخصص علم الحاسوب في سوق العمل (CAP). هدفنا هو مساعدة الطلاب على تحسين تجربة التعلم الخاصة بهم من خلال توفير الموارد والدعم المفيد. يعرض هذا القسم أعضاء فريقنا على GitHub ويسلط الضوء على عملنا التعاوني.
+        </p>
+        </h2>
 
       </div>
 

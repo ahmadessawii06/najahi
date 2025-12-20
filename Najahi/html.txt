@@ -209,7 +209,7 @@
       </div>
     </section>
 
-    <!-- Page 4: Donation -->
+   <!-- Page 4: Donation -->
     <section id="donation" class="page">
       <div class="page-header">
         <h1>التبرع بالمواد التعليمية</h1>
@@ -349,7 +349,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> 
 
     <!-- Page 5: Search -->
     <section id="search" class="page">
