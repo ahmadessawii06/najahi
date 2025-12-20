@@ -14,7 +14,7 @@ import SubHomePage from "./pages/subHomePage";
 function App() {
   return (
     <>
-        <Router>
+      <Router>
       <Header />
 
       <Routes>
