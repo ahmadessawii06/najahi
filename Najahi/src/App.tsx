@@ -11,6 +11,7 @@ import Groups from "./pages/Groups";
 import Teacher from "./pages/Teacher";
 import SynTag from "./pages/SynTag";
 import SubHomePage from "./pages/subHomePage";
+
 function App() {
   return (
     <>
@@ -19,16 +20,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/home" element={<Home />}>
-           <Route path=":grade/:track?/:materialName" element={<SubHomePage />} > </Route>
+           <Route path=":grade/:track?/:materialName" element={<SubHomePage />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/donation" element={<Donation />} />
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/search" element={<Search />}></Route>
-        <Route path="/uni" element={<University />}></Route>
-        <Route path="/groups" element={<Groups />}></Route>
-        <Route path="/teachers" element={<Teacher />}></Route>
-        <Route path="/syntag" element={<SynTag />}></Route>
+        <Route path="/about" element={<About />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/uni" element={<University />} />
+        <Route path="/groups" element={<Groups />} />
+        <Route path="/teachers" element={<Teacher />} />
+        <Route path="/syntag" element={<SynTag />} />
       </Routes>
 
       <RenderFooter />
