@@ -38,7 +38,7 @@ function RenderFooter() {
           <h3>روابط سريعة</h3>
           <ul className="footer-links">
             <li>
-              <Link to="/main">الصفحة الرئيسية</Link>
+              <Link to="/home">الصفحة الرئيسية</Link>
             </li>
             <li>
               <Link to="/about">من نحن</Link>
