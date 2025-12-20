@@ -1,4 +1,5 @@
 import { TextField} from "@mui/material"
+
 function Donation() {
   return (
       <>
@@ -17,19 +18,23 @@ function Donation() {
 
           <form id="donation-form"  onSubmit={()=> alert("شكرا لتبرعك! سيتم التواصل معك ")} >
             <div className="form-group form-row">
-                <TextField variant="outlined" label="اسم المستخدم" dir="rtl" required  />
-                <TextField variant="outlined" label="البريد الالكتروني" type="email" dir="rtl" required />
+                <TextField variant="outlined" label="اسم المستخدم" dir="rtl" required 
+                placeholder="Leen Arafat" />
+                <TextField variant="outlined" label="البريد الالكتروني" type="email" dir="rtl" required 
+                placeholder="Leen@example.com"
+                
+                />
             </div>
-            <div className="form-group">
-              <label htmlFor="item-name">اسم المادة/الكتاب</label>
-              <input
-                type="text"
-                id="item-name"
-                className="form-control"
-                placeholder="مثال: كتاب الرياضيات للصف العاشر"
-                required
-              />
-            </div>
+        
+         <TextField className="form-group form-row" variant="outlined" fullWidth label="اسم المادة / اسم الكتاب" id="fullWidth"  placeholder="كتاب رياضيات الصف الحادي عشر العلمي"/>
+              
+          
+
+
+
+
+              
+           
 
             <div className="form-row">
               <div className="form-group">
@@ -142,3 +147,6 @@ function Donation() {
 }
 
 export default Donation
+
+
+
