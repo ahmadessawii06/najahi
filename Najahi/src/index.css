@@ -2095,3 +2095,32 @@ background-position: center; /* تتمركز في الوسط */
     font-size: 1.7rem;
   }
 }
+
+
+/* تحسين تنسيق الصفحة */
+.page2 {
+  padding: 30px 20px !important;
+  margin-bottom: 0 !important;
+}
+
+.all {
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  min-height: 100vh !important;
+  position: relative;
+}
+
+/* إزالة أي هوامش سفلية زائدة */
+.team-grid {
+  margin-bottom: 0 !important;
+  padding-bottom: 40px !important;
+}
+
+/* إضافة حدود واضحة للمحتوى */
+.all::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: transparent;
+  margin-bottom: 0;
+}
