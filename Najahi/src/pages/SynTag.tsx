@@ -37,7 +37,7 @@ function SynTag() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="page active">
+    <div className="page2 active2 all">
       <div className="page-header">
         <h1 className="syntag-title">
           <span className="Syn">Syn</span>
