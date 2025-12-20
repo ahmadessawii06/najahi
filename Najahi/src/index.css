@@ -111,6 +111,7 @@ nav {
 }
 
 .page.active {
+
   display: block;
 }
 
@@ -1223,7 +1224,7 @@ nav {
   padding: 15px;
 }
 
-/* Footer */
+
 footer {
   background-color: var(--primary-blue);
   color: white;
@@ -1231,6 +1232,8 @@ footer {
   margin-top: 80px;
   margin-bottom: 0;
   padding-bottom: 50px;
+  margin: 0px;
+ 
 }
 
 .footer-container {
@@ -2002,3 +2005,39 @@ footer {
   color: #666;
   font-size: 1.1rem;
 }
+
+
+.all { 
+ background-image: url("../src/assets/GitHub-Accounts/bg.jpg");
+ background-repeat: no-repeat;
+background-size: cover;      /* تغطي العنصر كامل */
+background-position: center; /* تتمركز في الوسط */
+
+}
+
+
+
+.page2 {
+ 
+  animation: fadeIn 0.5s ease;
+  max-width: 20000px;
+ 
+}
+
+
+
+.page2.active2 {
+
+  display: block;
+}
+
+
+.page-header2 p {
+  font-size: 1.2rem;
+  color: #000000;
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.6;
+  padding: 15px 20px;
+  
+} 

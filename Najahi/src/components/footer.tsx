@@ -7,7 +7,7 @@ import youtubeIcon from '../assets/Social-Icons/youtube.png'
 import telegramIcon from '../assets/Social-Icons/telegram.png'
 function RenderFooter() {
   return (
-    <footer>
+    <footer className="footer">
       <div className="footer-container">
         
         <div className="footer-section">
