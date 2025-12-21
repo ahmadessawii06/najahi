@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
-
+import ScrollToTop from '../components/ScroolToTop.tsx'
 
 
 function Login() {
@@ -217,6 +217,7 @@ function Login() {
             </form>
           </div>
         </div>
+          <ScrollToTop />
       </section>
    
   );

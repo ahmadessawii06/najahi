@@ -5,6 +5,7 @@ import whatsappIcon from '../assets/Social-Icons/whatsapp.png'
 import telegramIcon from '../assets/Social-Icons/telegram.png'
 import zoomIcon from '../assets/Social-Icons/zoom.png'
 import massengerIcon from '../assets/Social-Icons/messenger.png'
+import ScrollToTop from '../components/ScroolToTop.tsx'
 // Arrow Function 
 const Groups = () => {
   // Delcare Gruops
@@ -212,6 +213,7 @@ const Groups = () => {
           </div>
         ))}
       </div>
+        <ScrollToTop />
     </section>
   );
 };

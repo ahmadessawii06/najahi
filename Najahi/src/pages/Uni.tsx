@@ -2,6 +2,7 @@ import najahIcon from "../assets/Uni-Photos/najah-icon.jpeg";
 import openIcon from "../assets/Uni-Photos/alkds-icon.jpeg";
 import berzit from "../assets/Uni-Photos/berzit-icon.jpeg";
 import amercina from "../assets/Uni-Photos/americna-icon.jpeg";
+import ScrollToTop from '../components/ScroolToTop.tsx'
 export default function University() {
   return (
     <section>
@@ -156,7 +157,10 @@ export default function University() {
             </div>
           </div>
         </div>
+        
       </div>
+        <ScrollToTop />
     </section>
+    
   );
 }

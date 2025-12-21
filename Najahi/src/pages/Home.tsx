@@ -1,5 +1,7 @@
 
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation }
+ from "react-router-dom";
+import ScrollToTop from '../components/ScroolToTop.tsx'
 
 // سمايلات لكل مادة
 const subjectIcons: Record<string, string> = {
@@ -214,7 +216,7 @@ function Home() {
             </div>
           </div>
         </div>
-
+      <ScrollToTop />
       </div>
     </>
   )

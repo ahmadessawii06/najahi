@@ -1,4 +1,4 @@
-
+import ScrollToTop from '../components/ScroolToTop.tsx'
 import TeachersCard from "../components/TeachersCard";
 import BioloyIcon from "../assets/Teacher-Photos/biology.jpg";
 import MathIcon from "../assets/Teacher-Photos/Math.jpg"
@@ -62,7 +62,9 @@ function Teachers() {
   subjects={["تاريخ", "جغرافيا"]}
   icon={tare5} />
     
+     
   </div>
+   <ScrollToTop />
     </>
     )}
 export default Teachers;  

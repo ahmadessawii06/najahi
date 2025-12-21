@@ -1,3 +1,6 @@
+import ScrollToTop from '../components/ScroolToTop.tsx'
+
+
 export default function Search() {
   return (
     <div id="search" className="page active">
@@ -80,6 +83,7 @@ export default function Search() {
           </div>
         </div>
       </div>
+        <ScrollToTop />
     </div>
   );
 }

@@ -1,3 +1,6 @@
+import ScrollToTop from '../components/ScroolToTop.tsx'
+
+
 
 export default function About() {
   return (
@@ -61,6 +64,7 @@ export default function About() {
           </p>
         </div>
       </div>
+        <ScrollToTop />
     </section>
   );
 }

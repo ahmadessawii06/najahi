@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../components/GithubsCard";
+import ScrollToTop from '../components/ScroolToTop.tsx'
 
 interface TeamMember {
   name: string;
@@ -65,6 +66,7 @@ function SynTag() {
           />
         ))}
       </div>
+        <ScrollToTop />
     </div>
   );
 }
