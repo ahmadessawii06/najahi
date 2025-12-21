@@ -42,7 +42,7 @@ export default function Search() {
               <p>
                 كتاب الرياضيات الرسمي للصف العاشر، يشمل الجبر والهندسة والإحصاء.
               </p>
-              <a href="#" className="join-btn">عرض الكتاب</a>
+              <a href="https://www.sh-pal.com/" target="_blank" className="join-btn" >عرض الكتاب</a>
             </div>
           </div>
 
@@ -54,7 +54,7 @@ export default function Search() {
               <h4>الكيمياء للصف الحادي عشر العلمي</h4>
               <div className="result-meta">د. محمد أبو زهرة</div>
               <p>كتاب شامل لمادة الكيمياء، يتضمن تجارب عملية وتمارين محلولة.</p>
-              <a href="#" className="join-btn">عرض الكتاب</a>
+              <a href="https://www.sh-pal.com/" target="_blank" className="join-btn">عرض الكتاب</a>
             </div>
           </div>
 
@@ -66,7 +66,7 @@ export default function Search() {
               <h4>الأدب الفلسطيني المعاصر</h4>
               <div className="result-meta">د. فدوى طوقان</div>
               <p>مختارات من الأدب الفلسطيني المعاصر للصف الثاني عشر الأدبي.</p>
-              <a href="#" className="join-btn">عرض الكتاب</a>
+              <a href="https://www.sh-pal.com/" target="_blank" className="join-btn">عرض الكتاب</a>
             </div>
           </div>
 
@@ -78,7 +78,7 @@ export default function Search() {
               <h4>تاريخ فلسطين الحديث</h4>
               <div className="result-meta">د. وليد الخالدي</div>
               <p>كتاب يغطي تاريخ فلسطين منذ العهد العثماني حتى الوقت الحاضر.</p>
-              <a href="#" className="join-btn">عرض الكتاب</a>
+              <a href="https://www.sh-pal.com/" target="_blank" className="join-btn">عرض الكتاب</a>
             </div>
           </div>
         </div>
