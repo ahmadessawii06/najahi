@@ -57,13 +57,13 @@ function RenderFooter() {
           <h3>الصفوف الدراسية</h3>
           <ul className="footer-links">
             <li>
-              <Link to="/groups">الصف العاشر</Link>
+              <Link to="/home">الصف العاشر</Link>
             </li>
             <li>
-              <Link to="/groups">الصف الحادي عشر</Link>
+              <Link to="/home">الصف الحادي عشر</Link>
             </li>
             <li>
-              <Link to="/groups">الصف الثاني عشر</Link>
+              <Link to="/home">الصف الثاني عشر</Link>
             </li>
             <li>
               <Link to="/groups">مجموعات الدراسة</Link>
