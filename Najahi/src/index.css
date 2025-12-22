@@ -60,8 +60,7 @@ header {
 }
 
 .page-header p {
-
-color: black;
+  color: black;
 }
 
 .header-container {
@@ -173,7 +172,6 @@ nav {
   font-size: 1.1rem;
   max-width: 700px;
   margin: 20px auto 0;
- 
 }
 
 /* Home Page - Updated Layout */
@@ -1373,7 +1371,6 @@ footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
 }
 
 .social-links .git-yaqeen a {
@@ -1420,7 +1417,11 @@ footer {
 
   .nav-links.active {
     display: flex;
+    gap: 0px;
+   
   }
+
+
 
   .nav-toggle {
     display: block;
@@ -1491,8 +1492,6 @@ footer {
   min-height: 100vh;
   direction: rtl;
   background-image: url;
-
- 
 }
 
 .page-header {
@@ -2042,8 +2041,6 @@ footer {
   margin-bottom: 1rem;
 }
 
-
-
 .page2 {
   animation: fadeIn 0.5s ease;
   max-width: 20000px;
@@ -2417,11 +2414,9 @@ body.dark-theme .teacher-location,
 body.dark-theme .teacher-name,
 body.dark-theme .teacher-rating,
 body.dark-theme .teacher-qualifications,
-body.dark-theme .teacher-price{
- color: white
+body.dark-theme .teacher-price {
+  color: white;
 }
-
-
 
 body.dark-theme .ttt {
   color: rgba(199, 197, 197, 0.644);
@@ -2460,7 +2455,9 @@ body.dark-theme .copyright {
   border-top-color: #34495e;
   color: #bdc3c7;
 }
-body.dark-theme .member-role{color: white;}
+body.dark-theme .member-role {
+  color: white;
+}
 
 /* Dark Theme Animation */
 @keyframes darkThemeTransition {
@@ -2481,8 +2478,8 @@ body.dark-theme {
   .scroll-top-btn {
     margin-bottom: 20px;
     margin-right: 40px;
-  }}
-  
+  }
+}
 
 /* Dark Theme Toggle Button */
 .theme-toggle-container {
@@ -2629,9 +2626,6 @@ body.dark-theme .theme-toggle-btn:hover {
   background-position: center;
   height: 100%;
 }
-
-
-
 
 .login-Box {
   border-radius: var(--border-radius);
