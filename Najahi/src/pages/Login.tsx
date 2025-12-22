@@ -110,6 +110,20 @@ function Login() {
 
             <button type="submit" className="btn">تسجيل الدخول</button>
 
+
+            <div className="guest-button-container">
+              <button
+                type="button"
+                className="btn btn-outline guest"
+                onClick={continueAsGuest}
+              >
+                المتابعة كزائر
+              </button>
+            </div>
+          </form>
+
+
+          
             <div className="auth-links">
               <button
                 type="button"
@@ -119,17 +133,6 @@ function Login() {
                 نسيت كلمة المرور؟
               </button>
             </div>
-
-            <div className="guest-button-container">
-              <button
-                type="button"
-                className="btn btn-outline"
-                onClick={continueAsGuest}
-              >
-                المتابعة كزائر
-              </button>
-            </div>
-          </form>
 
           {/* 📝 Signup */}
           <form

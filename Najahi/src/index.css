@@ -613,7 +613,10 @@ nav {
   transition: var(--transition);
   text-align: center;
   width: 100%;
+ 
 }
+
+
 
 .btn:hover {
   background-color: var(--secondary-blue);
@@ -632,6 +635,11 @@ nav {
   background-color: transparent;
   border: 2px solid var(--primary-blue);
   color: var(--primary-blue);
+
+
+}
+.guest {
+  height: 50px;
 }
 
 .btn-outline:hover {
