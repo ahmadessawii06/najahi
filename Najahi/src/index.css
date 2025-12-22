@@ -2665,30 +2665,31 @@ body.dark-theme .theme-toggle-btn:hover {
 
 
 .login-Box{
-
-
-
   background-color: white;
-
   border-radius: var(--border-radius);
-
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ظل أجمل */
-
   padding: 30px;
-
   margin: 30px; /*ahmadessawii06*/
-
-
-
   background-image: url("/Login.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
   height: 100%;
 
-background-color: red;
+}
 
 
 
+.d-page{
+
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ظل أجمل */
+  padding: 30px;
+  margin: 30px;
+  background-image: url("/Donation.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
 }
