@@ -57,7 +57,8 @@ function Login() {
   };
 
   return (
-    <section id="login" className="page active">
+   <div className='login-Box'>
+     <section id="login" className="page active">
       <div className="page-header">
         <h1>مرحباً بك في منصة نجاحي</h1>
         <p>منصة تعليمية متكاملة لطلاب الثانوية العامة (الصفوف 10، 11، 12)</p>
@@ -240,6 +241,9 @@ function Login() {
 
       <ScrollToTop />
     </section>
+
+
+   </div>
   );
 }
 
