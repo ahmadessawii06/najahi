@@ -5,7 +5,8 @@ import amercina from "../assets/Uni-Photos/americna-icon.jpeg";
 import ScrollToTop from '../components/ScroolToTop.tsx'
 export default function University() {
   return (
-    <section>
+   <div className="uni-page">
+     <section>
       <div className="page-header">
         <h1>الجامعات الفلسطينية</h1>
         <p>تعرف على الجامعات الفلسطينية والبرامج الدراسية التي تقدمها</p>
@@ -161,6 +162,9 @@ export default function University() {
       </div>
         <ScrollToTop />
     </section>
+
+
+   </div>
     
   );
 }

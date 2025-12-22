@@ -2696,12 +2696,27 @@ body.dark-theme .theme-toggle-btn:hover {
 
 .search-page{
 
- background-color: white;
+  background-color: white;
   border-radius: var(--border-radius);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ظل أجمل */
   padding: 30px;
   margin: 30px;
   background-image: url("/Search.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+
+.uni-page{
+    background-color: white;
+
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ظل أجمل */
+  padding: 30px;
+  margin: 30px;
+  background-image: url("/Uni.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
