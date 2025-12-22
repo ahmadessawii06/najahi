@@ -2614,18 +2614,6 @@ body.dark-theme .theme-toggle-btn:hover {
   }
 }
 
-.AboutUs {
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ظل أجمل */
-  padding: 30px;
-  margin: 30px; /*ahmadessawii06*/
-  /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKDVI87HnzfZEc3dIYoAf7xZuHbUdtD-tEzA&s); */
-  /* background-image: url("/About.png"); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-}
 
 .login-Box {
   border-radius: var(--border-radius);
