@@ -197,7 +197,7 @@ const Groups = () => {
             <div className="group-stats">
               {group.stats.map((stat, index) => (
                 <p key={index} className="stat-item">
-                  <strong>{stat.label}</strong> {stat.value}
+                  <strong className='state-big'>{stat.label}</strong> {stat.value}
                 </p>
               ))}
             </div>

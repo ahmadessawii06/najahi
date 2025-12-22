@@ -50,7 +50,7 @@ function Home() {
         <div className="level level-10">
           <div className="level-header">
             <h2>الصف العاشر - المسار الأكاديمي</h2>
-            <p>المواد الدراسية للصف العاشر - المسار الأكاديمي</p>
+            <p className="Desc-ten">المواد الدراسية للصف العاشر - المسار الأكاديمي</p>
           </div>
 
           <div className="boxes-container">

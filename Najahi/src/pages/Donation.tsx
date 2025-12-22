@@ -14,7 +14,7 @@ function Donation() {
 
       <div className="donation-container">
         <div className="donate-form">
-          <h2 style={{marginBottom:"25px" , color:"blue"}}> تواصل معنا للتبرع بمواد تعليمية </h2>
+          <h2 className = "h2-in-donate-form" style={{marginBottom:"25px" }}> تواصل معنا للتبرع بمواد تعليمية </h2>
 
           <form id="donation-form"  onSubmit={()=> alert("شكرا لتبرعك! سيتم التواصل معك ")} >
             <div className="form-group form-row">
@@ -74,8 +74,9 @@ function Donation() {
               <label>رفع صورة للمادة (اختياري)</label>
               <div className="file-upload">
                 <i
+                
                   className="fas fa-cloud-upload-alt"
-                  style= {{fontSize:"2rem" , color:"blue" , marginBottom: "10px"}}></i>
+                  style= {{fontSize:"2rem"  , marginBottom: "10px"}}></i>
                 <p>اسحب وأفلت الصورة هنا أو انقر للرفع</p>
                 <p style={{fontSize:"0.9rem", color:"gray"}}>
                   الحد الأقصى لحجم الملف: 5MB
@@ -88,7 +89,7 @@ function Donation() {
         </div>
 
         <div className="donations-grid">
-          <h2 style={{marginBottom:"25px" , color:"blue"}}>
+          <h2 className ="h2-in-donations-grid"style={{marginBottom:"25px" }}>
             المواد المتاحة للتبرع
           </h2>
 
@@ -148,6 +149,3 @@ function Donation() {
 }
 
 export default Donation
-
-
-
