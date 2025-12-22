@@ -35,7 +35,7 @@ function Login() {
   // 🔐 تسجيل الدخول
   const handleLoginSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert('✅ تم تسجيل الدخول بنجاح!');
+   alert("تم تسجيل الدخول بنجاح ✅ ، نورت المنصة يا بطل! ")
     console.log('Login submitted');
     continueAfterLogin();
   };
@@ -120,10 +120,9 @@ function Login() {
                 المتابعة كزائر
               </button>
             </div>
-          </form>
 
 
-          
+            
             <div className="auth-links">
               <button
                 type="button"
@@ -134,6 +133,10 @@ function Login() {
               </button>
             </div>
 
+          </form>
+
+
+          
           {/* 📝 Signup */}
           <form
             id="signup-form"
