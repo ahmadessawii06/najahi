@@ -1373,6 +1373,7 @@ footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
 }
 
 .social-links .git-yaqeen a {
@@ -2411,7 +2412,6 @@ body.dark-theme .teacher-qualifications,
 body.dark-theme .teacher-price {
   color: white;
 }
-
 
 body.dark-theme .teacher-location,
 body.dark-theme .teacher-name,
