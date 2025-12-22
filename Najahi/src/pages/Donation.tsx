@@ -17,16 +17,16 @@ function Donation() {
           <h2 className = "h2-in-donate-form" style={{marginBottom:"25px" }}> تواصل معنا للتبرع بمواد تعليمية </h2>
 
           <form id="donation-form"  onSubmit={()=> alert("شكرا لتبرعك! سيتم التواصل معك ")} >
-            <div className="form-group form-row">
-                <TextField variant="outlined" label="اسم المستخدم" dir="rtl" required 
+            <div className="form-group form-row"  dir="ltr">
+                <TextField variant="outlined" label="اسم المستخدم"  required 
                 placeholder="Leen Arafat" />
-                <TextField variant="outlined" label="البريد الالكتروني" type="email" dir="rtl" required 
+                <TextField variant="outlined" label="البريد الالكتروني" type="email" required 
                 placeholder="Leen@example.com"
                 
                 />
             </div>
         
-         <TextField className="form-group form-row" variant="outlined" fullWidth label="اسم المادة / اسم الكتاب" id="fullWidth"  placeholder="كتاب رياضيات الصف الحادي عشر العلمي"/>
+         <TextField dir="ltr"className="form-group form-row" variant="outlined" fullWidth label="اسم المادة / اسم الكتاب" id="fullWidth"  placeholder="كتاب رياضيات الصف الحادي عشر العلمي"/>
               
           
 
