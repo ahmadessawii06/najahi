@@ -40,10 +40,10 @@ function SynTag() {
   return (
     <div className="page2 active2 all">
       <div className="page-header">
-        <h1 className="syntag-title">
+        <h2 className="syntag-title">
           <span className="Syn">Syn</span>
           <span className="Tag">Tag</span> Team
-        </h1>
+        </h2>
 
         <h2 className="page-header2">
           <p>

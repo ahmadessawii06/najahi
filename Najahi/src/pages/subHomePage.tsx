@@ -77,7 +77,7 @@ function SubHomePage() {
           <div className="material-icon"  style={{ fontSize: "2.5rem" }} > {materialIcon} </div>
 
           <div className="material-details">
-            <h1>{materialName}</h1>
+            <h2>{materialName}</h2>
             <p>  الوصف: <span>{materialDesc}</span> </p>
           </div>
         </div>
