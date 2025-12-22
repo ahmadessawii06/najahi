@@ -2460,7 +2460,7 @@ body.dark-theme .copyright {
   border-top-color: #34495e;
   color: #bdc3c7;
 }
-
+body.dark-theme .member-role{color: white;}
 
 /* Dark Theme Animation */
 @keyframes darkThemeTransition {
@@ -2629,6 +2629,9 @@ body.dark-theme .theme-toggle-btn:hover {
   background-position: center;
   height: 100%;
 }
+
+
+
 
 .login-Box {
   border-radius: var(--border-radius);
