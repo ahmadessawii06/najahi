@@ -116,7 +116,7 @@ nav {
   cursor: pointer;
 }
 
-/* Main Content */
+
 .page {
   display: none;
   animation: fadeIn 0.5s ease;
@@ -170,7 +170,6 @@ nav {
   margin: 20px auto 0;
 }
 
-/* Home Page - Updated Layout */
 .levels-container {
   display: flex;
   flex-direction: column;
@@ -180,10 +179,9 @@ nav {
 
 .level {
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* ظل أجمل */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
   padding: 30px;
-  margin: 30px; /*ahmadessawii06*/
-  /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKDVI87HnzfZEc3dIYoAf7xZuHbUdtD-tEzA&s); */
+  margin: 30px; 
   background-image: url("../public/bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -213,7 +211,7 @@ nav {
   font-size: 30px;
 }
 
-/* Boxes Container - Updated for space-between */
+
 .boxes-container {
   display: flex;
   justify-content: space-between;
@@ -221,7 +219,6 @@ nav {
   gap: 25px;
 }
 
-/* Level 10 - Single box centered */
 .level-10 .boxes-container {
   justify-content: center;
 }
@@ -300,7 +297,7 @@ nav {
   font-size: 1.2rem;
 }
 
-/* Level-specific colors */
+
 .level-10 .box {
   max-width: 600px;
 }
@@ -361,7 +358,7 @@ nav {
   color: #8338ec;
 }
 
-/* Material Page Styles */
+
 .material-header {
   display: flex;
   align-items: center;
@@ -500,7 +497,7 @@ nav {
   border-radius: 15px;
 }
 
-/* Responsive adjustments for boxes */
+
 @media (max-width: 1200px) {
   .boxes-container {
     justify-content: center;
@@ -532,7 +529,7 @@ nav {
   }
 }
 
-/* Login Page */
+
 .auth-container {
   display: flex;
   position: relative;
