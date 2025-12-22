@@ -2709,7 +2709,7 @@ body.dark-theme .theme-toggle-btn:hover {
 }
 
 
-.uni-page{
+.uni-page ,.groups-page{
     background-color: white;
 
   border-radius: var(--border-radius);
