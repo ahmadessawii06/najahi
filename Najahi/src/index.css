@@ -2668,19 +2668,6 @@ body.dark-theme .theme-toggle-btn:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   padding: 30px;
   margin: 30px;
-  /* background-image: url("/Uni.png"); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-}
-
-.Teacher-page {
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  padding: 30px;
-  margin: 30px;
-  /* background-image: url("/Teacher.png"); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
