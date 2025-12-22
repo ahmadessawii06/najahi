@@ -4,7 +4,8 @@ import ScrollToTop from '../components/ScroolToTop.tsx'
 
 export default function About() {
   return (
-    <section id="about" className="page active">
+    <div className='AboutUs'>
+      <section id="about" className="page active ">
       <div className="page-header">
         <h1>من نحن</h1>
       </div>
@@ -66,5 +67,9 @@ export default function About() {
       </div>
         <ScrollToTop />
     </section>
+
+
+
+    </div>
   );
 }
