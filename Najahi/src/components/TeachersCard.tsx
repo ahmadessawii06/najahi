@@ -39,19 +39,19 @@ function TeachersCard({
       </div>
      <div className="divider">
       <p className="teacher-qualifications">
-        <strong>المؤهلات:</strong> {qualifications}
+        <strong style={{color:"white"}}>المؤهلات:</strong> {qualifications}
       </p>
 
       <p className="teacher-location">
-        <strong>الموقع:</strong> {location}
+        <strong style={{color:"white"}}>الموقع:</strong> {location}
       </p>
 
       <p className="teacher-price">
-        <strong>السعر:</strong> {price}
+        <strong style={{color:"white"}}>السعر:</strong> {price}
       </p>
 
       <div className="teacher-subjects">
-        <strong>المواد التي يدرّسها:</strong>
+        <strong style={{color:"white"}}>المواد التي يدرّسها:</strong>
         <ul>
           {subjects.map((subject, index) => (
             <li key={index}>{subject}</li>
@@ -59,7 +59,9 @@ function TeachersCard({
         </ul>
       </div>
 
-      <button className="contact-teacher-button">
+      <button 
+       
+      className="contact-teacher-button join-button">
         تواصل مع المعلم
       </button>
       </div>

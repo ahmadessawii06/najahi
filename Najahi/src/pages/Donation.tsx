@@ -105,7 +105,7 @@ function Donation() {
                   </div>
                 </div>
 
-                <button type="submit" className="btn btn-secondary">
+                <button type="submit" className="btn btn-secondary join-btn" >
                   {" "}
                   تقديم التبرع{" "}
                 </button>
