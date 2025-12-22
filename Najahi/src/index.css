@@ -677,7 +677,7 @@ nav {
 }
 
 /* About Page */
-.about-content {
+/* .about-content {
   background-color: white;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
@@ -685,7 +685,31 @@ nav {
   margin-bottom: 50px;
   line-height: 1.8;
   text-align: center;
+  width: 1600px;
+
+} */
+
+
+
+.about-content {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 40px;
+  margin-bottom: 50px;
+  line-height: 1.8;
+  text-align: right;
+  max-width: 1600px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
+.about-content p {
+  margin-bottom: 20px; 
+}
+
 
 .features {
   display: flex;
@@ -2147,6 +2171,7 @@ footer {
   transform: translateY(20px) scale(0.8);
   animation: fadeInUp 0.3s ease forwards;
   outline: none;
+  border: 2px solid white;
 }
 
 .scroll-top-btn:hover {
@@ -2180,21 +2205,25 @@ footer {
 /* تصميم متجاوب */
 @media (max-width: 768px) {
   .scroll-top-btn {
-    bottom: 20px;
-    right: 20px; /* تغيير هنا أيضاً */
+    bottom: 25px;
+    right: 90px; /* تغيير هنا أيضاً */
     width: 45px;
     height: 45px;
     font-size: 1.1rem;
+    border: 2px solid white;
+   
   }
 }
 
 @media (max-width: 480px) {
   .scroll-top-btn {
     bottom: 15px;
-    right: 15px; /* وتغيير هنا */
+    right: 50px; /* وتغيير هنا */
     width: 40px;
     height: 40px;
     font-size: 1rem;
+       border: 2px solid white;
+
   }
 }
 
@@ -2444,7 +2473,15 @@ body.dark-theme {
 
 /* Responsive Design for Theme Toggle */
 @media (max-width: 768px) {
- 
+.scroll-top-btn{
+  
+  margin-bottom: 10px;
+  margin-right: 10px;
+
+
+
+}
+
 
  
 }
@@ -2467,99 +2504,34 @@ body.dark-theme {
 
 
 .theme-toggle-btn {
-  /* الحجم والتنسيق الأساسي */
-  width: 65px;
-  height: 65px;
+  
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  
-  /* التدرج اللوني المتطور */
-  background: linear-gradient(
-    135deg,
-    #667eea 0%,
-    #764ba2 25%,
-    #f093fb 50%,
-    #f5576c 75%,
-    #ffd166 100%
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite;
-  
-  /* الحدود */
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.2),
-    inset 0 4px 10px rgba(255, 255, 255, 0.3),
-    inset 0 -4px 10px rgba(0, 0, 0, 0.2);
-  
-  /* النص */
-  color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
-  
-  /* الظلال الخارجية */
-  filter: drop-shadow(0 5px 15px rgba(103, 126, 234, 0.4));
-  
-  /* الانتقالات */
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
+  margin-right: 10px;
+  margin-bottom: 10px;
+ 
 }
 
-/* تأثير اللمعان */
-.theme-toggle-btn::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
-  transform: rotate(30deg);
-  animation: shine 3s infinite linear;
-}
 
-/* تأثير الهالة */
-.theme-toggle-btn::after {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  border-radius: 50%;
-  border: 2px solid rgba(103, 126, 234, 0.3);
-  animation: pulse 2s infinite ease-in-out;
-}
 
-/* الحالة عند التحويم */
-.theme-toggle-btn:hover {
-  transform: 
-    scale(1.15) 
-    rotate(180deg) 
-    translateY(-5px);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.3),
-    inset 0 6px 15px rgba(255, 255, 255, 0.4),
-    inset 0 -6px 15px rgba(0, 0, 0, 0.3);
-  animation-play-state: paused;
-  border-color: rgba(255, 255, 255, 0.5);
-}
 
-/* الحالة عند النقر */
+
+
+
 .theme-toggle-btn:active {
   transform: scale(0.95) rotate(90deg);
   transition: all 0.2s ease;
 }
 
-/* أيقونة القمر (الوضع الفاتح) */
+
+
+
 .theme-toggle-btn .fa-moon {
   text-shadow: 
     0 0 10px rgba(255, 215, 0, 0.8),
@@ -2573,6 +2545,7 @@ body.dark-theme {
     0 0 15px rgba(255, 69, 0, 0.9),
     0 0 30px rgba(255, 69, 0, 0.6);
   transition: transform 0.5s ease;
+
 }
 
 /* Dark Mode Variations */
@@ -2604,7 +2577,7 @@ body.dark-theme .theme-toggle-btn:hover {
   transform: scale(1.2) rotate(360deg);
 }
 
-/* الرسوم المتحركة */
+
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
